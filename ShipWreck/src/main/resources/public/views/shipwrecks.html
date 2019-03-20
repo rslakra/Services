@@ -1,0 +1,18 @@
+<div class="container pad-top">
+  <a ui-sref="newShipWreck" class="btn btn-primary btn-lg nodecoration">Add New Shipwreck</a>
+  <table class="table shipwrecktable">
+      <tr>
+          <td><h3>All Shipwrecks</h3></td>
+          <td></td>
+      </tr>
+      <tr ng-repeat="shipwreck in shipwrecks">
+          <td width="10%">{{shipwreck.name}}</td>
+          <td width="60%">{{shipwreck.description}}</td>
+          <td width="10%">{{shipwreck.yearDiscovered}}</td>
+          <td width="20%">
+              <a class="btn btn-primary" ui-sref="viewShipWreck({id:shipwreck.id})">View</a>
+              <a class="btn btn-danger"  ng-click="deleteShipWreck(shipwreck)">Delete</a>
+          </td>
+      </tr>
+  </table>
+</div>
