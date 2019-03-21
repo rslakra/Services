@@ -11,7 +11,7 @@
 	<name>ShipWreck</name>
 	<url>http://maven.apache.org</url>
 
-	<!-- Spring Book Dependency -->
+	<!-- Spring Boot Dependency -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
