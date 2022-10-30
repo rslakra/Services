@@ -2,7 +2,7 @@ package com.rslakra.liquibaseservice.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.rslakra.liquibaseservice.persistence.entity.entity.House;
+import com.rslakra.liquibaseservice.persistence.entity.House;
 import com.rslakra.liquibaseservice.persistence.repository.HouseRepository;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;

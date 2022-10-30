@@ -4,18 +4,30 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-/**
- *
- */
+//@EnableTransactionManagement
+//@EnableJpaAuditing
 @SpringBootApplication
 @EnableJpaRepositories
 public class SwaggerServiceApplication {
+//public class SpringAuditingApplication implements CommandLineRunner {
+
+//    @Resource
+//    private FileRepository fileRepository;
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-        SpringApplication.run(SwaggerServiceApplication.class, args);
+        SpringApplication.run(SwaggerApplication.class, args);
     }
 
+//    /**
+//     * @param args
+//     * @throws Exception
+//     */
+//    @Override
+//    public void run(String... args) throws Exception {
+//        fileRepository.saveAndFlush(new File("Spring-Boot-File", "Spring Boot JPA is awesome"));
+//        fileRepository.saveAndFlush(new File("Java-File", "Java file system is awesome"));
+//    }
 }

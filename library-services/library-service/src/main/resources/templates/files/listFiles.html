@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Title -->
+    <title>The Abbreviations</title>
+</head>
+<body>
+<!-- Body Container -->
+<div class="body-container">
+    <!-- New File -->
+    <div>
+        <a class="button" href="editFile.html" th:href="@{/files/create}">New File</a>
+    </div>
+
+    <div th:switch="${files}">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Contents</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:case="${files.size() == 0}">
+                <tr>
+                    <td colspan="9">
+                        <h2>No Records Found!</h2>
+                    </td>
+                </tr>
+            </div>
+            <div th:case="*">
+                <tr th:each="file : ${files}">
+                    <td th:text="${file.id}"/>
+                    <td th:text="${file.name}"/>
+                    <td th:text="${file.contents}"/>
+                    <td class="action-button">
+                        <a class="action-button-padding" th:href="@{/files/update/{id}(id=${file.id})}">
+                            <i class="fa fa-pencil" style="font-size:24px;color:red"></i>
+                        </a>
+                        <a class="action-button-padding" th:href="@{/files/delete/{id}(id=${file.id})}">
+                            <i class="fa fa-trash" style="font-size:24px;color:red"></i>
+                        </a>
+                    </td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+    </div>
+
+    <!--Back Button -->
+    <div>
+        <a class="button" href="../home.html" th:href="@{/}">Back</a>
+    </div>
+
+</div>
+
+</body>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+
+</html>

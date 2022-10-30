@@ -1,0 +1,26 @@
+resourcePackages:
+  - com.rslakra.libraryservice
+readAllResources: false
+prettyPrint: true
+cacheTTL: 0
+openAPI:
+  info:
+    version: '1.0'
+    title: Internal Library-Service APIs
+    description: The 'Library-Service' api documentation
+    contact:
+      email: api.library@rslakra.com
+  components:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+  security:
+    - bearerAuth: [ ]
+  servers:
+    - url: 'http://localhost:8080/libraryservice'
+      description: Dev Server (uses test data)
+    - url: 'https://production/libraryservice'
+      description: Production Server (uses live data)
+    - url: '/libraryservice/api/v1/'
+      description: Relative path setting (for testing integration might not work)

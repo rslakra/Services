@@ -1,7 +1,7 @@
 package com.rslakra.liquibaseservice;
 
-import com.rslakra.liquibaseservice.persistence.entity.entity.House;
-import com.rslakra.liquibaseservice.persistence.entity.entity.Item;
+import com.rslakra.liquibaseservice.persistence.entity.House;
+import com.rslakra.liquibaseservice.persistence.entity.Item;
 import com.rslakra.liquibaseservice.persistence.repository.HouseRepository;
 import com.rslakra.liquibaseservice.persistence.repository.ItemRepository;
 import org.slf4j.Logger;

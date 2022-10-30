@@ -1,0 +1,23 @@
+package com.rslakra.libraryclient.entity;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
+
+/**
+ * @author Rohtash Lakra
+ * @created 8/4/21 5:40 PM
+ */
+@Getter
+@Setter
+@NoArgsConstructor
+public abstract class Auditable implements Serializable {
+
+    private Long createdOn;
+    private String createdBy;
+    private Long updatedOn;
+    private String updatedBy;
+
+}

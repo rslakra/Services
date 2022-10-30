@@ -16,7 +16,7 @@
 //import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 //
 ///**
-// * @author Rohtash Lakra (rlakra)
+// * @author Rohtash Lakra
 // * @created 8/20/21 5:08 PM
 // */
 //@Configuration
