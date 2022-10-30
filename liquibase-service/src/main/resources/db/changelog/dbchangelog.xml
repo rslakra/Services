@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <!-- roles -->
+    <changeSet author="rslakra" id="create_roles_table">
+        <createTable tableName="roles">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_role_id"/>
+            </column>
+            <column name="name" type="varchar(32)">
+                <constraints unique="true" uniqueConstraintName="uk_roles_name" nullable="false"/>
+            </column>
+            <column name="active" type="boolean" defaultValueBoolean="false"/>
+        </createTable>
+        <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1"/>
+        <addAutoIncrement tableName="roles" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1"/>
+    </changeSet>
+
+    <!-- users -->
+    <changeSet author="rslakra" id="create_users_table">
+        <createTable tableName="users">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_user_id"/>
+            </column>
+            <column name="user_name" type="varchar(128)">
+                <constraints unique="true" uniqueConstraintName="uk_users_user_name" nullable="false"/>
+            </column>
+            <column name="password" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="boolean" defaultValueBoolean="false"/>
+        </createTable>
+        <addAutoIncrement tableName="users" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1"/>
+    </changeSet>
+
+    <!-- houses -->
+    <changeSet author="rslakra" id="create_houses_table">
+        <createTable tableName="houses">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_house_id"/>
+            </column>
+            <column name="owner" type="varchar(128)">
+                <constraints unique="true" uniqueConstraintName="uk_house_owner"/>
+            </column>
+            <column name="fully_paid" type="boolean" defaultValueBoolean="false"/>
+        </createTable>
+        <addAutoIncrement tableName="houses" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1"/>
+    </changeSet>
+
+    <!-- items -->
+    <changeSet author="rslakra" id="create_items_table">
+        <createTable tableName="items">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_item_id"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="house_id" type="bigint">
+                <constraints nullable="false" notNullConstraintName="nn_item_house_id"/>
+            </column>
+        </createTable>
+        <addAutoIncrement tableName="items" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1"/>
+        <addForeignKeyConstraint baseTableName="items" baseColumnNames="house_id" constraintName="fk_house_items"
+                                 referencedTableName="houses" referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

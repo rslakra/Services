@@ -1,8 +1,9 @@
 .DS_Store
+/**/.jar
+/**/.exe
+
+### Gradle ###
 .gradle
-gradle/
-build/
-/**/*.jar
 
 ### STS ###
 .apt_generated
@@ -19,6 +20,7 @@ bin/
 *.iws
 *.iml
 *.ipr
+build/
 out/
 
 ### NetBeans ###

@@ -1,0 +1,54 @@
+# Server Settings
+#
+#server:
+#  port: 8080
+#  servlet:
+#    context-path: /rslakra
+
+#management:
+#  server:
+#    port: 8081
+#    address: 127:0:0:1
+
+#
+# Debug Settings
+#
+#debug: true
+
+#The bean 'jpaAuditingHandler', defined in null, could not be registered:
+# A bean with that name has already been defined in null and overriding is disabled:
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  #
+  # JPA Settings
+  #
+  jpa:
+    # Therefore, database queries may be performed during view rendering:
+    # Explicitly configure spring:jpa:open-in-view to disable this warning
+    # spring:jpa:open-in-view is enabled by default:
+    open-in-view: false
+    show: true
+    hibernate:
+      #      ddl-auto: update
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  #
+  # H2 Database Settings
+  #
+  datasource:
+    url: jdbc:h2:file:~/Downloads/H2DB/MySBApp;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  #
+  # Enabling H2 Console
+  # http://localhost:8080/h2
+  #
+  h2:
+    console:
+      enabled: true
+      path: /h2
