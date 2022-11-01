@@ -2,8 +2,8 @@ package com.rslakra.liquibaseservice.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.rslakra.liquibaseservice.persistence.entity.entity.House;
-import com.rslakra.liquibaseservice.persistence.entity.entity.Item;
+import com.rslakra.liquibaseservice.persistence.entity.House;
+import com.rslakra.liquibaseservice.persistence.entity.Item;
 import com.rslakra.liquibaseservice.persistence.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Condition;

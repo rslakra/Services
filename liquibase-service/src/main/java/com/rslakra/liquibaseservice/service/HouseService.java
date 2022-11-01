@@ -1,6 +1,6 @@
 package com.rslakra.liquibaseservice.service;
 
-import com.rslakra.liquibaseservice.persistence.entity.entity.House;
+import com.rslakra.liquibaseservice.persistence.entity.House;
 import com.rslakra.liquibaseservice.exception.NoRecordFoundException;
 import com.rslakra.liquibaseservice.persistence.repository.HouseRepository;
 import org.springframework.beans.BeanUtils;

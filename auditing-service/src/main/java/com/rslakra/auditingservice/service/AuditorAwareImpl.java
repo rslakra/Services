@@ -5,7 +5,7 @@ import org.springframework.data.domain.AuditorAware;
 import java.util.Optional;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 8/4/21 5:45 PM
  */
 public class AuditorAwareImpl implements AuditorAware<String> {

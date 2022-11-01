@@ -8,7 +8,7 @@
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //
 ///**
-// * @author Rohtash Lakra (rlakra)
+// * @author Rohtash Lakra
 // * @created 8/20/21 6:00 PM
 // */
 //public class UserDetailsServiceImpl implements UserDetailsService {

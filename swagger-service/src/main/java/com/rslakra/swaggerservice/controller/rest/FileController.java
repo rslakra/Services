@@ -1,8 +1,8 @@
 package com.rslakra.swaggerservice.controller.rest;
 
-import com.rslakra.swaggerservice.entity.File;
-import com.rslakra.swaggerservice.exception.RecordNotFoundException;
-import com.rslakra.swaggerservice.repository.FileRepository;
+import com.rslakra.swaggerservice.persistence.entity.File;
+import com.rslakra.swaggerservice.exception.NoRecordFoundException;
+import com.rslakra.swaggerservice.persistence.repository.FileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 8/4/21 6:47 PM
  */
 @RestController
@@ -44,13 +44,19 @@ public class FileController {
     /**
      * @param fileId
      * @return
-     * @throws RecordNotFoundException
      */
-    @GetMapping("/file/{id}")
-    public ResponseEntity<File> getFileById(
-        @PathVariable(value = "id") Long fileId) throws RecordNotFoundException {
-        File file = fileRepository.findById(fileId)
-            .orElseThrow(() -> new RecordNotFoundException("fileId:%d", fileId));
+    private File findFileById(Long fileId) {
+        return fileRepository.findById(fileId).orElseThrow(() -> new NoRecordFoundException("fileId:%d", fileId));
+    }
+
+    /**
+     * @param fileId
+     * @return
+     * @throws NoRecordFoundException
+     */
+    @GetMapping("/file/{fileId}")
+    public ResponseEntity<File> getFileById(@PathVariable(value = "fileId") Long fileId) {
+        File file = findFileById(fileId);
         return ResponseEntity.ok().body(file);
     }
 
@@ -66,14 +72,12 @@ public class FileController {
     /**
      * @param file
      * @return
-     * @throws RecordNotFoundException
      */
     @PutMapping("/file")
-    public ResponseEntity<File> updateFile(
-        @Validated @RequestBody File file) throws RecordNotFoundException {
-        File oldFile = fileRepository.findById(file.getId())
-            .orElseThrow(() -> new RecordNotFoundException("fileId:%d", file.getId()));
+    public ResponseEntity<File> updateFile(@Validated @RequestBody File file) {
+        File oldFile = findFileById(file.getId());
 
+        // update properties
         oldFile.setName(file.getName());
         oldFile.setContents(file.getContents());
         oldFile = fileRepository.save(oldFile);
@@ -83,14 +87,10 @@ public class FileController {
     /**
      * @param fileId
      * @return
-     * @throws RecordNotFoundException
      */
-    @DeleteMapping("/file/{id}")
-    public Map<String, Boolean> deleteFile(@PathVariable(value = "id") Long fileId) throws RecordNotFoundException {
-        File
-            file =
-            fileRepository.findById(fileId)
-                .orElseThrow(() -> new RecordNotFoundException("fileId:%d", fileId));
+    @DeleteMapping("/file/{fileId}")
+    public Map<String, Boolean> deleteFile(@PathVariable(value = "fileId") Long fileId) {
+        File file = findFileById(fileId);
         fileRepository.delete(file);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);

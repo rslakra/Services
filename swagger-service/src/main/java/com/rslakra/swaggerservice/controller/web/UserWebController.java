@@ -1,6 +1,6 @@
 package com.rslakra.swaggerservice.controller.web;
 
-import com.rslakra.swaggerservice.entity.User;
+import com.rslakra.swaggerservice.persistence.entity.User;
 import com.rslakra.swaggerservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author: Rohtash Lakra (rlakra)
+ * @author: Rohtash Lakra
  * @since: 9/30/19 5:38 PM
  */
 @Controller

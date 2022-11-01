@@ -1,6 +1,6 @@
 package com.rslakra.swaggerservice.controller.rest;
 
-import com.rslakra.swaggerservice.entity.User;
+import com.rslakra.swaggerservice.persistence.entity.User;
 import com.rslakra.swaggerservice.payload.PayloadBuilder;
 import com.rslakra.swaggerservice.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 8/5/21 11:11 AM
  */
 @RestController

@@ -1,6 +1,6 @@
 package com.rslakra.liquibaseservice.persistence.repository;
 
-import com.rslakra.liquibaseservice.persistence.entity.entity.House;
+import com.rslakra.liquibaseservice.persistence.entity.House;
 import org.springframework.stereotype.Repository;
 
 /**
