@@ -1,0 +1,21 @@
+version: "3"
+services:
+  employeeService:
+    image: dockerlakra/employee-service
+    ports:
+      - "8081:8081"
+    networks:
+      - mysql-network
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:latest
+    networks:
+      - mysql-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=employeedb
+
+networks:
+  mysql-network:
