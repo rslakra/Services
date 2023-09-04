@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @author Rohtash Lakra (rslakra.work@gmail.com)
+ * @author Rohtash Lakra
  * @version 1.0.0
  * @since Aug 08, 2021 15:26:40
  */

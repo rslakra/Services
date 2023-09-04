@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 8/4/21 6:47 PM
  */
 @RestController

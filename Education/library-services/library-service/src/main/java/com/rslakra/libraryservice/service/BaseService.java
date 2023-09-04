@@ -1,12 +1,8 @@
 package com.rslakra.libraryservice.service;
 
-import com.rslakra.libraryservice.utils.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,23 +14,11 @@ public interface BaseService<T> {
     String[] IGNORED_PROPERTIES = {"id", "createdOn", "createdAt", "createdBy", "updatedOn", "updatedAt", "updatedBy"};
 
     /**
-     * Returns the new <code>HttpHeaders</code> object.
-     *
-     * @return
-     */
-    static HttpHeaders newHttpHeaders() {
-        final HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        httpHeaders.set(BeanUtils.REQUEST_TRACER, BeanUtils.nextUuid());
-        return httpHeaders;
-    }
-
-    /**
      * Returns the list of all <code>T</code> objects.
      *
      * @return
      */
-     List<T> getAll();
+    List<T> getAll();
 
     /**
      * Returns the <code>T</code> object by <code>id</code>.

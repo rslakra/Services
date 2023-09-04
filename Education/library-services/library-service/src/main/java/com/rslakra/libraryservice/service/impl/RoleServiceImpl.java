@@ -1,12 +1,12 @@
 package com.rslakra.libraryservice.service.impl;
 
+import com.rslakra.frameworks.core.BeanUtils;
+import com.rslakra.frameworks.spring.exception.DuplicateRecordException;
+import com.rslakra.frameworks.spring.exception.InvalidRequestException;
+import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
 import com.rslakra.libraryservice.persistence.entity.Role;
-import com.rslakra.libraryservice.exception.DuplicateRecordException;
-import com.rslakra.libraryservice.exception.InvalidRequestException;
-import com.rslakra.libraryservice.exception.NoRecordFoundException;
 import com.rslakra.libraryservice.persistence.repository.RoleRepository;
 import com.rslakra.libraryservice.service.RoleService;
-import com.rslakra.libraryservice.utils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 10/9/21 5:50 PM
  */
 @Service
@@ -58,7 +58,7 @@ public class RoleServiceImpl implements RoleService {
     public Role getById(Long id) {
         LOGGER.debug("getById({})", id);
         return roleRepository.findById(id)
-                .orElseThrow(() -> new NoRecordFoundException("id:%d", id));
+            .orElseThrow(() -> new NoRecordFoundException("id:%d", id));
 
     }
 
@@ -82,8 +82,8 @@ public class RoleServiceImpl implements RoleService {
         } else { // update file
             LOGGER.info("Updating {}", role);
             oldRole =
-                    roleRepository.findById(role.getId())
-                            .orElseThrow(() -> new NoRecordFoundException("roleId:%d", role.getId()));
+                roleRepository.findById(role.getId())
+                    .orElseThrow(() -> new NoRecordFoundException("roleId:%d", role.getId()));
 
             // update object
             BeanUtils.copyProperties(role, oldRole, IGNORED_PROPERTIES);

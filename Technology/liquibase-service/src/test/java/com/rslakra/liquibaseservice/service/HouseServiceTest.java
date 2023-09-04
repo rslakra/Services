@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import com.rslakra.liquibaseservice.persistence.entity.House;
 import com.rslakra.liquibaseservice.persistence.repository.HouseRepository;
 import com.rslakra.liquibaseservice.repository.HouseRepositoryTest;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.Optional;
  * @author Rohtash Lakra
  * @created 10/20/22 5:47 PM
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public class HouseServiceTest {
 
     @TestConfiguration
@@ -41,7 +41,7 @@ public class HouseServiceTest {
     @Autowired
     private HouseRepository houseRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         House rohtash = HouseRepositoryTest.createHouse(1L, "Rohtash", true);
         House singh = HouseRepositoryTest.createHouse(2L, "Singh", false);

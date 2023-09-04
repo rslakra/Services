@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+<div layout:fragment="dContents">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Login</div>
+            <div class="panel-body">
+                <form action="#" th:action="@{/auth/login}" method="post">
+                    <!-- Login Errors -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!--error message -->
+                            <div th:if="${param.error}" class="alert alert-danger alert-dismissable">
+                                <p>
+                                    <i class="icon fa fa-ban"></i>
+                                    <span th:text="#{login.error.failed}">Invalid Credentials!</span>
+                                </p>
+                            </div>
+                            <!-- logout message -->
+                            <div th:if="${param.logout}" class="alert alert-info alert-dismissable">
+                                <p>
+                                    <i class="icon fa fa-info"></i>
+                                    <span th:text="#{logout.success}">Logout!</span>
+                                </p>
+                            </div>
+                            <!-- message -->
+                            <div th:if="${param.message!=null}" class="alert alert-warning alert-dismissable">
+                                <p>
+                                    <i class="icon fa fa-warning"></i>
+                                    <span th:text="${param.message}"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Login Fields -->
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" name="userName" required="true"
+                               autofocus=""true placeholder="Username"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" name="password" required="true"
+                               autofocus=""true placeholder="Password"/>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="remember-me"> Remember Me
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-offset-8 col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Login
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span>New user? <a href="/static" th:href="@{/registration}">Register</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

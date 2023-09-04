@@ -21,7 +21,7 @@ public class FileEntityListener extends BaseEntityListener<File> {
      * @param baseEntity
      */
     @Transactional(Transactional.TxType.MANDATORY)
-    protected void persistEntity(Operation operation, File baseEntity) {
+    public void persistEntity(Operation operation, File baseEntity) {
         LOGGER.debug("persistEntity({}, {})", operation, baseEntity);
         if (Operation.DELETED != operation) {
             final File file = (File) baseEntity;

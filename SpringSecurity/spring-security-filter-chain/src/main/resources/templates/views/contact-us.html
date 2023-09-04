@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Contact Us</title>
+</head>
+<body>
+
+<div layout:fragment="dContents">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Contact Us</h1>
+            <a class="btn text-right" th:href="@{/index}">Home</a>
+            <p>Please send us an email at rslakra.work@gmail.com.</p>
+        </div>
+    </div>
+</div>
+
+<th:block th:fragment="optional">
+    <!-- optional items here. -->
+</th:block>
+
+</body>
+</html>

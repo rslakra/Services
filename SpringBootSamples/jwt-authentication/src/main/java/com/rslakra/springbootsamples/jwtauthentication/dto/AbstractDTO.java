@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 11/29/21 9:18 PM
  */
 @Getter

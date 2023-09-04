@@ -10,7 +10,7 @@ import com.rslakra.jwtauthentication1.persistence.model.User;
 import com.rslakra.jwtauthentication1.persistence.repository.RoleRepository;
 import com.rslakra.jwtauthentication1.persistence.repository.UserRepository;
 import com.rslakra.jwtauthentication1.security.jwt.JwtUtils;
-import com.rslakra.jwtauthentication1.security.services.UserDetailsImpl;
+import com.rslakra.jwtauthentication1.security.service.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

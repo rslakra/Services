@@ -2,11 +2,18 @@ package com.rslakra.auditingservice.controller;
 
 import com.rslakra.auditingservice.persistence.entity.File;
 import com.rslakra.auditingservice.persistence.repository.FileRepository;
+import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,10 +27,14 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 public class FileController {
 
-    @Autowired
-    private FileRepository fileRepository;
+    private final FileRepository fileRepository;
 
-    public FileController() {
+    /**
+     * @param fileRepository
+     */
+    @Autowired
+    public FileController(FileRepository fileRepository) {
+        this.fileRepository = fileRepository;
     }
 
     /**
@@ -35,13 +46,24 @@ public class FileController {
     }
 
     /**
+     * Returns the <code>file</code> object for the provided <code>fileId</code>.
+     *
      * @param fileId
      * @return
-     * @throws ResourceNotFoundException
+     */
+    protected File findById(Long fileId) {
+        return fileRepository.findById(fileId).orElseThrow(() -> new NoRecordFoundException("fileId: %d", fileId));
+    }
+
+    /**
+     * @param fileId
+     * @return
+     * @throws NoRecordFoundException
      */
     @GetMapping("/file/{fileId}")
-    public ResponseEntity<File> getFileById(@PathVariable(value = "fileId") Long fileId) throws ResourceNotFoundException {
-        File file = fileRepository.findById(fileId).orElseThrow(() -> new ResourceNotFoundException("File not found :: " + fileId));
+    public ResponseEntity<File> getFileById(@PathVariable(value = "fileId") Long fileId)
+        throws NoRecordFoundException {
+        File file = findById(fileId);
         return ResponseEntity.ok().body(file);
     }
 
@@ -57,13 +79,10 @@ public class FileController {
     /**
      * @param file
      * @return
-     * @throws ResourceNotFoundException
      */
     @PutMapping("/file")
-    public ResponseEntity<File> updateFile(@Validated @RequestBody File file) throws ResourceNotFoundException {
-        File oldFile = fileRepository.findById(file.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("File not found :: " + file.getId()));
-
+    public ResponseEntity<File> updateFile(@Validated @RequestBody File file) {
+        File oldFile = findById(file.getId());
         oldFile.setName(file.getName());
         oldFile.setContents(file.getContents());
         oldFile = fileRepository.save(oldFile);
@@ -73,12 +92,10 @@ public class FileController {
     /**
      * @param fileId
      * @return
-     * @throws ResourceNotFoundException
      */
     @DeleteMapping("/file/{fileId}")
-    public Map<String, Boolean> deleteFile(@PathVariable(value = "fileId") Long fileId) throws ResourceNotFoundException {
-        File file = fileRepository.findById(fileId)
-                .orElseThrow(() -> new ResourceNotFoundException("File not found :: " + fileId));
+    public Map<String, Boolean> deleteFile(@PathVariable(value = "fileId") Long fileId) {
+        File file = findById(fileId);
         fileRepository.delete(file);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);

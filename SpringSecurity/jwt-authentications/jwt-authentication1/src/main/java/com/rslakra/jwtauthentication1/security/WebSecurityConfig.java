@@ -2,7 +2,7 @@ package com.rslakra.jwtauthentication1.security;
 
 import com.rslakra.jwtauthentication1.security.jwt.AuthTokenFilter;
 import com.rslakra.jwtauthentication1.security.jwt.JwtAuthenticationEntryPoint;
-import com.rslakra.jwtauthentication1.security.services.UserDetailsServiceImpl;
+import com.rslakra.jwtauthentication1.security.service.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;

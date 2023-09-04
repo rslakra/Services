@@ -1,7 +1,7 @@
 package com.rslakra.springbootsamples.jwtauthentication.security.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.rslakra.springbootsamples.jwtauthentication.model.IdentityDO;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.model.IdentityDO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,14 +1,14 @@
 package com.rslakra.libraryservice.service.impl;
 
+import com.rslakra.frameworks.core.BeanUtils;
+import com.rslakra.frameworks.spring.exception.DuplicateRecordException;
+import com.rslakra.frameworks.spring.exception.InvalidRequestException;
+import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
 import com.rslakra.libraryservice.persistence.entity.File;
 import com.rslakra.libraryservice.persistence.entity.FileHistory;
-import com.rslakra.libraryservice.exception.DuplicateRecordException;
-import com.rslakra.libraryservice.exception.InvalidRequestException;
-import com.rslakra.libraryservice.exception.NoRecordFoundException;
 import com.rslakra.libraryservice.persistence.repository.FileHistoryRepository;
 import com.rslakra.libraryservice.persistence.repository.FileRepository;
 import com.rslakra.libraryservice.service.FileService;
-import com.rslakra.libraryservice.utils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 10/9/21 5:50 PM
  */
 @Service
@@ -46,6 +46,7 @@ public class FileServiceImpl extends BaseServiceImpl<File> implements FileServic
 
     /**
      * Returns the list of all <code>T</code> objects.
+     *
      * @return
      */
     @Override
@@ -63,7 +64,7 @@ public class FileServiceImpl extends BaseServiceImpl<File> implements FileServic
     public File getById(Long id) {
         LOGGER.debug("getById({})", id);
         return fileRepository.findById(id)
-                .orElseThrow(() -> new NoRecordFoundException("id:%d", id));
+            .orElseThrow(() -> new NoRecordFoundException("id:%d", id));
 
     }
 
@@ -87,8 +88,8 @@ public class FileServiceImpl extends BaseServiceImpl<File> implements FileServic
         } else { // update file
             LOGGER.info("Updating {}", file);
             oldFile =
-                    fileRepository.findById(file.getId())
-                            .orElseThrow(() -> new NoRecordFoundException("fileId:%d", file.getId()));
+                fileRepository.findById(file.getId())
+                    .orElseThrow(() -> new NoRecordFoundException("fileId:%d", file.getId()));
 
             // update object
             BeanUtils.copyProperties(file, oldFile, IGNORED_PROPERTIES);

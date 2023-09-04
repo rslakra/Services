@@ -10,10 +10,10 @@
         <relativePath/>
     </parent>
     <groupId>com.rslakra</groupId>
-    <artifactId>employee-service</artifactId>
+    <artifactId>advice-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>employee-service</name>
+    <name>advice-service</name>
     <description>Spring Boot Employee Service</description>
 
     <properties>

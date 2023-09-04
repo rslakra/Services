@@ -5,7 +5,7 @@ import com.rslakra.libraryservice.persistence.entity.Role;
 import java.util.List;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 8/20/21 8:11 PM
  */
 public interface RoleService extends BaseService<Role> {

@@ -1,16 +1,16 @@
 package com.rslakra.libraryservice.service.impl;
 
-import com.rslakra.libraryservice.persistence.entity.Role;
-import com.rslakra.libraryservice.persistence.entity.User;
+import com.rslakra.frameworks.core.BeanUtils;
+import com.rslakra.frameworks.spring.exception.DuplicateRecordException;
+import com.rslakra.frameworks.spring.exception.InvalidRequestException;
+import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
 import com.rslakra.libraryservice.enums.EntityStatus;
 import com.rslakra.libraryservice.enums.RoleType;
-import com.rslakra.libraryservice.exception.DuplicateRecordException;
-import com.rslakra.libraryservice.exception.InvalidRequestException;
-import com.rslakra.libraryservice.exception.NoRecordFoundException;
+import com.rslakra.libraryservice.persistence.entity.Role;
+import com.rslakra.libraryservice.persistence.entity.User;
 import com.rslakra.libraryservice.persistence.repository.RoleRepository;
 import com.rslakra.libraryservice.persistence.repository.UserRepository;
 import com.rslakra.libraryservice.service.UserService;
-import com.rslakra.libraryservice.utils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

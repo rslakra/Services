@@ -1,12 +1,18 @@
 package com.rslakra.libraryservice.persistence.entity;
 
+import com.rslakra.frameworks.core.ToString;
+import com.rslakra.frameworks.spring.persistence.entity.NamedEntity;
 import com.rslakra.libraryservice.enums.EntityStatus;
 import com.rslakra.libraryservice.enums.RoleType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 /**
  * @author Rohtash Lakra
@@ -37,9 +43,9 @@ public class Role extends NamedEntity {
      */
     @Override
     public String toString() {
-        return toString(Role.class)
-                .add("name=" + getName())
-                .add("status=" + getStatus())
-                .toString();
+        return ToString.of(Role.class)
+            .add("name", getName())
+            .add("status", getStatus())
+            .toString();
     }
 }

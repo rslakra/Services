@@ -24,6 +24,19 @@
     </properties>
 
     <dependencies>
+        <!-- appsuite-framework-modules -->
+        <dependency>
+            <groupId>com.rslakra.frameworks</groupId>
+            <artifactId>appsuite-framework-core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rslakra.frameworks</groupId>
+            <artifactId>appsuite-framework-spring</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -61,7 +74,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+<!--            <optional>true</optional>-->
         </dependency>
 
         <!-- Swagger Open API Specification -->
@@ -78,6 +91,13 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-data-rest</artifactId>
             <version>1.5.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.1.10</version>
         </dependency>
 
         <!-- test -->

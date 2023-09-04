@@ -1,13 +1,13 @@
 package com.rslakra.springbootsamples.jwtauthentication.controller;
 
-import com.rslakra.springbootsamples.jwtauthentication.model.IdentityDO;
-import com.rslakra.springbootsamples.jwtauthentication.model.RoleDO;
-import com.rslakra.springbootsamples.jwtauthentication.model.RoleType;
 import com.rslakra.springbootsamples.jwtauthentication.payload.request.LoginRequest;
 import com.rslakra.springbootsamples.jwtauthentication.payload.request.SignUpRequest;
 import com.rslakra.springbootsamples.jwtauthentication.payload.response.JwtResponse;
-import com.rslakra.springbootsamples.jwtauthentication.repository.IdentityRepository;
-import com.rslakra.springbootsamples.jwtauthentication.repository.RoleRepository;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.model.IdentityDO;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.model.RoleDO;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.model.RoleType;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.repository.IdentityRepository;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.repository.RoleRepository;
 import com.rslakra.springbootsamples.jwtauthentication.security.jwt.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,26 +34,35 @@ import javax.validation.Valid;
 //@Tag(name = "Authentication Service")
 public class AuthenticationController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
+    private final JwtProvider jwtProvider;
+    private final AuthenticationManager authenticationManager;
+    private final IdentityRepository identityRepository;
 
+    /**
+     * @param passwordEncoder
+     * @param roleRepository
+     * @param jwtProvider
+     * @param authenticationManager
+     * @param identityRepository
+     */
     @Autowired
-    private IdentityRepository identityRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private PasswordEncoder encoder;
-
-    @Autowired
-    private JwtProvider jwtProvider;
+    public AuthenticationController(PasswordEncoder passwordEncoder, RoleRepository roleRepository,
+                                    JwtProvider jwtProvider, AuthenticationManager authenticationManager,
+                                    IdentityRepository identityRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
+        this.jwtProvider = jwtProvider;
+        this.authenticationManager = authenticationManager;
+        this.identityRepository = identityRepository;
+    }
 
     /**
      * @param loginRequest
      * @return
      */
-    @PostMapping("/sign-in")
+    @PostMapping("/login")
     public ResponseEntity<?> loginUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication
             authentication =
@@ -62,7 +71,7 @@ public class AuthenticationController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        String jwt = jwtProvider.createJwtToken(authentication);
+        String jwt = jwtProvider.createJWTToken(authentication);
         return ResponseEntity.ok(new JwtResponse(jwt));
     }
 
@@ -70,9 +79,9 @@ public class AuthenticationController {
      * @param signUpRequest
      * @return
      */
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public ResponseEntity<String> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-        if (identityRepository.existsByUserName(signUpRequest.getUsername())) {
+        if (identityRepository.existsByUserName(signUpRequest.getUserName())) {
             return new ResponseEntity<String>("Fail -> Username is already taken!",
                                               HttpStatus.BAD_REQUEST);
         }
@@ -83,10 +92,12 @@ public class AuthenticationController {
         }
 
         // Creating identity's account
-        IdentityDO identity = new IdentityDO(signUpRequest.getName(), signUpRequest.getUsername(),
-                                             encoder.encode(signUpRequest.getPassword()), signUpRequest.getEmail());
+        IdentityDO
+            identity =
+            new IdentityDO(signUpRequest.getName(), signUpRequest.getUserName(),
+                           passwordEncoder.encode(signUpRequest.getPassword()), signUpRequest.getEmail());
 
-        Set<String> strRoles = signUpRequest.getRole();
+        final Set<String> strRoles = signUpRequest.getRoles();
         Set<RoleDO> roles = new HashSet<>();
 
         strRoles.forEach(role -> {
@@ -97,22 +108,27 @@ public class AuthenticationController {
                     roles.add(adminRole);
 
                     break;
-                case "pm":
-                    RoleDO pmRole = roleRepository.findByName(RoleType.MANAGER)
+                case "manager":
+                    RoleDO managerRole = roleRepository.findByName(RoleType.MANAGER)
                         .orElseThrow(() -> new RuntimeException("Fail! -> Cause: IdentityDO RoleDO not find."));
-                    roles.add(pmRole);
+                    roles.add(managerRole);
 
                     break;
-                default:
+                case "user":
                     RoleDO userRole = roleRepository.findByName(RoleType.USER)
                         .orElseThrow(() -> new RuntimeException("Fail! -> Cause: IdentityDO RoleDO not find."));
                     roles.add(userRole);
+
+                    break;
+                default:
+                    RoleDO guestRole = roleRepository.findByName(RoleType.GUEST)
+                        .orElseThrow(() -> new RuntimeException("Fail! -> Cause: IdentityDO RoleDO not find."));
+                    roles.add(guestRole);
             }
         });
 
         identity.setRoles(roles);
-        identityRepository.save(identity);
-
+        identity = identityRepository.save(identity);
         return ResponseEntity.ok().body("IdentityDO registered successfully!");
     }
 }

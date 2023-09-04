@@ -1,6 +1,6 @@
 package com.rslakra.jwtauthentication3.security.jwt;
 
-import com.rslakra.jwtauthentication3.security.services.UserPrinciple;
+import com.rslakra.jwtauthentication3.security.service.UserPrinciple;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -26,12 +26,20 @@ public class JwtProvider {
     @Value("${grokonez.app.jwtExpiration}")
     private int jwtExpiration;
 
+    /**
+     * @param jwtExpirationInMinutes
+     * @return
+     */
+    public static Long getExpiryTime(int jwtExpirationInMinutes) {
+        return (new Date().getTime() + jwtExpirationInMinutes * 10000);
+    }
+
     public String generateJwtToken(Authentication authentication) {
         UserPrinciple userPrincipal = (UserPrinciple) authentication.getPrincipal();
         return Jwts.builder()
             .setSubject((userPrincipal.getUsername()))
             .setIssuedAt(new Date())
-            .setExpiration(new Date((new Date()).getTime() + jwtExpiration * 1000))
+            .setExpiration(new Date(getExpiryTime(jwtExpiration)))
             .signWith(SignatureAlgorithm.HS512, jwtSecret)
             .compact();
     }

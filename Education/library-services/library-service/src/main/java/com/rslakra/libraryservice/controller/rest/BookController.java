@@ -1,7 +1,7 @@
 package com.rslakra.libraryservice.controller.rest;
 
+import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
 import com.rslakra.libraryservice.persistence.entity.File;
-import com.rslakra.libraryservice.exception.NoRecordFoundException;
 import com.rslakra.libraryservice.persistence.repository.FileRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,26 +2,26 @@ package com.rslakra.springbootsamples.jwtauthentication.payload.response;
 
 public class JwtResponse {
 
-    private String token;
-    private String type = "Bearer";
+    private String accessToken;
+    private String tokenType = "Bearer";
 
     public JwtResponse(String accessToken) {
-        this.token = accessToken;
+        this.accessToken = accessToken;
     }
 
     public String getAccessToken() {
-        return token;
+        return accessToken;
     }
 
     public void setAccessToken(String accessToken) {
-        this.token = accessToken;
+        this.accessToken = accessToken;
     }
 
     public String getTokenType() {
-        return type;
+        return tokenType;
     }
 
     public void setTokenType(String tokenType) {
-        this.type = tokenType;
+        this.tokenType = tokenType;
     }
 }

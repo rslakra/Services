@@ -1,6 +1,6 @@
 package com.rslakra.springbootsamples.jwtauthentication.dto;
 
-import com.rslakra.springbootsamples.jwtauthentication.model.RoleType;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.model.RoleType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

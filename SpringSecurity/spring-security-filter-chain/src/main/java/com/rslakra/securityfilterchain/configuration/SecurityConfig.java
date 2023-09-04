@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Value("${spring.security.debug:false}")
-    boolean securityDebug;
+    private boolean securityDebug;
 
     /**
      * @param http

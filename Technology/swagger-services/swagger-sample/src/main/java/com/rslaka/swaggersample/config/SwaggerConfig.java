@@ -24,15 +24,15 @@ public class SwaggerConfig {
 	}
 
 	private Predicate<String> postPaths() {
-		return or(regex("/api/posts.*"), regex("/api/javainuse.*"));
+		return or(regex("/api/posts.*"), regex("/api/swagger.*"));
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("JavaInUse API")
-				.description("JavaInUse API reference for developers")
-				.termsOfServiceUrl("http://javainuse.com")
-				.contact("javainuse@gmail.com").license("JavaInUse License")
-				.licenseUrl("javainuse@gmail.com").version("1.0").build();
+		return new ApiInfoBuilder().title("Swagger API")
+				.description("Swagger API reference for developers")
+				.termsOfServiceUrl("http://swagger.com")
+				.contact("oauth@gmail.com").license("Swagger License")
+				.licenseUrl("oauth@gmail.com").version("1.0").build();
 	}
 
 }

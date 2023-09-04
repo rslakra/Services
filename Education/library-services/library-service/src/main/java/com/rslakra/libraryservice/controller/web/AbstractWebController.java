@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import java.util.Optional;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 10/15/21 6:11 PM
  */
 public abstract class AbstractWebController<T> implements WebController<T> {

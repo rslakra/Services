@@ -1,7 +1,7 @@
 package com.rslakra.swaggerservice.service;
 
+import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
 import com.rslakra.swaggerservice.persistence.entity.User;
-import com.rslakra.swaggerservice.exception.NoRecordFoundException;
 import com.rslakra.swaggerservice.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @author Rohtash Lakra (rslakra.work@gmail.com)
+ * @author Rohtash Lakra
  * @version 1.0.0
  * @since Aug 08, 2021 15:28:23
  */
@@ -44,7 +44,7 @@ public class UserService {
      */
     public User getUserById(final Long userId) {
         return userRepository.findById(userId)
-                .orElseThrow(() -> new NoRecordFoundException("userId:%d", userId));
+            .orElseThrow(() -> new NoRecordFoundException("userId:%d", userId));
     }
 
     /**
@@ -114,8 +114,8 @@ public class UserService {
         User oldUser = user;
         if (!Objects.isNull(user.getId())) {
             oldUser =
-                    userRepository.findById(user.getId())
-                            .orElseThrow(() -> new NoRecordFoundException("userId:%d", user.getId()));
+                userRepository.findById(user.getId())
+                    .orElseThrow(() -> new NoRecordFoundException("userId:%d", user.getId()));
 
             // update user
             oldUser.setUserName(user.getUserName());
@@ -149,7 +149,7 @@ public class UserService {
     public void delete(Long userId) {
         Objects.requireNonNull(userId);
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new NoRecordFoundException("userId:%d", userId));
+            .orElseThrow(() -> new NoRecordFoundException("userId:%d", userId));
         userRepository.delete(user);
     }
 }

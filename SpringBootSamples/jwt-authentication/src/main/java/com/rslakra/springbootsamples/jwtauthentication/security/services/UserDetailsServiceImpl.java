@@ -1,8 +1,8 @@
 package com.rslakra.springbootsamples.jwtauthentication.security.services;
 
-import com.rslakra.springbootsamples.jwtauthentication.exception.RecordNotFoundException;
-import com.rslakra.springbootsamples.jwtauthentication.model.IdentityDO;
-import com.rslakra.springbootsamples.jwtauthentication.repository.IdentityRepository;
+import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.model.IdentityDO;
+import com.rslakra.springbootsamples.jwtauthentication.persistence.repository.IdentityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+@Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     // LOGGER
@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         IdentityDO
             identity =
             identityRepository.findByUserName(userName)
-                .orElseThrow(() -> new RecordNotFoundException("userName:%s", userName));
+                .orElseThrow(() -> new NoRecordFoundException("userName:%s", userName));
         final UserPrinciple userPrinciple = UserPrinciple.build(identity);
         LOGGER.debug("-loadUserByUsername(), userPrinciple:{}", userPrinciple);
         return userPrinciple;

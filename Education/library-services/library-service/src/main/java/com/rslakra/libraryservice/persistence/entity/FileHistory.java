@@ -1,5 +1,7 @@
 package com.rslakra.libraryservice.persistence.entity;
 
+import com.rslakra.frameworks.core.ToString;
+import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +26,7 @@ import javax.persistence.Table;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "file_history")
-public class FileHistory extends BaseEntity<String> {
+public class FileHistory extends AbstractEntity<String> {
 
     private String contents;
 
@@ -55,7 +57,7 @@ public class FileHistory extends BaseEntity<String> {
      */
     @Override
     public String toString() {
-        return toString(FileHistory.class)
+        return ToString.of(FileHistory.class)
             .add("contents=" + getContents())
             .add("operation=" + getOperation())
             .add("file=" + getFile())

@@ -1,8 +1,8 @@
 package com.rslakra.jwtauthentication3.controller;
 
-import com.rslakra.jwtauthentication3.message.request.LoginForm;
-import com.rslakra.jwtauthentication3.message.request.SignUpForm;
-import com.rslakra.jwtauthentication3.message.response.JwtResponse;
+import com.rslakra.jwtauthentication3.payload.request.LoginForm;
+import com.rslakra.jwtauthentication3.payload.request.SignUpForm;
+import com.rslakra.jwtauthentication3.payload.response.JwtResponse;
 import com.rslakra.jwtauthentication3.persistence.model.Role;
 import com.rslakra.jwtauthentication3.persistence.model.RoleName;
 import com.rslakra.jwtauthentication3.persistence.model.User;

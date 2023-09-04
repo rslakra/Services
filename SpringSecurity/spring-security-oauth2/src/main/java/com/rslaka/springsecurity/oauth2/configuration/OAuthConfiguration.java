@@ -35,7 +35,8 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
             .withClient("fooClientId").secret("secret")
-            .authorizedGrantTypes("password", "authorization_code", "refresh_token").scopes("read", "write")
+            .authorizedGrantTypes("password", "authorization_code", "refresh_token")
+            .scopes("read", "write")
             .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "USER", "ADMIN")
             .autoApprove(true)
             .accessTokenValiditySeconds(180)//Access token is only valid for 3 minutes.

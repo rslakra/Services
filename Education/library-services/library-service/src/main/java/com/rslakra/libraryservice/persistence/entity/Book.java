@@ -1,5 +1,7 @@
 package com.rslakra.libraryservice.persistence.entity;
 
+import com.rslakra.frameworks.core.ToString;
+import com.rslakra.frameworks.spring.persistence.entity.NamedEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,9 +35,9 @@ public class Book extends NamedEntity {
      */
     @Override
     public String toString() {
-        return toString(Book.class)
-                .add("name=" + getName())
-                .toString();
+        return ToString.of(Book.class)
+            .add("name", getName())
+            .toString();
     }
 
 }

@@ -19,22 +19,31 @@ import javax.servlet.http.HttpServletResponse;
 
 public class JwtAuthTokenFilter extends OncePerRequestFilter {
 
+    private static final Logger logger = LoggerFactory.getLogger(JwtAuthTokenFilter.class);
+    private static final String AUTHORIZATION = "Authorization";
+    private static final String BEARER = "Bearer";
+
     @Autowired
     private JwtProvider tokenProvider;
-
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthTokenFilter.class);
+    public JwtAuthTokenFilter() {
+    }
 
+    /**
+     * @param request
+     * @param response
+     * @param filterChain
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain filterChain)
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
         throws ServletException, IOException {
         try {
 
-            String jwt = getJwt(request);
+            String jwt = getBearerToken(request);
             if (jwt != null && tokenProvider.validateJwtToken(jwt)) {
                 String username = tokenProvider.getPrincipleFromJwtToken(jwt);
 
@@ -52,10 +61,13 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private String getJwt(HttpServletRequest request) {
-        String authHeader = request.getHeader("Authorization");
-
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+    /**
+     * @param servletRequest
+     * @return
+     */
+    private String getBearerToken(HttpServletRequest servletRequest) {
+        String authHeader = servletRequest.getHeader(AUTHORIZATION);
+        if (authHeader != null && authHeader.startsWith(BEARER)) {
             return authHeader.replace("Bearer ", "");
         }
 

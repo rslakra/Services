@@ -1,5 +1,6 @@
 package com.rslakra.libraryclient.entity;
 
+import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
 import com.rslakra.libraryclient.controller.EntityStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User extends BaseEntity implements Serializable {
+public class User extends AbstractEntity<User> implements Serializable {
 
     private String userName;
     private String password;

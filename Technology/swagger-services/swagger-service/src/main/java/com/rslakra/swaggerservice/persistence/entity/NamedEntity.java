@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 /**
- * @author Rohtash Lakra (rslakra.work@gmail.com)
+ * @author Rohtash Lakra
  * @version 1.0.0
  * @since Aug 08, 2021 14:05:20
  */

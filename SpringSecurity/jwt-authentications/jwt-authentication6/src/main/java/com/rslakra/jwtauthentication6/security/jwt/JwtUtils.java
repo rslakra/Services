@@ -27,6 +27,14 @@ public class JwtUtils {
     private int jwtExpirationMs;
 
     /**
+     * @param jwtExpirationInMinutes
+     * @return
+     */
+    public static Long getExpiryTime(int jwtExpirationInMinutes) {
+        return (new Date().getTime() + jwtExpirationInMinutes * 10000);
+    }
+
+    /**
      * @param authentication
      * @return
      */
@@ -35,7 +43,7 @@ public class JwtUtils {
         return Jwts.builder()
             .setSubject((userPrincipal.getUsername()))
             .setIssuedAt(new Date())
-            .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+            .setExpiration(new Date(getExpiryTime(jwtExpirationMs)))
             .signWith(SignatureAlgorithm.HS512, jwtSecret)
             .compact();
     }

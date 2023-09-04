@@ -1,6 +1,6 @@
 package com.rslakra.jwtauthentication3.security.jwt;
 
-import com.rslakra.jwtauthentication3.security.services.UserDetailsServiceImpl;
+import com.rslakra.jwtauthentication3.security.service.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

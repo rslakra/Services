@@ -2,7 +2,7 @@ package com.rslakra.jwtauthentication3.security;
 
 import com.rslakra.jwtauthentication3.security.jwt.JwtAuthEntryPoint;
 import com.rslakra.jwtauthentication3.security.jwt.JwtAuthTokenFilter;
-import com.rslakra.jwtauthentication3.security.services.UserDetailsServiceImpl;
+import com.rslakra.jwtauthentication3.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsServiceImpl userDetailsService;
 
     @Autowired
-    private JwtAuthEntryPoint unauthorizedHandler;
+    private JwtAuthEntryPoint authEntryPoint;
 
     @Bean
     public JwtAuthTokenFilter authenticationJwtTokenFilter() {
@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/auth/**").permitAll()
             .anyRequest().authenticated()
             .and()
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+            .exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

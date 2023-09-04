@@ -21,9 +21,8 @@
     <!-- modules -->
     <modules>
         <module>jwt-authentication</module>
-        <module>springboot-common</module>
         <module>springboot-aspects</module>
-        <module>springboot-sample</module>
+        <module>email-service-sample</module>
     </modules>
 
     <!-- properties -->
@@ -54,6 +53,13 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback-classic.version}</version>
+        </dependency>
+
+        <!-- appsuite-framework-modules -->
+        <dependency>
+            <groupId>com.rslakra.frameworks</groupId>
+            <artifactId>appsuite-framework-core</artifactId>
+            <version>0.0.1</version>
         </dependency>
 
         <dependency>

@@ -31,15 +31,24 @@ public class JwtProvider {
     private int jwtExpiration;
 
     /**
+     * @param jwtExpirationInMinutes
+     * @return
+     */
+    public static Long getExpiryTime(int jwtExpirationInMinutes) {
+        return (new Date().getTime() + jwtExpirationInMinutes * 10000);
+    }
+
+    /**
      * @param authentication
      * @return
      */
-    public String createJwtToken(final Authentication authentication) {
+    public String createJWTToken(final Authentication authentication) {
         UserPrinciple userPrincipal = (UserPrinciple) authentication.getPrincipal();
+
         return Jwts.builder()
             .setSubject((userPrincipal.getUsername()))
             .setIssuedAt(new Date())
-            .setExpiration(new Date((new Date()).getTime() + jwtExpiration * 1000))
+            .setExpiration(new Date(getExpiryTime(jwtExpiration)))
             .signWith(SignatureAlgorithm.HS512, jwtSecret)
             .compact();
     }

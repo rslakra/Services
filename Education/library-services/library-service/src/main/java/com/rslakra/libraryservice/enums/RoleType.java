@@ -1,9 +1,14 @@
 package com.rslakra.libraryservice.enums;
 
+import com.rslakra.frameworks.core.BeanUtils;
 import com.rslakra.libraryservice.persistence.entity.Role;
-import com.rslakra.libraryservice.utils.BeanUtils;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -88,20 +93,19 @@ public enum RoleType {
     public static Set<RoleType> toRoleTypes(final String commaDelimitedRoleTypes) {
         return (BeanUtils.isEmpty(commaDelimitedRoleTypes) ? null
                                                            : Arrays.asList(commaDelimitedRoleTypes.split(","))
-                .stream().map(roleType -> RoleType.valueOf(roleType)).collect(Collectors.toSet()));
+                    .stream().map(roleType -> RoleType.valueOf(roleType)).collect(Collectors.toSet()));
     }
 
     /**
-     * Returns the <code>RoleType</code> for the <code>roleTypes</code>
-     * objects.
+     * Returns the <code>RoleType</code> for the <code>roleTypes</code> objects.
      *
      * @param roleTypes
      * @return
      */
     public static Set<RoleType> toRoleTypes(final Collection<? extends String> roleTypes) {
         return (Objects.isNull(roleTypes) ? new HashSet<RoleType>()
-                : roleTypes.stream().map(authority -> RoleType.of(authority))
-                .collect(Collectors.toSet()));
+                                          : roleTypes.stream().map(authority -> RoleType.of(authority))
+                    .collect(Collectors.toSet()));
     }
 
     /**
@@ -111,7 +115,8 @@ public enum RoleType {
      * @return
      */
     public static Set<RoleType> ofRoles(final Set<Role> roles) {
-        return (Objects.isNull(roles) ? Collections.EMPTY_SET : roles.stream().map(role -> RoleType.of(role.getName())).collect(Collectors.toSet()));
+        return (Objects.isNull(roles) ? Collections.EMPTY_SET : roles.stream().map(role -> RoleType.of(role.getName()))
+            .collect(Collectors.toSet()));
     }
 
     /**
@@ -121,7 +126,9 @@ public enum RoleType {
      * @return
      */
     public static Set<Role> ofRoleTypes(final Set<RoleType> roleTypes) {
-        return (Objects.isNull(roleTypes) ? Collections.EMPTY_SET : roleTypes.stream().map(roleType -> new Role(roleType)).collect(Collectors.toSet()));
+        return (Objects.isNull(roleTypes) ? Collections.EMPTY_SET
+                                          : roleTypes.stream().map(roleType -> new Role(roleType))
+                    .collect(Collectors.toSet()));
     }
 
 }

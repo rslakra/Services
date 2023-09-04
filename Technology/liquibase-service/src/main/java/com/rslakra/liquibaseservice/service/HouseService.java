@@ -14,7 +14,7 @@ import java.util.List;
  * @created 10/20/22 5:22 PM
  */
 @Service
-public class HouseService extends BaseService<House, Long> {
+public class HouseService extends AbstractService<House, Long> {
 
     @Autowired
     public HouseRepository houseRepository;

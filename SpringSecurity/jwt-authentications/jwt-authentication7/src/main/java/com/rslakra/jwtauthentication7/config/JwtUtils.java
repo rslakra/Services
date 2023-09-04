@@ -21,8 +21,11 @@ public class JwtUtils implements Serializable {
     public static final String AUTHORIZATION = "Authorization";
     public static final String BEARER = "Bearer";
 
-    @Value("${jwt.secret}")
+    @Value("${app.jwtSecret}")
     private String secret;
+
+    @Value("${app.jwtExpirationInMillis}")
+    private Long jwtExpirationInMillis;
 
     /**
      * Generates the JWT token.

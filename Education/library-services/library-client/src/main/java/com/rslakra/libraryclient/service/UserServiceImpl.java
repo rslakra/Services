@@ -1,10 +1,10 @@
 package com.rslakra.libraryclient.service;
 
+import com.rslakra.frameworks.core.BeanUtils;
+import com.rslakra.frameworks.core.Payload;
 import com.rslakra.libraryclient.api.BaseService;
 import com.rslakra.libraryclient.api.UserService;
 import com.rslakra.libraryclient.entity.User;
-import com.rslakra.libraryclient.payload.PayloadBuilder;
-import com.rslakra.libraryclient.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
      */
     public User getById(final Long userId) {
         // getForObject
-        final PayloadBuilder params = PayloadBuilder.newBuilder().of("userId", userId);
+        final Payload params = Payload.newBuilder().ofPair("userId", userId);
         return restService.getForObject(GET_USER_BY_ID, User.class, params);
         // 3. exchange(url, method, requestEntity, responseType)
 //        final HttpEntity<String> httpEntity = new HttpEntity<>(BaseService.newHttpHeaders());
@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
      */
     public List<User> getByUserName(final String userName) {
         Objects.requireNonNull(userName);
-        final PayloadBuilder params = PayloadBuilder.newBuilder().of("userName", userName);
+        final Payload params = Payload.newBuilder().ofPair("userName", userName);
         return Arrays.asList(restService.getForObject(GET_USERS_BY_USER_NAME, User[].class, params));
     }
 
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
      */
     public List<User> getByFirstName(String firstName) {
         Objects.requireNonNull(firstName);
-        final PayloadBuilder params = PayloadBuilder.newBuilder().of("firstName", firstName);
+        final Payload params = Payload.newBuilder().ofPair("firstName", firstName);
         return Arrays.asList(restService.getForObject(GET_USERS_BY_FIRST_NAME, User[].class, params));
     }
 
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
      */
     public List<User> getByLastName(String lastName) {
         Objects.requireNonNull(lastName);
-        final PayloadBuilder params = PayloadBuilder.newBuilder().of("lastName", lastName);
+        final Payload params = Payload.newBuilder().ofPair("lastName", lastName);
         return Arrays.asList(restService.getForObject(GET_USERS_BY_LAST_NAME, User[].class, params));
     }
 
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
      */
     public User getByEmail(final String email) {
         Objects.requireNonNull(email);
-        final PayloadBuilder params = PayloadBuilder.newBuilder().of("email", email);
+        final Payload params = Payload.newBuilder().ofPair("email", email);
         return restService.getForObject(GET_USER_BY_EMAIL, User.class, params);
     }
 

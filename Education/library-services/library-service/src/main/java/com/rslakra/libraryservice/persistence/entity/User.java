@@ -1,7 +1,8 @@
 package com.rslakra.libraryservice.persistence.entity;
 
+import com.rslakra.frameworks.core.BeanUtils;
+import com.rslakra.frameworks.core.ToString;
 import com.rslakra.libraryservice.enums.EntityStatus;
-import com.rslakra.libraryservice.utils.BeanUtils;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -52,7 +53,7 @@ public class User extends Person {
      * @param userRoles
      */
     public void addRoles(final Set<Role> userRoles) {
-        if (!BeanUtils.isEmpty(userRoles)) {
+        if (BeanUtils.isNotEmpty(userRoles)) {
             getRoles().addAll(userRoles);
         }
     }
@@ -77,15 +78,15 @@ public class User extends Person {
      */
     @Override
     public String toString() {
-        return toString(User.class)
-            .add("userName=" + getUserName())
-            .add("password=" + getPassword())
-            .add("email=" + getEmail())
-            .add("firstName=" + getFirstName())
-            .add("middleName=" + getMiddleName())
-            .add("lastName=" + getLastName())
-            .add("status=" + getStatus())
-            .add("roles=" + getRoles())
+        return ToString.of(User.class)
+            .add("userName", getUserName())
+            .add("password", getPassword())
+            .add("email", getEmail())
+            .add("firstName", getFirstName())
+            .add("middleName", getMiddleName())
+            .add("lastName", getLastName())
+            .add("status", getStatus())
+            .add("roles", getRoles())
             .toString();
     }
 }

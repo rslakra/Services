@@ -1,4 +1,4 @@
-//package com.rslakra.jwtauthentication.payload.response;
+//package com.rslakra.jwtauthentication5.payload.response;
 //
 //import java.util.HashMap;
 //

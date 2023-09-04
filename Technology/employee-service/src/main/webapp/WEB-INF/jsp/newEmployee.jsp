@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <body>
-<h1>Add new employee</h1>
+<h1>Add new advice</h1>
 
 <form:form modelAttribute="form">
     <form:errors path="" element="div"/>

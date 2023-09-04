@@ -23,11 +23,17 @@
     <!-- dependencies -->
     <dependencies>
 
-        <!-- common - module dependency -->
+        <!-- appsuite-framework-modules -->
         <dependency>
-            <groupId>com.rslakra.springbootsamples</groupId>
-            <artifactId>springboot-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.rslakra.frameworks</groupId>
+            <artifactId>appsuite-framework-core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rslakra.frameworks</groupId>
+            <artifactId>appsuite-framework-spring</artifactId>
+            <version>0.0.1</version>
         </dependency>
 
         <dependency>
@@ -68,7 +74,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <!--            <optional>true</optional>-->
         </dependency>
 
         <!-- For Working with Json Web Tokens (JWT) -->

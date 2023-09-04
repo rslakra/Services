@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author Rohtash Lakra (rlakra)
+ * @author Rohtash Lakra
  * @created 10/15/21 1:52 PM
  */
 @Repository

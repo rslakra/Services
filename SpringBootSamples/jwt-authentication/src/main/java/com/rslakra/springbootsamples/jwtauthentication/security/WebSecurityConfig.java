@@ -1,6 +1,5 @@
 package com.rslakra.springbootsamples.jwtauthentication.security;
 
-import com.rslakra.springbootsamples.jwtauthentication.security.services.UserDetailsServiceImpl;
 import com.rslakra.springbootsamples.jwtauthentication.security.jwt.JwtAuthEntryPoint;
 import com.rslakra.springbootsamples.jwtauthentication.security.jwt.JwtAuthTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -22,11 +22,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private JwtAuthEntryPoint authEntryPoint;
+    private UserDetailsService userDetailsService;
 
+    /**
+     * @param authEntryPoint
+     * @param userDetailsService
+     */
     @Autowired
-    private JwtAuthEntryPoint unauthorizedHandler;
+    public WebSecurityConfig(JwtAuthEntryPoint authEntryPoint, UserDetailsService userDetailsService) {
+        this.authEntryPoint = authEntryPoint;
+        this.userDetailsService = userDetailsService;
+    }
 
     /**
      * @return
@@ -75,7 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/h2/**").permitAll()
             .anyRequest().authenticated()
             .and()
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+            .exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.addFilterBefore(jwtAuthTokenFilter(), UsernamePasswordAuthenticationFilter.class);
