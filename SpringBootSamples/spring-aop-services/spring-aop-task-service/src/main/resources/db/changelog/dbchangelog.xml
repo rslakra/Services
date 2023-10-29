@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- create sequences -->
+    <changeSet author="rslakra" id="create_sequences">
+        <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1"/>
+    </changeSet>
+
+    <!-- roles -->
+    <changeSet author="rslakra" id="create_roles_table">
+        <!--        <preConditions onFail="MARK_RAN" onError="MARK_RAN">-->
+        <!--            <dbms type="h2, mysql"/>-->
+        <!--        </preConditions>-->
+        <createTable tableName="roles">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_role_id"
+                             unique="true" uniqueConstraintName="uk_role_id"
+                             nullable="false"/>
+            </column>
+            <column name="name" type="varchar(32)">
+                <constraints unique="true" uniqueConstraintName="uk_role_name"
+                             nullable="false"/>
+            </column>
+            <column name="status" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- users -->
+    <changeSet author="rslakra" id="create_users_table">
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_user_id"
+                             unique="true" uniqueConstraintName="uk_user_id"
+                             nullable="false"/>
+            </column>
+            <column name="email" type="varchar(64)">
+                <constraints unique="true" uniqueConstraintName="uk_user_email"
+                             nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="middle_name" type="varchar(64)"/>
+            <column name="last_name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- tasks -->
+    <changeSet author="rslakra" id="create_tasks_table">
+        <createTable tableName="tasks">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_task_id"
+                             unique="true" uniqueConstraintName="uk_task_id"
+                             nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="fk_user_tasks"
+                             referencedTableName="users" referencedColumnNames="id"
+                             validateForeignKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(64)">
+                <constraints unique="true" uniqueConstraintName="uk_task_title"
+                             nullable="false"/>
+            </column>
+            <column name="priority" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(64)"/>
+            <column name="created_on" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- tasks -->
+    <changeSet author="rslakra" id="create_todos_table">
+        <createTable tableName="todos">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_todo_id"
+                             unique="true" uniqueConstraintName="uk_todo_id"
+                             nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="fk_user_todos"
+                             referencedTableName="users" referencedColumnNames="id"
+                             validateForeignKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints unique="true" uniqueConstraintName="uk_todo_name"
+                             nullable="false"/>
+            </column>
+            <column name="created_on" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

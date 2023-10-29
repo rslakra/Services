@@ -1,0 +1,9 @@
+https://erd.dbdesigner.net/designer/schema/169624-online-store
+https://app.dbdesigner.net/designer/schema/55051
+https://schema.org/Vehicle
+
+https://www.baeldung.com/jpa-one-to-one
+https://github.com/vladmihalcea/hypersistence-utils/blob/master/hypersistence-utils-hibernate-62/src/main/java/io/hypersistence/utils/hibernate/util/ReflectionUtils.java
+
+
+
