@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/layout-v1 :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #products-static-resources},
+                                                ~{:: #products-header},
+                                                ~{:: #products-nav},
+                                                ~{:: #products-main-content},
+                                                ~{:: #products-footer}
+                                               )}">
+
+<head>
+    <title>Title of Products Page</title>
+    <!-- static-resources -->
+    <th:block id="home-static-resources">
+        <!-- Other static resource files -->
+    </th:block>
+</head>
+<body>
+<div id="products-header">
+    Header of Products Page
+</div>
+<div id="products-nav" th:replace="~{/fragments/v1/fragments-v1 :: nav-default}">
+    Nav
+</div>
+<div id="products-main-content">
+    <h2>Product</h2>
+    <p>Samsung</p>
+    <p>iPhone</p>
+    <p>Nokia</p>
+</div>
+<div id="products-footer" th:replace="~{/fragments/v1/fragments-v1 :: copyright}">
+    Footer
+</div>
+</body>
+</html>

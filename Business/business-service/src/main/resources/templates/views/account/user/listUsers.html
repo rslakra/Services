@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../static/css/styles.css"
+          th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Title -->
+    <title>The Users</title>
+</head>
+<body>
+<!-- Body Container -->
+<div class="body-container">
+    <!-- New User -->
+    <div>
+        <a class="button" href="editUser.html" th:href="@{/users/create}">New User</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:switch="${users.size()}">
+            <div th:case="0">
+                <tr>
+                    <td colspan="8">
+                        <h2>No Records Found!</h2>
+                    </td>
+                </tr>
+            </div>
+            <div th:case="*">
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"/>
+                    <td th:text="${user.email}"/>
+                    <td th:text="${user.password}" th:type="password"/>
+                    <td th:text="${user.firstName}"/>
+                    <td th:text="${user.middleName}"/>
+                    <td th:text="${user.lastName}"/>
+                    <td th:text="${user.status}"/>
+                    <td class="action-button">
+                        <a class="action-button-padding" th:href="@{/users/update/{id}(id=${user.id})}">
+                            <i class="fa fa-pencil" style="font-size:24px;color:red"></i>
+                        </a>
+                        <a class="action-button-padding" th:href="@{/users/delete/{id}(id=${user.id})}">
+                            <i class="fa fa-trash" style="font-size:24px;color:red"></i>
+                        </a>
+                    </td>
+                </tr>
+            </div>
+        </div>
+        </tbody>
+    </table>
+
+    <!--Back Button -->
+    <div>
+        <a class="button" href="../../../home.html" th:href="@{/home}">Back</a>
+    </div>
+
+</div>
+
+</body>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+
+</html>

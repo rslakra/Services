@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="js/servicesActions.js"></script>
+    <meta charset="UTF-8">
+    <title>Services</title>
+</head>
+<body>
+<meta id="type_meta" th:attr="_type=${service_data.getServiceType()}">
+
+<h3>Cost:</h3>
+<div id="cost"></div>
+<form th:action="@{/services}" th:object="${service_data}" method="POST">
+    <input type="hidden" th:field="*{serviceType}">
+
+    <label for="addit_data" id="data_label"></label>
+    <input type="text" th:field="*{additionalData}" id="addit_data"><br>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/melody-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-header},
+                                                ~{:: #home-nav},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-footer}
+                                               )}">
+
+<head>
+    <!-- Title -->
+    <title>Users</title>
+    <!-- static-resources -->
+    <th:block id="home-static-resources">
+        <!-- Other static resource files -->
+    </th:block>
+</head>
+
+<!-- body -->
+<body>
+
+<!-- header -->
+<div id="home-header">
+    Users
+</div>
+
+<!-- nav-bar - Left Side -->
+<div id="home-nav" th:replace="~{/fragments/melody-fragments :: nav-default}">
+    Navigation Bar
+</div>
+
+<!-- main-content - Right Side -->
+<div id="home-main-content">
+    <!-- H2 -->
+    <h2>Users</h2>
+
+    <div class="contents"> <!-- div:contents-start -->
+        <!-- Top Bar Buttons -->
+        <div class="buttons-bar">
+            <!-- New User -->
+            <a class="button" href="editUser.html" th:href="@{/users/create}">New User</a>
+            <!-- Upload Users -->
+            <a class="button" href="uploadUsers.html" th:href="@{/users/upload}">Upload Users</a>
+            <!-- Download Users (.csv) -->
+            <a class="button" th:href="@{/users/download?fileType=csv}">Download Users (.csv)</a>
+            <!-- Download Users (.xlsx) -->
+            <a class="button" th:href="@{/users/download?fileType=excel}">Download Users (.xlsx)</a>
+        </div>
+
+        <!-- List Users -->
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:switch="${users.size()}">
+                <div th:case="0">
+                    <tr>
+                        <td colspan="8">
+                            <h2>No Records Found!</h2>
+                        </td>
+                    </tr>
+                </div>
+                <div th:case="*">
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}"/>
+                        <td th:text="${user.email}"/>
+                        <td th:text="${user.password}" th:type="password"/>
+                        <td th:text="${user.firstName}"/>
+                        <td th:text="${user.middleName}"/>
+                        <td th:text="${user.lastName}"/>
+                        <td th:text="${user.status}"/>
+                        <td class="action-button action-button-fixed-size">
+                            <a class="action-button-padding" th:href="@{/users/update/{id}(id=${user.id})}">
+                                <i class="fa fa-pencil" style="font-size:24px;color:red"></i>
+                            </a>
+                            <a class="action-button-padding" th:href="@{/users/delete/{id}(id=${user.id})}">
+                                <i class="fa fa-trash" style="font-size:24px;color:red"></i>
+                            </a>
+                            <!-- <button class="btn"><i class="fa fa-home"></i></button>-->
+                            <!-- <button class="btn"><i class="fa fa-bars"></i></button>-->
+                            <!-- <button class="btn"><i class="fa fa-trash"></i></button>-->
+                            <!-- <button class="btn"><i class="fa fa-close"></i></button>-->
+                            <!-- <button class="btn"><i class="fa fa-folder"></i></button>-->
+                        </td>
+                    </tr>
+                </div>
+            </div>
+            </tbody>
+        </table>
+
+        <!--Back Button -->
+        <div class="buttons-bar">
+            <a class="button" href="../../old/home.html" th:href="@{/home}">Back</a>
+        </div>
+
+    </div> <!-- div:contents-end -->
+
+    <!-- javascript -->
+    <script type="text/javascript" href="../../static/js/actions.js" th:src="@{/js/actions.js}"></script>
+</div>
+
+<!-- footer -->
+<div id="home-footer" th:replace="~{/fragments/footer :: footer}">
+    Footer
+</div>
+</body>
+</html>

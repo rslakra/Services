@@ -1,0 +1,12 @@
+package com.rslakra.melody.iws.artist.service;
+
+import com.rslakra.frameworks.spring.service.AbstractService;
+import com.rslakra.melody.iws.artist.persistence.entity.Song;
+
+/**
+ * @author Rohtash Lakra
+ * @created 2/8/23 9:49 AM
+ */
+public interface SongService extends AbstractService<Song> {
+
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head}">Head</div>
+
+<body>
+<div class="wrapper">
+    <!-- top_navbar -->
+    <div class="top_navbar">
+        <div th:replace="~{fragments/hamburger :: hamburger}">Hamburger</div>
+        <div th:replace="~{fragments/top-navbar-menu :: top-navbar-menu}">Top Navbar Menu</div>
+    </div>
+
+    <!-- main_container -->
+    <div class="main_container">
+        <!-- sidebar -->
+        <div th:replace="~{fragments/sidebar :: sidebar}">Sidebar</div>
+        <!-- container -->
+        <div class="container">
+            <header class="box-block">
+                <!-- start:contents -->
+                <div class="container-fluid">
+                    <h2 class="text-center">[[${pageTitle}]]</h2>
+
+                    <div class="my-3">
+                        <form th:action="@{/tasks/save}" method="post" enctype="multipart/form-data" th:object="${task}"
+                              style="max-width: 550px; margin: 0 auto">
+                            <input type="hidden" th:field="*{id}"/>
+
+                            <div class="p-3">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="name">Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" th:field="*{name}" required minlength="2" maxlength="128"
+                                               class="form-control"
+                                               id="name"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="description">Description</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" th:field="*{description}" minlength="2" maxlength="256"
+                                               class="form-control"
+                                               id="description"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="priority">Priority</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" step="1" th:field="*{priority}" required min="1"
+                                               class="form-control" id="priority"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-check-label" for="completed">Completed</label>
+                                    <div class="col-sm-9">
+                                        <input type="checkbox" th:field="*{completed}"/>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <input type="submit" value="Save" class="btn btn-primary btn-info"/>
+                                    <input type="button" value="Cancel" id="btnCancel"
+                                           class="btn btn-secondary btn-info"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- end:contents -->
+            </header>
+
+        </div>
+    </div>
+</div>
+
+<!-- javascript -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnCancel").on("click", function () {
+            window.location = "[[@{/tasks}]]";
+        });
+    });
+</script>
+
+<!-- footer -->
+<div th:replace="~{fragments/footer :: footer}">footer</div>
+</body>
+</html>

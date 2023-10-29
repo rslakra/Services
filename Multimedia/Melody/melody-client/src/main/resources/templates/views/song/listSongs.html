@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/melody-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-header},
+                                                ~{:: #home-nav},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-footer}
+                                               )}">
+
+<head>
+    <!-- Title -->
+    <title>Songs</title>
+    <!-- static-resources -->
+    <th:block id="home-static-resources">
+        <!-- Other static resource files -->
+    </th:block>
+</head>
+
+<!-- body -->
+<body>
+
+<!-- header -->
+<div id="home-header">
+    Songs
+</div>
+
+<!-- nav-bar - Left Side -->
+<div id="home-nav" th:replace="~{/fragments/melody-fragments :: nav-default}">
+    Navigation Bar
+</div>
+
+<!-- main-content - Right Side -->
+<div id="home-main-content">
+    <!-- H2 -->
+    <h2>Songs</h2>
+
+    <div class="contents"> <!-- div:contents-start -->
+        <!-- Top Bar Buttons -->
+        <div class="buttons-bar">
+            <!-- New Song -->
+            <a class="button" href="editSong.html" th:href="@{/songs/create}">New Song</a>
+            <!-- Upload Song -->
+            <a class="button" href="uploadSongs.html" th:href="@{/songs/upload}">Upload Songs</a>
+            <!-- Download Song (.csv) -->
+            <a class="button" th:href="@{/songs/download?fileType=csv}">Download Songs (.csv)</a>
+            <!-- Download Song (.xlsx) -->
+            <a class="button" th:href="@{/songs/download?fileType=excel}">Download Songs (.xlsx)</a>
+        </div>
+
+        <!-- List Artists -->
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Artist ID</th>
+                <th>Title</th>
+                <th>Rating</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:switch="${songs.size()}">
+                <div th:case="0">
+                    <tr>
+                        <td colspan="5">
+                            <h2>No Records Found!</h2>
+                        </td>
+                    </tr>
+                </div>
+                <div th:case="*">
+                    <tr th:each="song : ${songs}">
+                        <td th:text="${song.id}"/>
+                        <td th:text="${song.artistId}"/>
+                        <td th:text="${song.title}"/>
+                        <td th:text="${song.rating}"/>
+                        <td class="action-button action-button-fixed-size">
+                            <a class="action-button-padding" th:href="@{/songs/update/{id}(id=${song.id})}">
+                                <i class="fa fa-pencil" style="font-size:24px;color:red"></i>
+                            </a>
+                            <a class="action-button-padding" th:href="@{/songs/delete/{id}(id=${song.id})}">
+                                <i class="fa fa-trash" style="font-size:24px;color:red"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+            </tbody>
+        </table>
+
+        <!--Back Button -->
+        <div class="buttons-bar">
+            <a class="button" href="../old/home.html" th:href="@{/home}">Back</a>
+        </div>
+    </div> <!-- div:contents-end -->
+
+    <!-- javascript -->
+    <script type="text/javascript" href="../../static/js/actions.js" th:src="@{/js/actions.js}"></script>
+</div>
+
+<!-- footer -->
+<div id="home-footer" th:replace="~{/fragments/footer :: footer}">
+    Footer
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/melody-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-header},
+                                                ~{:: #home-nav},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-footer}
+                                               )}">
+
+<head>
+    <!-- Title -->
+    <title>About Us</title>
+    <!-- static-resources -->
+    <th:block id="home-static-resources">
+        <!-- Other static resource files -->
+    </th:block>
+</head>
+
+<!-- body -->
+<body>
+
+<!-- header -->
+<div id="home-header">
+    Header of About Us Page!
+</div>
+
+<!-- nav-bar - Left Side -->
+<div id="home-nav" th:replace="~{/fragments/melody-fragments :: nav-default}">
+    Navigation Bar
+</div>
+
+<!-- main-content - Right Side -->
+<div id="home-main-content">
+    <!-- H2 -->
+    <h2>About Us</h2>
+
+    <div class="contents"> <!-- div:contents-start -->
+        <div>
+            <p>
+                Melody is to music what a scent is to the senses: it jogs our memory. It gives face to form, and
+                identity and character to the process and proceedings. It is not only a musical subject, but a
+                manifestation of the musically subjective. It carries and radiates personality with as much clarity and
+                poignancy as harmony and rhythm combined. As such a powerful tool of communication, melody serves not
+                only as protagonist in its own drama, but as messenger from the author to the audience.
+            </p>
+        </div>
+
+    </div> <!-- div:contents-end -->
+
+</div>
+
+<!-- footer -->
+<div id="home-footer" th:replace="~{/fragments/footer :: footer}">
+    Footer
+</div>
+</body>
+</html>

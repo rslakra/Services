@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+
+<!-- body -->
+<body> <!-- start:body -->
+
+<!-- contents -->
+<section layout:fragment="contents"> <!-- start:section:contents -->
+    <!-- start:contents -->
+    <div class="box-block"> <!-- start:header -->
+        <!-- start:contents -->
+        <div class="container-fluid"> <!-- start:container-fluid -->
+            <h1 class="text-center">[[${pageTitle}]]</h1>
+            <div class="form-container"> <!-- start:form-container -->
+                <form class="form-contents" th:action="@{/tasks/save}" th:object="${task}" method="post"
+                      enctype="multipart/form-data">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="row">
+                        <div class="col-25">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-75">
+                            <input class="fomr-control" type="text"
+                                   th:field="*{name}" required placeholder="Name"
+                                   minlength="2" maxlength="128"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="description">Description</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text"
+                                   th:field="*{description}" placeholder="Description"
+                                   minlength="2" maxlength="256" id="description"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="priority">Priority</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="number" step="1"
+                                   th:field="*{priority}" required min="1" id="priority"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-check-label" for="completed">Completed</label>
+                        <div class="col-sm-9">
+                            <input type="checkbox" th:field="*{completed}" id="completed"/>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <input class="button btn-primary btn-info" type="submit" value="Save"/>
+                        <input class="btn btn-secondary btn-info" type="button" value="Cancel" id="btnCancel"/>
+                    </div>
+                </form>
+            </div> <!-- end:form-container -->
+
+        </div> <!-- start:container-fluid -->
+
+        <!-- end:contents -->
+    </div> <!-- end:header -->
+
+    <!-- javascript -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnCancel").on("click", function () {
+                window.location = "[[@{/tasks}]]";
+            });
+        });
+    </script>
+
+</section> <!-- end:section:contents -->
+
+</body>
+</html>

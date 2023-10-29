@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>ThymeLeaf Virtual Grocery</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="../../css/thymeleaf.css" media="all" rel="stylesheet" th:href="@{/css/thymeleaf.css}" type="text/css"/>
+</head>
+
+<body>
+
+<h1>User profile</h1>
+
+<div th:object="${session.user}">
+    <p>Name: <span th:text="*{getFirstName()}">Sebastian</span>.</p>
+    <p>Surname: <span th:text="*{getLastName()}">Pepper</span>.</p>
+    <p>Nationality: <span th:text="*{userDetail.getNationality()}">Saturn</span>.</p>
+    <p>Age: <span th:text="*{userDetail.getAge()}?: '(no age specified)'">27</span>.</p>
+</div>
+
+<p>
+    <a href="home.html" th:href="@{/}">Return to home</a>
+</p>
+
+</body>
+</html>
+

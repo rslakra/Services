@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../static/css/styles.css" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../static/css/form-styles.css"
+          th:href="@{/css/form-styles.css}"/>
+
+    <!-- Title -->
+    <title>Add/Update Role</title>
+</head>
+<body>
+<!-- Body Container -->
+<div class="body-container">
+
+    <!-- Form -->
+    <div class="form-style">
+        <h2 class="center">
+            <!-- if role.getId() is null -->
+            <span th:text="${role.id == null} ? 'Create ' : 'Update '"/> Role
+        </h2>
+        <form action="#" th:action="@{/roles/save}" th:object="${role}" method="post">
+            <div class="section"><span>*</span>Role Details</div>
+            <input type="hidden" name="id" th:field="*{id}">
+            <div class="inner-wrap">
+                <label>Name
+                    <input type="text" th:field="*{name}" name="name" placeholder="Name"/>
+                </label>
+                <label>Status
+                    <input type="text" th:field="*{status}" name="status" placeholder="Status"/>
+                </label>
+            </div>
+
+            <div class="button-section">
+                <input type="submit" name="Submit"/>
+            </div>
+        </form>
+
+    </div>
+
+    <!--Back Button -->
+    <div>
+        <a class="button" href="listRoles.html" th:href="@{/roles/list}">Back</a>
+    </div>
+
+</div>
+
+</body>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+</html>

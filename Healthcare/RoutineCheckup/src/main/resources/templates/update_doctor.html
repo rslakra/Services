@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="module" src="js/doctorActions.js"></script>
+    <script type="module" src="js/util.js"></script>
+    <meta charset="UTF-8">
+    <title>Update doctor</title>
+</head>
+<body>
+<meta id="doc_id" th:attr="_doc_id = ${doctor.getId()}">
+<meta id="_csrf_token" th:attr="val = ${csrf_token.getToken()}">
+<meta id="_csrf_header" th:attr="val = ${csrf_token.getHeaderName()}">
+
+<label for="spec_inp">Enter Doctor Specialty</label>
+<input id="spec_inp" type="text" th:value="${doctor.getSpeciality()}"/><br>
+
+<input id="upd_doctor" type="button" value="Send!"/><br>
+<input id="upd_doctor_cancel" type="button" value="Back"/><br>
+
+<div id="payment_div"></div>
+<br>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/melody-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-header},
+                                                ~{:: #home-nav},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-footer}
+                                               )}">
+
+<head>
+    <!-- Title -->
+    <title>Add/Update Role</title>
+    <!-- static-resources -->
+    <th:block id="home-static-resources">
+        <!-- Other static resource files -->
+    </th:block>
+</head>
+
+<!-- body -->
+<body>
+
+<!-- header -->
+<div id="home-header">
+    Add/Update Role
+</div>
+
+<!-- nav-bar - Left Side -->
+<div id="home-nav" th:replace="~{/fragments/melody-fragments :: nav-default}">
+    Navigation Bar
+</div>
+
+<!-- main-content - Right Side -->
+<div id="home-main-content">
+    <!-- H2 -->
+    <h2>Add/Update Role</h2>
+
+    <div class="contents"> <!-- div:contents-start -->
+
+        <!-- Form -->
+        <div class="form-style">
+            <h2 class="center-align">
+                <!-- if role.getId() is null -->
+                <span th:text="${role.id == null} ? 'Create ' : 'Update '"/> Role
+            </h2>
+            <form action="#" th:action="@{/roles/save}" th:object="${role}" method="post">
+                <div class="section"><span>*</span>Role Details</div>
+                <input type="hidden" name="id" th:field="*{id}">
+                <div class="inner-wrap">
+                    <label>Name
+                        <input type="text" th:field="*{name}" name="name" placeholder="Name"/>
+                    </label>
+                    <label>Status
+                        <input type="text" th:field="*{status}" name="status" placeholder="Status"/>
+                    </label>
+                </div>
+
+                <div class="button-section">
+                    <input type="submit" name="Submit"/>
+                </div>
+            </form>
+
+        </div>
+
+        <!--Back Button -->
+        <div class="buttons-bar">
+            <a class="button" href="listRoles.html" th:href="@{/roles/list}">Back</a>
+        </div>
+
+    </div> <!-- div:contents-end -->
+
+    <!-- javascript -->
+    <script type="text/javascript" href="../../static/js/actions.js" th:src="@{/js/actions.js}"></script>
+</div>
+
+<!-- footer -->
+<div id="home-footer" th:replace="~{/fragments/footer :: footer}">
+    Footer
+</div>
+</body>
+</html>

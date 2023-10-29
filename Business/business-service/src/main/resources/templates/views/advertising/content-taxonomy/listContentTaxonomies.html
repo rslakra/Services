@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../static/css/styles.css"
+          th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Title -->
+    <title>The Content-Taxonomy</title>
+</head>
+<body>
+<!-- Body Container -->
+<div class="body-container">
+    <!-- New User -->
+    <div>
+        <a class="button" href="editContentTaxonomy.html" th:href="@{/content-taxonomy/create}">New Content-Taxonomy</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Parent ID</th>
+            <th>Name</th>
+            <th>Tier 1</th>
+            <th>Tier 2</th>
+            <th>Tier 3</th>
+            <th>Tier 4</th>
+            <th>Extension</th>
+            <th>Score</th>
+            <th>Confident</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:switch="${contentTaxonomies.size()}">
+            <div th:case="0">
+                <tr>
+                    <td colspan="11">
+                        <h2>No Records Found!</h2>
+                    </td>
+                </tr>
+            </div>
+            <div th:case="*">
+                <tr th:each="contentTaxonomy : ${contentTaxonomies}">
+                    <td th:text="${contentTaxonomy.id}"/>
+                    <td th:text="${contentTaxonomy.parentId}"/>
+                    <td th:text="${contentTaxonomy.name}"/>
+                    <td th:text="${contentTaxonomy.tier1}"/>
+                    <td th:text="${contentTaxonomy.tier2}"/>
+                    <td th:text="${contentTaxonomy.tier3}"/>
+                    <td th:text="${contentTaxonomy.tier4}"/>
+                    <td th:text="${contentTaxonomy.extension}"/>
+                    <td th:text="${contentTaxonomy.score}"/>
+                    <td th:text="${contentTaxonomy.confident}"/>
+                    <td class="action-button">
+                        <a class="action-button-padding"
+                           th:href="@{/content-taxonomy/update/{id}(id=${contentTaxonomy.id})}">
+                            <i class="fa fa-pencil" style="font-size:24px;color:red"></i>
+                        </a>
+                        <a class="action-button-padding"
+                           th:href="@{/content-taxonomy/delete/{id}(id=${contentTaxonomy.id})}">
+                            <i class="fa fa-trash" style="font-size:24px;color:red"></i>
+                        </a>
+                    </td>
+                </tr>
+            </div>
+        </div>
+        </tbody>
+    </table>
+
+    <!--Back Button -->
+    <div>
+        <a class="button" href="../../../home.html" th:href="@{/home}">Back</a>
+    </div>
+
+</div>
+
+</body>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+
+<head> <!-- start:head -->
+    <title>Welcome to The Business Application</title>
+</head> <!-- end:head -->
+
+<!-- body -->
+<body> <!-- start:body -->
+
+<!-- contents -->
+<section layout:fragment="contents"> <!-- start:section:contents -->
+    <header class="box-block">  <!-- start:header -->
+        <!-- start:contents -->
+        <h1>Welcome to The Business Application!</h1>
+        <p class="item">
+            Much business software is developed to meet the needs of a specific business, and therefore is not easily
+            transferable to a different business environment, unless its nature and operation are identical. Due to the
+            unique requirements of each business, off-the-shelf software is unlikely to completely address a company's
+            needs. However, where an on-the-shelf solution is necessary, due to time or monetary considerations, some
+            level of customization is likely to be required. Exceptions do exist, depending on the business in question,
+            and thorough research is always required before committing to bespoke or off-the-shelf solutions.
+        </p>
+
+        <div class="action">
+            <a href="https://www.rslakra.com/"
+               title="Back to download and tutorial page" class="btn back">Back to Learning</a>
+            <a href="https://github.com/rslakra" title="View on GitHub"
+               class="btn github">View on GitHub</a>
+        </div>
+
+        <!-- start:contents -->
+    </header>  <!-- end:header -->
+
+    <div class="item">
+        ग्राहक बहुत महत्वपूर्ण है, ग्राहक का ग्राहक द्वारा अनुसरण किया जाएगा।
+        यह न तो शीर्षक है और न ही तत्व, बल्कि कभी-कभी एक संपत्ति है।
+        नाव और रियल एस्टेट डेवलपर।
+    </div>
+    <div class="item">
+        Some business applications are interactive, i.e., they have a graphical user interface or user interface and
+        users can query/modify/input data and view results instantaneously. They can also run reports instantaneously.
+        Some business applications run in batch mode: they are set up to run based on a predetermined event/time and a
+        business user does not need to initiate or monitor them.
+    </div>
+
+    <div>
+        <li><a th:href="@{/home}" title="Home"><img class="img-circle" src="images/logo.png"></a></li>
+    </div>
+
+</section> <!-- end:section:contents -->
+
+</body>
+</html>

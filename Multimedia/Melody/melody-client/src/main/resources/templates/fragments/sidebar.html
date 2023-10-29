@@ -1,0 +1,72 @@
+<!-- sidebar -->
+<div class="sidebar" th:fragment="sidebar"> <!-- start:sidebar -->
+    <div class="sidebar-inner"> <!-- start:sidebar-inner -->
+        <!-- profile -->
+        <div class="profile" th:fragment="profile"> <!-- start:profile -->
+            <div class="img">
+                <img th:src="@{/images/rslakra.jpg}" alt="profile_pic">
+            </div>
+            <div class="profile_info">
+                <p>Welcome</p>
+                <p class="profile_name">Rohtash Laka</p>
+            </div>
+        </div> <!-- end:profile -->
+
+        <!-- sidebar-navigation -->
+        <div class="left-sidebar"> <!-- start:left-sidebar -->
+            <ul>
+                <li>
+                    <!-- <a href="#" class="active"> -->
+                    <a th:href="@{/static}">
+                        <span class="icon"><i class="fas fa-dice-d6"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/tasks}">
+                        <span class="icon"><i class="fab fa-delicious"></i></span>
+                        <span class="title">Tasks</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/tutorials}">
+                        <span class="icon"><i class="fab fa-elementor"></i></span>
+                        <span class="title">Tutorials</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/reports}">
+                        <span class="icon"><i class="fas fa-chart-pie"></i></span>
+                        <span class="title">Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/admin}">
+                        <span class="icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="title">Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/settings}">
+                        <span class="icon"><i class="fas fa-cog"></i></span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/about-us}">
+                        <span class="icon"><i class="fas fa-id-card"></i></span>
+                        <span class="title">About Us</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/leads/contact-us}">
+                        <span class="icon"><i class="fas fa-envelope"></i></span>
+                        <span class="title">Contact Us</span>
+                    </a>
+                </li>
+            </ul>
+        </div> <!-- end:left-sidebar -->
+
+    </div> <!-- end:sidebar-inner -->
+
+</div> <!-- end:sidebar -->

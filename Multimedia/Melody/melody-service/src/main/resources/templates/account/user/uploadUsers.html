@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--    <div th:insert="fragments/header :: header">Header</div>-->
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/acronym-styles.css" th:href="@{/css/core-styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/form-styles.css" th:href="@{/css/form-styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/sidebar-styles.css" th:href="@{/css/sidebar-styles.css}"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css">
+
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">-->
+
+    <!-- Title -->
+    <title>Upload Users</title>
+</head>
+
+<body>
+
+<!-- nav:sidebar-start -->
+<nav class="sidebar close">
+    <header>
+        <div class="image-text">
+            <span class="image">
+                <a href="home.html" th:href="@{/home}">
+                    <img src="images/logo.png" alt="Melody">
+                </a>
+                <!-- <img src="images/logo.png" alt="Logo" /> -->
+            </span>
+
+            <div class="text logo-text">
+                <span class="name">Lakra Inc</span>
+                <span class="profession">Architect</span>
+            </div>
+        </div>
+
+        <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+        <div class="menu">
+
+            <li class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="text" placeholder="Search...">
+            </li>
+
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="index.html" th:href="@{/}">
+                        <i class='bx bx-arch icon'></i>
+                        <span class="text nav-text">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="home.html" th:href="@{/home}">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- roles -->
+                <li class="nav-link">
+                    <a href="account/role/listRoles.html" th:href="@{/roles/list}">
+                        <i class='bx bx-aperture icon'></i>
+                        <span class="text nav-text">Roles</span>
+                    </a>
+                </li>
+
+                <!-- users -->
+                <li class="nav-link">
+                    <a href="account/user/listUsers.html" th:href="@{/users/list}">
+                        <i class='bx bx-user-circle icon'></i>
+                        <span class="text nav-text">Users</span>
+                    </a>
+                </li>
+
+                <!-- artists -->
+                <li class="nav-link">
+                    <a href="artist/listArtists.html" th:href="@{/artists/list}">
+                        <i class='bx bx-user-voice icon'></i>
+                        <span class="text nav-text">Artists</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="song/listSongs.html" th:href="@{/songs/list}">
+                        <i class='bx bx-music icon'></i>
+                        <span class="text nav-text">Songs</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bar-chart-alt-2 icon'></i>
+                        <span class="text nav-text">Revenue</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bell icon'></i>
+                        <span class="text nav-text">Notifications</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-pie-chart-alt icon'></i>
+                        <span class="text nav-text">Analytics</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-like icon'></i>
+                        <span class="text nav-text">Likes</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-wallet icon'></i>
+                        <span class="text nav-text">Wallets</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="bottom-content">
+            <li class="">
+                <a href="#">
+                    <i class='bx bx-log-out icon'></i>
+                    <span class="text nav-text">Logout</span>
+                </a>
+            </li>
+
+            <li class="mode">
+                <div class="sun-moon">
+                    <i class='bx bx-moon icon moon'></i>
+                    <i class='bx bx-sun icon sun'></i>
+                </div>
+                <span class="mode-text text">Dark mode</span>
+
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li>
+        </div>
+
+    </div>
+
+</nav> <!-- nav:sidebar-end -->
+
+
+<section class="home">
+    <div class="text">Upload Users</div>
+
+    <!-- Body Container -->
+    <div class="text body-container">
+        <!-- Form -->
+        <div class="form-style">
+            <h2 class="center">Upload Users</h2>
+            <form action="#" th:action="@{/users/upload}" method="POST" enctype="multipart/form-data">
+                <div class="section"><span>*</span>Upload Users</div>
+                <div class="inner-wrap">
+                    <label>Upload
+                        <input type="file" name="file" placeholder="Users File"/>
+                    </label>
+                </div>
+
+                <div class="button-section">
+                    <input type="submit" name="Submit"/>
+                </div>
+            </form>
+
+        </div>
+
+        <!--Back Button -->
+        <div>
+            <a class="button" href="listUsers.html" th:href="@{/users/list}">Back</a>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+
+<!-- javascript -->
+<script type="text/javascript" href="../../static/js/actions.js" th:src="@{/js/actions.js}"></script>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+
+</html>

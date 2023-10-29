@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/melody-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-header},
+                                                ~{:: #home-nav},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-footer}
+                                               )}">
+
+<head>
+    <!-- Title -->
+    <title>Artists</title>
+    <!-- static-resources -->
+    <th:block id="home-static-resources">
+        <!-- Other static resource files -->
+    </th:block>
+</head>
+
+<!-- body -->
+<body>
+
+<!-- header -->
+<div id="home-header">
+    Artists
+</div>
+
+<!-- nav-bar - Left Side -->
+<div id="home-nav" th:replace="~{/fragments/melody-fragments :: nav-default}">
+    Navigation Bar
+</div>
+
+<!-- main-content - Right Side -->
+<div id="home-main-content">
+    <!-- H2 -->
+    <h2>Artists</h2>
+
+    <div class="contents"> <!-- div:contents-start -->
+        <!-- Top Bar Buttons -->
+        <div class="buttons-bar">
+            <!-- New Artist -->
+            <a class="button" href="editArtist.html" th:href="@{/artists/create}">New Artist</a>
+            <!-- Upload Artist -->
+            <a class="button" href="uploadArtists.html" th:href="@{/artists/upload}">Upload Artist</a>
+            <!-- Download Artist (.csv) -->
+            <a class="button" th:href="@{/artists/download?fileType=csv}">Download Artist (.csv)</a>
+            <!-- Download Artist (.xlsx) -->
+            <a class="button" th:href="@{/artists/download?fileType=excel}">Download Artist (.xlsx)</a>
+        </div>
+
+        <!-- List Artists -->
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:switch="${artists.size()}">
+                <div th:case="0">
+                    <tr>
+                        <td colspan="6">
+                            <h2>No Records Found!</h2>
+                        </td>
+                    </tr>
+                </div>
+                <div th:case="*">
+                    <tr th:each="artist : ${artists}">
+                        <td th:text="${artist.id}"/>
+                        <td th:text="${artist.email}"/>
+                        <td th:text="${artist.firstName}"/>
+                        <td th:text="${artist.middleName}"/>
+                        <td th:text="${artist.lastName}"/>
+                        <td class="action-button action-button-fixed-size">
+                            <a class="action-button-padding" th:href="@{/artists/update/{id}(id=${artist.id})}">
+                                <i class="fa fa-pencil" style="font-size:24px;color:red"></i>
+                            </a>
+                            <a class="action-button-padding" th:href="@{/artists/delete/{id}(id=${artist.id})}">
+                                <i class="fa fa-trash" style="font-size:24px;color:red"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+            </tbody>
+        </table>
+
+        <!--Back Button -->
+        <div class="buttons-bar">
+            <a class="button" href="../old/home.html" th:href="@{/home}">Back</a>
+        </div>
+    </div> <!-- div:contents-end -->
+
+    <!-- javascript -->
+    <script type="text/javascript" href="../../static/js/actions.js" th:src="@{/js/actions.js}"></script>
+</div>
+
+<!-- footer -->
+<div id="home-footer" th:replace="~{/fragments/footer :: footer}">
+    Footer
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="js/app.js"></script>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="POST">
+    <button id="send" type="submit">Log out</button>
+</form>
+<h1>Hello, ADMIN!</h1>
+<h2>Manage users profiles:</h2>
+<div
+        th:each="doc_and_pat : ${users_doctors_and_patients.getUserDoctorsAndPatients()}"
+>
+    <h2 th:text="${doc_and_pat.getUser().getLastName()}"></h2>
+    <h3>Patients:</h3>
+    <table border="1" id="patient_table">
+        <tr>
+            <th>Disease</th>
+            <th>Doctor name</th>
+            <th>Date of onset of the disease</th>
+            <th>Date of recovery</th>
+        </tr>
+        <tr th:each="pat : ${doc_and_pat.getPatients()}">
+            <td
+                    th:text="${pat.getDisease()}"
+                    th:attr="id='pat_dis' + ${pat.getId()}"
+            ></td>
+            <td th:text="${pat.getDoctor().getLastName()}"
+                th:attr="id='pat_doc' + ${pat.getId()},
+                doc_id=${pat.getDoctor().getId()}">
+            </td>
+            <td
+                    th:text="${pat.getDiseaseOnsetTime()}"
+                    th:attr="id='pat_ons' + ${pat.getId()}">
+            </td>
+            <th
+                    th:text="${pat.getEndTimeOfIllness() ?: 'Not cured yet'}"
+                    th:attr="id='pat_end' + ${pat.getId()}">
+            </th>
+            <th><input
+                    th:attr="id='pat' + ${pat.getId()}"
+                    type="button"
+                    onclick="updPatient(this.getAttribute('id'))"
+                    value="update"
+            /></th>
+        </tr>
+    </table>
+    <h3>Doctors:</h3>
+    <table border="1">
+        <tr>
+            <th>Speciality</th>
+        </tr>
+        <tr th:each="doc : ${doc_and_pat.getDoctors()}">
+            <td th:text="${doc.getSpeciality()}"></td>
+            <th><input
+                    th:attr="id='doc' + ${doc.getId()}"
+                    type="button"
+                    onclick="updDoctor(this.getAttribute('id'))"
+                    value="update"
+            /></th>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

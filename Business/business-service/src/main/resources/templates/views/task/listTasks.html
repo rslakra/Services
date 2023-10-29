@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" media="all" href="../../../static/css/styles.css"
+          th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Title -->
+    <title>The Tasks</title>
+</head>
+<body>
+<!-- Body Container -->
+<div class="body-container">
+    <!-- New Task -->
+    <div>
+        <a class="button" href="editTask.html" th:href="@{/tasks/create}">New Task</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:switch="${tasks.size()}">
+            <div th:case="0">
+                <tr>
+                    <td colspan="9">
+                        <h2>No Records Found!</h2>
+                    </td>
+                </tr>
+            </div>
+            <div th:case="*">
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.id}"/>
+                    <td th:text="${task.userId}"/>
+                    <td th:text="${task.title}"/>
+                    <td th:text="${task.priority}"/>
+                    <td th:text="${task.startDate}"/>
+                    <td th:text="${task.endDate}"/>
+                    <td th:text="${task.status}"/>
+                    <td th:text="${task.description}"/>
+                    <td class="action-button">
+                        <a class="action-button-padding" th:href="@{/tasks/update/{id}(id=${task.id})}">
+                            <i class="fa fa-pencil" style="font-size:24px;color:red"></i>
+                        </a>
+                        <a class="action-button-padding" th:href="@{/tasks/delete/{id}(id=${task.id})}">
+                            <i class="fa fa-trash" style="font-size:24px;color:red"></i>
+                        </a>
+                    </td>
+                </tr>
+            </div>
+        </div>
+        </tbody>
+    </table>
+
+    <!--Back Button -->
+    <div>
+        <a class="button" href="../../home.html" th:href="@{/home}">Back</a>
+    </div>
+
+</div>
+
+</body>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+
+</html>

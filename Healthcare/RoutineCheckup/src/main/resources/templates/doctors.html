@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctors</title>
+</head>
+<body>
+<h3 th:if="${doctors.getSearchString() != null}">You entered:</h3>
+<h4 th:if="${doctors.getSearchString() != null}"
+    th:text="${doctors.getSearchString()}"></h4>
+<table border="1" id="docs_table">
+    <tr>
+        <th>Speciality</th>
+        <th>Last name</th>
+        <th>First name</th>
+    </tr>
+    <tr th:each="doc : ${doctors.getDoctors()}">
+        <td th:text="${doc.getSpeciality()}"></td>
+        <td th:text="${doc.getLastName()}"></td>
+        <td th:text="${doc.getFirstName()}"></td>
+    </tr>
+</table>
+</body>
+</html>

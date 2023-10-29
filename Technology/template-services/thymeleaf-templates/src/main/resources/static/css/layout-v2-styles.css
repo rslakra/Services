@@ -1,0 +1,66 @@
+:root {
+    /* screen distribution */
+
+    --background-color: #40e0d0;
+
+    /* left-side-menu */
+    --left-side-menu-width: 20%;
+
+    /* right-side-menu */
+    --right-side-menu-width: 80%;
+
+    /* float-direction */
+    --float-direction: left;
+
+}
+
+header {
+    background-color: var(--background-color);
+}
+
+.bg-primary {
+    background-color: var(--background-color) !important;
+}
+
+article {
+    background-color: #FFFFFF;
+    width: var(--right-side-menu-width);
+    float: var(--float-direction);
+    padding: 20px;
+}
+
+footer {
+    background-color: var(--background-color);
+}
+
+h1, h2 {
+    border-bottom: 1px solid var(--background-color);
+}
+
+.buttons-bar {
+    padding: 16px 0px 16px 0px;
+}
+
+/* table-styles */
+table {
+    border: 1px solid var(--background-color);
+}
+
+table > tbody > tr > td, table > thead > tr > th {
+    border-left: 1px dotted var(--background-color);
+}
+
+table > tbody > tr, table > thead > tr {
+    border-bottom: 1px solid var(--background-color);
+}
+
+table th {
+    background-color: var(--background-color);
+}
+
+@media ( max-width: 640px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}

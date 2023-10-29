@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <script th:if="${is_extra_registration}"
+            src="https://www.google.com/recaptcha/api.js"
+            async defer>
+    </script>
+</head>
+<body>
+<form th:action="@{/registration}" th:object="${registration_dto}"
+      method="POST">
+    <label for="login">Enter your login</label>
+    <input type="text" th:field="*{login}" id="login" placeholder="login"
+           required>
+    <br>
+
+    <label for="pas">Enter your password</label>
+    <input type="password" th:field="*{password}" id="pas"
+           placeholder="password" required>
+    <br>
+
+    <label for="pas">Enter your email</label>
+    <input type="email" th:field="*{mail}" id="mail" placeholder="mail"
+           required>
+    <br>
+
+    <label for="first_name">Enter your first name</label>
+    <input type="text" th:field="*{firstName}" id="first_name"
+           placeholder="first name" required>
+    <br>
+
+    <label for="last_name">Enter your last name</label>
+    <input type="text" th:field="*{lastName}" id="last_name"
+           placeholder="last name" required>
+    <br>
+
+    <div th:if="${is_extra_registration}" class="g-recaptcha"
+         th:attr="data-sitekey=${site_key}">
+    </div>
+
+    <button id="send" type="submit">Register</button>
+</form>
+</body>
+</html>

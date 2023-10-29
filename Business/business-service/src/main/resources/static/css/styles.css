@@ -1,0 +1,130 @@
+html {
+    background-color: #f0f0f0;
+    font-size: 16px;
+}
+
+body {
+    font-size: 16px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    margin: 0px auto;
+    padding: 20px 20px;
+}
+
+h2 {
+    margin-bottom: 25px;
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+
+table {
+    width: 100%;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+table > tbody > tr > td, table > thead > tr > th {
+    padding: 10px;
+    border-left: 1px dotted #000000;
+    line-height: 20px;
+}
+
+table > tbody > tr, table > thead > tr {
+    border-bottom: 1px solid #000000;
+}
+
+table th {
+    background-color: #46494e;
+    color: #ffffff;;
+}
+
+ol > li {
+    margin-top: 10px;
+}
+
+tr.odd td {
+    background-color: #f0faaa;
+}
+
+td {
+    text-align: center;
+}
+
+td.number {
+    text-align: right;
+}
+
+
+footer {
+    display: block;
+    background-color: #46494e;
+    text-align: center;
+    padding: inherit;
+    color: #ffffff;
+}
+
+.logo {
+    float: left;
+}
+
+.welcome {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.button, a.button {
+    /*background: #2A88AD;*/
+    background: #46494e;
+    padding: 8px 20px 8px 20px;
+    margin: 10px 0px 10px -1px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+    font: normal 30px 'Bitter', serif;
+    -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+    -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+    box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+    border: 1px solid #257C9E;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+    color: #777;
+    /*border-bottom: 1px dotted #777;*/
+}
+
+a:hover {
+    color: #99cc33;
+    border-bottom: 1px solid #99cc33;
+}
+
+/* Darker background on mouse-over */
+/*.button, a.button:hover {*/
+/*    color: #46494e;*/
+/*    border-bottom: 1px solid #46494e;*/
+/*    background-color: #FFFFFF;*/
+/*}*/
+
+.padding-default {
+    padding: 20px;
+}
+
+.action-button {
+    width: 85px;
+}
+
+.action-button-padding {
+    padding: 10px;
+}

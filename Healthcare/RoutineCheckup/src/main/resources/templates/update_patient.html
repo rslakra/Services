@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="module" src="js/patientActions.js"></script>
+    <script type="module" src="js/util.js"></script>
+    <meta charset="UTF-8">
+    <title>Update patient</title>
+</head>
+<body>
+<meta id="pat_id" th:attr="_pat_id = ${patient.getId()}">
+<meta id="_csrf_token" th:attr="val = ${csrf_token.getToken()}">
+<meta id="_csrf_header" th:attr="val = ${csrf_token.getHeaderName()}">
+
+<h4>Current doctor:</h4>
+<h4 th:text="${patient.getDoctor().getLastName()}"></h4>
+
+<label for="disease_inp">Enter the name of the disease</label>
+<input id="disease_inp" type="text" th:value="${patient.getDisease()}"/>
+<br>
+
+<label for="disease_onset">Choose a date for the onset of the disease
+</label>
+<input id="disease_onset" type="date"
+       th:value="${patient.getDiseaseOnsetTimeFormatted()}"/>
+<br>
+
+<label for="end_time_of_illness">Choose a date for recovery</label>
+<input id="end_time_of_illness" type="date"
+       th:value="${patient.getEndTimeOfIllnessFormatted()}"/>
+<br>
+
+<label for="doctor_inp">Choose a doctor</label>
+<select id="doctor_inp">
+    <option th:each="doc : ${doctors}" th:value="${doc.getId()}"
+            th:text="${doc.getSpeciality() + ' ' + doc.getLastName()}"
+            th:selected="${doc.getId() == patient.getDoctor().getId()}">
+    </option>
+</select><br>
+
+<input
+        id="send_patient"
+        type="button"
+        value="Send!"
+/><br>
+<input
+        id="patient_cancel"
+        type="button"
+        value="Back"
+/><br>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/melody-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-header},
+                                                ~{:: #home-nav},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-footer}
+                                               )}">
+
+<head>
+    <!-- Title -->
+    <title>Add/Update Song</title>
+    <!-- static-resources -->
+    <th:block id="home-static-resources">
+        <!-- Other static resource files -->
+    </th:block>
+</head>
+
+<!-- body -->
+<body>
+
+<!-- header -->
+<div id="home-header">
+    Add/Update Song
+</div>
+
+<!-- nav-bar - Left Side -->
+<div id="home-nav" th:replace="~{/fragments/melody-fragments :: nav-default}">
+    Navigation Bar
+</div>
+
+<!-- main-content - Right Side -->
+<div id="home-main-content">
+    <!-- H2 -->
+    <h2>Add/Update Song</h2>
+
+    <div class="contents"> <!-- div:contents-start -->
+
+        <!-- Form -->
+        <div class="form-style">
+            <h2 class="center-align">
+                <!-- if user.getId() is null -->
+                <span th:text="${song.id == null} ? 'Create ' : 'Update '"/> Song
+            </h2>
+            <form action="#" th:action="@{/songs/save}" th:object="${song}" method="post">
+                <div class="section"><span>*</span>Song Details</div>
+                <input type="hidden" name="id" th:field="*{id}">
+                <div class="inner-wrap">
+                    <label>Artist ID
+                        <input type="number" th:field="*{artistId}"
+                               name="artistId" placeholder="Artist ID"/>
+                    </label>
+                    <label>Title
+                        <input type="text" th:field="*{title}"
+                               name="title" placeholder="Title"/>
+                    </label>
+                    <label>Rating
+                        <input type="number" th:field="*{rating}"
+                               name="rating" placeholder="Rating"/>
+                    </label>
+                </div>
+
+                <div class="button-section">
+                    <input type="submit" name="Submit"/>
+                </div>
+            </form>
+
+        </div>
+
+        <!--Back Button -->
+        <div class="buttons-bar">
+            <a class="button" href="listSongs.html" th:href="@{/songs/list}">Back</a>
+        </div>
+
+    </div> <!-- div:contents-end -->
+
+    <!-- javascript -->
+    <script type="text/javascript" href="../../static/js/actions.js" th:src="@{/js/actions.js}"></script>
+</div>
+
+<!-- footer -->
+<div id="home-footer" th:replace="~{/fragments/footer :: footer}">
+    Footer
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--<div th:replace="fragments/header :: header">Header</div>-->
+<!--<div th:replace="${view} :: content">Page Content</div>-->
+<!--<div th:replace="fragments/footer :: footer">Footer</div>-->
+<main th:fragment="content">
+    <div class="header">
+        <div>
+            <p>Melody Default Layout</p>
+            <a href="home.html" th:href="@{/home}"><img src="images/logo.png" alt="Home"></a>
+        </div>
+    </div>
+    <div class="text">Index Page</div>
+</main>
+</body>
+</html>
