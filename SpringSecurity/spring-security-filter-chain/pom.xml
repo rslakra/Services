@@ -22,7 +22,7 @@
         <!-- lombok -->
         <lombok.version>1.18.26</lombok.version>
         <!-- h2 -->
-        <h2.version>2.1.214</h2.version>
+        <h2.version>2.2.220</h2.version>
     </properties>
 
     <dependencies>
