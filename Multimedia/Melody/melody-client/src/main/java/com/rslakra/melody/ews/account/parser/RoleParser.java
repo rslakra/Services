@@ -1,10 +1,10 @@
 package com.rslakra.melody.ews.account.parser;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.enums.EntityStatus;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.enums.EntityStatus;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.melody.ews.account.payload.dto.Role;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.poi.ss.usermodel.Cell;

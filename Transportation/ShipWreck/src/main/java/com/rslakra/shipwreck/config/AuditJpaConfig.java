@@ -1,6 +1,6 @@
 package com.rslakra.shipwreck.config;
 
-import com.rslakra.frameworks.spring.context.AuditorAwareImpl;
+import com.devamatre.framework.spring.context.AuditorAwareImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;

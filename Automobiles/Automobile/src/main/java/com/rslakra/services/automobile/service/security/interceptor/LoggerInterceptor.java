@@ -1,6 +1,6 @@
 package com.rslakra.services.automobile.service.security.interceptor;
 
-import com.rslakra.frameworks.core.BeanUtils;
+import com.devamatre.framework.core.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;

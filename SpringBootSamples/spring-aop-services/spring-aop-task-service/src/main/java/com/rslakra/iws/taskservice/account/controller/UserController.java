@@ -1,7 +1,8 @@
 package com.rslakra.iws.taskservice.account.controller;
 
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
 import com.rslakra.iws.taskservice.account.filter.UserFilter;
 import com.rslakra.iws.taskservice.account.persistence.entity.User;
 import com.rslakra.iws.taskservice.account.service.UserService;
@@ -38,7 +39,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("${restPrefix}/users")
 //@Tag(name = "User Service")
-public class UserController extends AbstractRestController<User> {
+public class UserController extends AbstractRestController<User, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
@@ -77,7 +78,7 @@ public class UserController extends AbstractRestController<User> {
      */
     @GetMapping("/filter")
     @Override
-    public List<User> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<User> getByFilter(@RequestParam Map<String, Object> allParams) {
         LOGGER.debug("+getByFilter({})", allParams);
         List<User> users = Collections.emptyList();
         UserFilter userFilter = new UserFilter(allParams);
@@ -86,11 +87,12 @@ public class UserController extends AbstractRestController<User> {
         } else if (userFilter.hasKey(UserFilter.ID)) {
             users = Arrays.asList(userService.getById(userFilter.getLong(UserFilter.ID)));
         } else if (userFilter.hasKey(UserFilter.EMAIL)) {
-            users = Arrays.asList(userService.getByEmail(userFilter.getValue(UserFilter.EMAIL)));
+            users = Arrays.asList(userService.getByEmail(userFilter.getValue(UserFilter.EMAIL, String.class
+            )));
         } else if (userFilter.hasKey(UserFilter.FIRST_NAME)) {
-            users = userService.getByFirstName(userFilter.getValue(UserFilter.FIRST_NAME));
+            users = userService.getByFirstName(userFilter.getValue(UserFilter.FIRST_NAME, String.class));
         } else if (userFilter.hasKey(UserFilter.LAST_NAME)) {
-            users = userService.getByLastName(userFilter.getValue(UserFilter.LAST_NAME));
+            users = userService.getByLastName(userFilter.getValue(UserFilter.LAST_NAME, String.class));
         } else {
             users = userService.getAll();
         }
@@ -107,8 +109,27 @@ public class UserController extends AbstractRestController<User> {
      */
     @GetMapping("/pageable")
     @Override
-    public Page<User> getByFilter(Map<String, String> allParams, Pageable pageable) {
+    public Page<User> getByFilter(@RequestParam Map<String, Object> allParams, Pageable pageable) {
         return userService.getByFilter(null, pageable);
+    }
+
+    /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<User> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<User> getByFilter(Filter filter, Pageable pageable) {
+        return null;
     }
 
     /**

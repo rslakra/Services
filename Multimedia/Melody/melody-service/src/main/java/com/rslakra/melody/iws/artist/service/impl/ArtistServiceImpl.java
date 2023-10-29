@@ -1,12 +1,12 @@
 package com.rslakra.melody.iws.artist.service.impl;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.exception.DuplicateRecordException;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.persistence.Operation;
-import com.rslakra.frameworks.spring.service.AbstractServiceImpl;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.exception.DuplicateRecordException;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.persistence.Operation;
+import com.devamatre.framework.spring.service.AbstractServiceImpl;
 import com.rslakra.melody.iws.artist.persistence.entity.Artist;
 import com.rslakra.melody.iws.artist.persistence.repository.ArtistRepository;
 import com.rslakra.melody.iws.artist.service.ArtistService;
@@ -22,7 +22,7 @@ import java.util.List;
  * @created 2/8/23 10:06 AM
  */
 @Service
-public class ArtistServiceImpl extends AbstractServiceImpl<Artist> implements ArtistService {
+public class ArtistServiceImpl extends AbstractServiceImpl<Artist, Long> implements ArtistService {
 
     private final ArtistRepository artistRepository;
 

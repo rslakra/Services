@@ -1,14 +1,14 @@
 package com.rslakra.services.automobile.service.impl;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.enums.EntityStatus;
-import com.rslakra.frameworks.core.enums.RoleType;
-import com.rslakra.frameworks.spring.exception.DuplicateRecordException;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.persistence.Operation;
-import com.rslakra.frameworks.spring.service.AbstractServiceImpl;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.enums.EntityStatus;
+import com.devamatre.framework.core.enums.RoleType;
+import com.devamatre.framework.spring.exception.DuplicateRecordException;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.persistence.Operation;
+import com.devamatre.framework.spring.service.AbstractServiceImpl;
 import com.rslakra.services.automobile.domain.entities.AutoUser;
 import com.rslakra.services.automobile.domain.repositories.UserRepository;
 import com.rslakra.services.automobile.dto.LoginRequest;
@@ -32,7 +32,7 @@ import java.util.Optional;
  * @created 4/26/23 2:07 PM
  */
 @Service("authService")
-public class AuthServiceImpl extends AbstractServiceImpl<AutoUser> implements AuthService {
+public class AuthServiceImpl extends AbstractServiceImpl<AutoUser, Long> implements AuthService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthServiceImpl.class);
 

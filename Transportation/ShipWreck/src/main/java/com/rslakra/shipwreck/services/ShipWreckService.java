@@ -15,12 +15,12 @@
  */
 package com.rslakra.shipwreck.services;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.persistence.Operation;
-import com.rslakra.frameworks.spring.service.AbstractService;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.persistence.Operation;
+import com.devamatre.framework.spring.service.AbstractService;
 import com.rslakra.shipwreck.model.ShipWreck;
 import com.rslakra.shipwreck.repository.ShipWreckRepository;
 import org.slf4j.Logger;
@@ -37,7 +37,7 @@ import java.util.List;
  * @version 1.0.0
  */
 @Service
-public class ShipWreckService implements AbstractService<ShipWreck> {
+public class ShipWreckService implements AbstractService<ShipWreck, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ShipWreckService.class);
 

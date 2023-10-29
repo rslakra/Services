@@ -1,9 +1,9 @@
 package com.rslakra.melody.iws.artist.parser;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.melody.iws.artist.persistence.entity.Song;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.poi.ss.usermodel.Cell;

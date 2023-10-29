@@ -19,6 +19,8 @@
     <!-- properties -->
     <properties>
         <java.version>11</java.version>
+        <appsuite-framework-core.version>0.0.23</appsuite-framework-core.version>
+        <appsuite-framework-spring.version>0.0.32</appsuite-framework-spring.version>
         <lombok.version>1.18.26</lombok.version>
     </properties>
 
@@ -27,15 +29,15 @@
     <dependencies>
         <!-- appsuite-framework-modules -->
         <dependency>
-            <groupId>com.rslakra.frameworks</groupId>
+            <groupId>com.devamatre.framework</groupId>
             <artifactId>appsuite-framework-core</artifactId>
-            <version>0.0.1</version>
+            <version>${appsuite-framework-core.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.rslakra.frameworks</groupId>
+            <groupId>com.devamatre.framework</groupId>
             <artifactId>appsuite-framework-spring</artifactId>
-            <version>0.0.1</version>
+            <version>${appsuite-framework-spring.version}</version>
         </dependency>
 
         <dependency>

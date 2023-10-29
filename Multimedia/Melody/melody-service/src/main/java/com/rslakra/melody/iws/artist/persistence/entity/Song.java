@@ -1,6 +1,6 @@
 package com.rslakra.melody.iws.artist.persistence.entity;
 
-import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
+import com.devamatre.framework.spring.persistence.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "songs")
-public class Song extends AbstractEntity {
+public class Song extends AbstractEntity<Long> {
 
     @Column(name = "artist_id")
     private Long artistId;

@@ -1,6 +1,6 @@
 package com.rslakra.melody.ews.artist.payload;
 
-import com.rslakra.frameworks.spring.payload.dto.AbstractEntityDTO;
+import com.devamatre.framework.spring.payload.dto.AbstractEntityDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Song extends AbstractEntityDTO {
+public class Song extends AbstractEntityDTO<Long> {
 
     private Long artistId;
     private String title;

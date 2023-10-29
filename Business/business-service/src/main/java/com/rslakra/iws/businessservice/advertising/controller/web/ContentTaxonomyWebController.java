@@ -1,12 +1,12 @@
 package com.rslakra.iws.businessservice.advertising.controller.web;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.iws.businessservice.advertising.parser.ContentTaxonomyParser;
 import com.rslakra.iws.businessservice.advertising.persistence.entity.ContentTaxonomy;
 import com.rslakra.iws.businessservice.advertising.service.ContentTaxonomyService;
@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * @author: Rohtash Lakra
@@ -37,7 +37,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/content-taxonomy")
-public class ContentTaxonomyWebController extends AbstractWebController<ContentTaxonomy> {
+public class ContentTaxonomyWebController extends AbstractWebController<ContentTaxonomy, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContentTaxonomyWebController.class);
 
@@ -53,13 +53,6 @@ public class ContentTaxonomyWebController extends AbstractWebController<ContentT
     public ContentTaxonomyWebController(ContentTaxonomyService contentTaxonomyService) {
         this.contentTaxonomyParser = new ContentTaxonomyParser();
         this.contentTaxonomyService = contentTaxonomyService;
-    }
-
-    /**
-     * @param id
-     */
-    @Override
-    public void validate(Optional<Long> id) {
     }
 
     /**
@@ -113,14 +106,24 @@ public class ContentTaxonomyWebController extends AbstractWebController<ContentT
 
     /**
      * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
+
+    /**
+     * @param model
      * @param contentTaxonomyId
      * @return
      */
     @RequestMapping(path = {"/create", "/update/{contentTaxonomyId}"})
-    public String editObject(Model model, @PathVariable(name = "contentTaxonomyId") Optional<Long> contentTaxonomyId) {
+    public String editObject(Model model, @PathVariable(name = "contentTaxonomyId") Long contentTaxonomyId) {
         ContentTaxonomy contentTaxonomy = null;
-        if (contentTaxonomyId.isPresent()) {
-            contentTaxonomy = contentTaxonomyService.getById(contentTaxonomyId.get());
+        if (BeanUtils.isNotNull(contentTaxonomyId)) {
+            contentTaxonomy = contentTaxonomyService.getById(contentTaxonomyId);
         } else {
             contentTaxonomy = new ContentTaxonomy();
         }
@@ -138,9 +141,8 @@ public class ContentTaxonomyWebController extends AbstractWebController<ContentT
      */
     @RequestMapping("/delete/{contentTaxonomyId}")
     @Override
-    public String delete(Model model, @PathVariable(name = "contentTaxonomyId") Optional<Long> id) {
-        validate(id);
-        contentTaxonomyService.delete(id.get());
+    public String delete(Model model, @PathVariable(name = "contentTaxonomyId") Long id) {
+        contentTaxonomyService.delete(id);
         return "redirect:/content-taxonomy/list";
     }
 

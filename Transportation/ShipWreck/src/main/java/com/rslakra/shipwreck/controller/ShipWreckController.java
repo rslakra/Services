@@ -1,8 +1,8 @@
 package com.rslakra.shipwreck.controller;
 
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
-import com.rslakra.frameworks.spring.filter.Filter;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
 import com.rslakra.shipwreck.filter.FilterCriteria;
 import com.rslakra.shipwreck.filter.FilterOperation;
 import com.rslakra.shipwreck.filter.ShipWreckFilter;
@@ -38,7 +38,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("${restPrefix}/shipwrecks")
-public class ShipWreckController extends AbstractRestController<ShipWreck> {
+public class ShipWreckController extends AbstractRestController<ShipWreck, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ShipWreckController.class);
     private final ShipWreckService shipWreckService;
@@ -68,7 +68,7 @@ public class ShipWreckController extends AbstractRestController<ShipWreck> {
      * @return
      */
     @Override
-    public String getByFilter(Filter filter) {
+    public List<ShipWreck> getByFilter(Filter filter) {
         LOGGER.debug("getByFilter({})", filter);
         return null;
     }
@@ -90,7 +90,7 @@ public class ShipWreckController extends AbstractRestController<ShipWreck> {
      */
     @GetMapping("/filter")
     @Override
-    public List<ShipWreck> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<ShipWreck> getByFilter(@RequestParam Map<String, Object> allParams) {
         LOGGER.debug("+getByFilter({})", allParams);
         List<ShipWreck> shipWrecks = Collections.emptyList();
         ShipWreckFilter filter = new ShipWreckFilter(allParams);
@@ -122,7 +122,7 @@ public class ShipWreckController extends AbstractRestController<ShipWreck> {
      * @return
      */
     @Override
-    public Page<ShipWreck> getByFilter(@RequestBody Map<String, String> allParams, Pageable pageable) {
+    public Page<ShipWreck> getByFilter(Map<String, Object> allParams, Pageable pageable) {
         LOGGER.debug("+getByFilter({}, {})", allParams, pageable);
         return null;
     }

@@ -3,8 +3,8 @@
  */
 package com.rslakra.services.automobile.domain.entities;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.enums.RoleType;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.enums.RoleType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

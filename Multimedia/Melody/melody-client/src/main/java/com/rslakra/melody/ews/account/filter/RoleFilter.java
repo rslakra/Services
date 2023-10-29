@@ -1,6 +1,6 @@
 package com.rslakra.melody.ews.account.filter;
 
-import com.rslakra.frameworks.spring.filter.AbstractFilterImpl;
+import com.devamatre.framework.spring.filter.AbstractFilterImpl;
 
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public final class RoleFilter extends AbstractFilterImpl {
     /**
      * @param allParams
      */
-    public RoleFilter(Map<String, String> allParams) {
+    public RoleFilter(Map<String, Object> allParams) {
         super(allParams);
     }
 }

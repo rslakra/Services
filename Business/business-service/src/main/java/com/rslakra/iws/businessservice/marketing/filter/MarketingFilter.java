@@ -1,6 +1,6 @@
 package com.rslakra.iws.businessservice.marketing.filter;
 
-import com.rslakra.frameworks.spring.filter.AbstractFilterImpl;
+import com.devamatre.framework.spring.filter.AbstractFilterImpl;
 
 import java.util.Map;
 
@@ -17,7 +17,7 @@ public final class MarketingFilter extends AbstractFilterImpl {
     /**
      * @param allParams
      */
-    public MarketingFilter(Map<String, String> allParams) {
+    public MarketingFilter(Map<String, Object> allParams) {
         super(allParams);
     }
 

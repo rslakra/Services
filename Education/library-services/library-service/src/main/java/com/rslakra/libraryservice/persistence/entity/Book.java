@@ -1,7 +1,7 @@
 package com.rslakra.libraryservice.persistence.entity;
 
-import com.rslakra.frameworks.core.ToString;
-import com.rslakra.frameworks.spring.persistence.entity.NamedEntity;
+import com.devamatre.framework.core.ToString;
+import com.devamatre.framework.spring.persistence.entity.NamedEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 //@EntityListeners(BaseEntityListener.class)
 @Table(name = "books")
-public class Book extends NamedEntity {
+public class Book extends NamedEntity<Long> {
 
     @Column(name = "title", length = 64, nullable = false)
     private String title;

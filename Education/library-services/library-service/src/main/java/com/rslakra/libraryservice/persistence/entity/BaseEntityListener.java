@@ -46,7 +46,7 @@ public class BaseEntityListener<T> {
      * @param entity
      */
     @Transactional(Transactional.TxType.MANDATORY)
-    protected void persistEntity(Operation operation, Object entity) {
+    public void persistEntity(Operation operation, Object entity) {
         LOGGER.info("persistEntity({}, {})", operation, entity);
 //        EntityManager entityManager = AppContextAware.getBean(EntityManager.class);
 //        entityManager.persist(new FileHistory(file, operation));

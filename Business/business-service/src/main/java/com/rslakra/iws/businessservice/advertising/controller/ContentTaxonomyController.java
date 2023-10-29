@@ -1,7 +1,8 @@
 package com.rslakra.iws.businessservice.advertising.controller;
 
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
 import com.rslakra.iws.businessservice.advertising.filter.ContentTaxonomyFilter;
 import com.rslakra.iws.businessservice.advertising.persistence.entity.ContentTaxonomy;
 import com.rslakra.iws.businessservice.advertising.service.ContentTaxonomyService;
@@ -37,7 +38,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("${restPrefix}/content-taxonomy")
-public class ContentTaxonomyController extends AbstractRestController<ContentTaxonomy> {
+public class ContentTaxonomyController extends AbstractRestController<ContentTaxonomy, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContentTaxonomyController.class);
 
@@ -70,7 +71,7 @@ public class ContentTaxonomyController extends AbstractRestController<ContentTax
      */
     @GetMapping("/filter")
     @Override
-    public List<ContentTaxonomy> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<ContentTaxonomy> getByFilter(@RequestParam Map<String, Object> allParams) {
         LOGGER.debug("+getByFilter({})", allParams);
         List<ContentTaxonomy> marketings = Collections.emptyList();
         ContentTaxonomyFilter contentTaxonomyFilter = new ContentTaxonomyFilter(allParams);
@@ -94,8 +95,27 @@ public class ContentTaxonomyController extends AbstractRestController<ContentTax
      */
     @GetMapping("/pageable")
     @Override
-    public Page<ContentTaxonomy> getByFilter(Map<String, String> allParams, Pageable pageable) {
+    public Page<ContentTaxonomy> getByFilter(Map<String, Object> allParams, Pageable pageable) {
         return contentTaxonomyService.getByFilter(null, pageable);
+    }
+
+    /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<ContentTaxonomy> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<ContentTaxonomy> getByFilter(Filter filter, Pageable pageable) {
+        return null;
     }
 
     /**

@@ -1,7 +1,8 @@
 package com.rslakra.services.automobile.controller.rest;
 
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
 import com.rslakra.services.automobile.domain.entities.Appointment;
 import com.rslakra.services.automobile.filter.AppointmentFilter;
 import com.rslakra.services.automobile.service.AppointmentService;
@@ -37,7 +38,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping(value = "${restPrefix}/appointments", produces = MediaType.APPLICATION_JSON_VALUE)
-public class AppointmentRestController extends AbstractRestController<Appointment> {
+public class AppointmentRestController extends AbstractRestController<Appointment, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppointmentRestController.class);
 
@@ -62,12 +63,31 @@ public class AppointmentRestController extends AbstractRestController<Appointmen
     }
 
     /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<Appointment> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Appointment> getByFilter(Filter filter, Pageable pageable) {
+        return null;
+    }
+
+    /**
      * @param allParams
      * @return
      */
     @GetMapping("/filter")
     @Override
-    public List<Appointment> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<Appointment> getByFilter(@RequestParam Map<String, Object> allParams) {
         LOGGER.debug("+getByFilter({})", allParams);
         List<Appointment> appointments = Collections.emptyList();
         AppointmentFilter filter = new AppointmentFilter(allParams);
@@ -91,7 +111,7 @@ public class AppointmentRestController extends AbstractRestController<Appointmen
      */
     @GetMapping("/pageable")
     @Override
-    public Page<Appointment> getByFilter(@RequestParam Map<String, String> allParams, Pageable pageable) {
+    public Page<Appointment> getByFilter(@RequestParam Map<String, Object> allParams, Pageable pageable) {
         return appointmentService.getByFilter(null, pageable);
     }
 

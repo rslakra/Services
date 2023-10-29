@@ -1,12 +1,12 @@
 package com.rslakra.iws.businessservice.advertising.service;
 
-import com.rslakra.frameworks.spring.service.AbstractService;
+import com.devamatre.framework.spring.service.AbstractService;
 import com.rslakra.iws.businessservice.advertising.persistence.entity.ContentTaxonomy;
 
 /**
  * @author Rohtash Lakra
  * @created 2/8/23 9:51 AM
  */
-public interface ContentTaxonomyService extends AbstractService<ContentTaxonomy> {
+public interface ContentTaxonomyService extends AbstractService<ContentTaxonomy, Long> {
 
 }

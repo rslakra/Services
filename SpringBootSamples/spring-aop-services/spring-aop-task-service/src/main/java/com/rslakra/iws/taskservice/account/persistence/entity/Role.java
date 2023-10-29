@@ -1,9 +1,9 @@
 package com.rslakra.iws.taskservice.account.persistence.entity;
 
-import com.rslakra.frameworks.core.ToString;
-import com.rslakra.frameworks.core.enums.EntityStatus;
-import com.rslakra.frameworks.core.enums.RoleType;
-import com.rslakra.frameworks.spring.persistence.entity.NamedEntity;
+import com.devamatre.framework.core.ToString;
+import com.devamatre.framework.core.enums.EntityStatus;
+import com.devamatre.framework.core.enums.RoleType;
+import com.devamatre.framework.spring.persistence.entity.NamedEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,7 +28,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "roles")
-public class Role extends NamedEntity {
+public class Role extends NamedEntity<Long> {
 
     @Column(name = "status", length = 8, nullable = false)
     @Enumerated(value = EnumType.STRING)

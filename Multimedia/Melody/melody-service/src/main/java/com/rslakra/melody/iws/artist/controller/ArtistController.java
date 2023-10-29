@@ -1,7 +1,8 @@
 package com.rslakra.melody.iws.artist.controller;
 
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
 import com.rslakra.melody.iws.artist.filter.ArtistFilter;
 import com.rslakra.melody.iws.artist.persistence.entity.Artist;
 import com.rslakra.melody.iws.artist.service.ArtistService;
@@ -35,7 +36,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("${restPrefix}/artists")
-public class ArtistController extends AbstractRestController<Artist> {
+public class ArtistController extends AbstractRestController<Artist, Long> {
 
     private final ArtistService artistService;
 
@@ -66,7 +67,7 @@ public class ArtistController extends AbstractRestController<Artist> {
      */
     @GetMapping("/filter")
     @Override
-    public List<Artist> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<Artist> getByFilter(@RequestParam Map<String, Object> allParams) {
         List<Artist> artists = Collections.emptyList();
         ArtistFilter artistFilter = new ArtistFilter(allParams);
         if (artistFilter.hasKeys(ArtistFilter.ID, ArtistFilter.FIRST_NAME)) {
@@ -86,8 +87,27 @@ public class ArtistController extends AbstractRestController<Artist> {
      */
     @GetMapping("/pageable")
     @Override
-    public Page<Artist> getByFilter(Map<String, String> allParams, Pageable pageable) {
+    public Page<Artist> getByFilter(Map<String, Object> allParams, Pageable pageable) {
         return artistService.getByFilter(null, pageable);
+    }
+
+    /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<Artist> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Artist> getByFilter(Filter filter, Pageable pageable) {
+        return null;
     }
 
     /**

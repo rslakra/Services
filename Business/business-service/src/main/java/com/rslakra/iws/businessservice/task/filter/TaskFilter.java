@@ -1,6 +1,6 @@
 package com.rslakra.iws.businessservice.task.filter;
 
-import com.rslakra.frameworks.spring.filter.AbstractFilterImpl;
+import com.devamatre.framework.spring.filter.AbstractFilterImpl;
 
 import java.util.Map;
 
@@ -20,7 +20,7 @@ public final class TaskFilter extends AbstractFilterImpl {
     /**
      * @param allParams
      */
-    public TaskFilter(Map<String, String> allParams) {
+    public TaskFilter(Map<String, Object> allParams) {
         super(allParams);
     }
 

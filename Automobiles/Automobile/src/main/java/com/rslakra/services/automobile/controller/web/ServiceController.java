@@ -1,7 +1,8 @@
 package com.rslakra.services.automobile.controller.web;
 
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.filter.Filter;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
 import com.rslakra.services.automobile.domain.entities.ServiceType;
 import com.rslakra.services.automobile.service.ServiceTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 /**
  * @author Rohtash Lakra (rohtash.singh@gmail.com)
@@ -20,7 +21,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/services")
-public class ServiceController extends AbstractWebController<ServiceType> {
+public class ServiceController extends AbstractWebController<ServiceType, Long> {
 
     private final ServiceTypeService serviceTypeService;
 
@@ -32,13 +33,13 @@ public class ServiceController extends AbstractWebController<ServiceType> {
         this.serviceTypeService = serviceTypeService;
     }
 
-    /**
-     * @param id
-     */
-    @Override
-    public void validate(Optional id) {
-        super.validate(id);
-    }
+//    /**
+//     * @param id
+//     */
+//    @Override
+//    public void validate(Optional id) {
+//        super.validate(id);
+//    }
 
 
     /**
@@ -93,7 +94,7 @@ public class ServiceController extends AbstractWebController<ServiceType> {
      * @return
      */
     @Override
-    public String editObject(Model model, Optional<Long> idOptional) {
+    public String editObject(Model model, Long idOptional) {
         return null;
     }
 
@@ -103,9 +104,25 @@ public class ServiceController extends AbstractWebController<ServiceType> {
      * @return
      */
     @Override
-    public String delete(Model model, Optional<Long> idOptional) {
+    public String delete(Model model, Long idOptional) {
         return null;
     }
 
+    /**
+     * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
 
+    /**
+     * @return
+     */
+    @Override
+    public Parser<ServiceType> getParser() {
+        return null;
+    }
 }

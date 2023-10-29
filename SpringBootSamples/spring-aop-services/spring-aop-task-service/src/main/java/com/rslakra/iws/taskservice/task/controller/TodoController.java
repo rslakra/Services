@@ -1,7 +1,8 @@
 package com.rslakra.iws.taskservice.task.controller;
 
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
 import com.rslakra.iws.taskservice.task.filter.TodoFilter;
 import com.rslakra.iws.taskservice.task.persistence.entity.Todo;
 import com.rslakra.iws.taskservice.task.service.TodoService;
@@ -37,7 +38,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("${restPrefix}/todos")
-public class TodoController extends AbstractRestController<Todo> {
+public class TodoController extends AbstractRestController<Todo, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TodoController.class);
 
@@ -70,7 +71,7 @@ public class TodoController extends AbstractRestController<Todo> {
      */
     @GetMapping("/filter")
     @Override
-    public List<Todo> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<Todo> getByFilter(@RequestParam Map<String, Object> allParams) {
         LOGGER.debug("+getByFilter({})", allParams);
         List<Todo> todos = Collections.emptyList();
         TodoFilter todoFilter = new TodoFilter(allParams);
@@ -93,8 +94,27 @@ public class TodoController extends AbstractRestController<Todo> {
      */
     @GetMapping("/pageable")
     @Override
-    public Page<Todo> getByFilter(Map<String, String> allParams, Pageable pageable) {
+    public Page<Todo> getByFilter(Map<String, Object> allParams, Pageable pageable) {
         return todoService.getByFilter(null, pageable);
+    }
+
+    /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<Todo> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Todo> getByFilter(Filter filter, Pageable pageable) {
+        return null;
     }
 
     /**

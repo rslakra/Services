@@ -1,7 +1,8 @@
 package com.rslakra.iws.businessservice.marketing.controller;
 
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
 import com.rslakra.iws.businessservice.marketing.filter.MarketingFilter;
 import com.rslakra.iws.businessservice.marketing.persistence.entity.Marketing;
 import com.rslakra.iws.businessservice.marketing.service.MarketingService;
@@ -37,7 +38,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("${restPrefix}/marketing")
-public class MarketingController extends AbstractRestController<Marketing> {
+public class MarketingController extends AbstractRestController<Marketing, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MarketingController.class);
 
@@ -70,7 +71,7 @@ public class MarketingController extends AbstractRestController<Marketing> {
      */
     @GetMapping("/filter")
     @Override
-    public List<Marketing> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<Marketing> getByFilter(@RequestParam Map<String, Object> allParams) {
         LOGGER.debug("+getByFilter({})", allParams);
         List<Marketing> marketings = Collections.emptyList();
         MarketingFilter marketingFilter = new MarketingFilter(allParams);
@@ -93,8 +94,27 @@ public class MarketingController extends AbstractRestController<Marketing> {
      */
     @GetMapping("/pageable")
     @Override
-    public Page<Marketing> getByFilter(Map<String, String> allParams, Pageable pageable) {
+    public Page<Marketing> getByFilter(Map<String, Object> allParams, Pageable pageable) {
         return marketingService.getByFilter(null, pageable);
+    }
+
+    /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<Marketing> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Marketing> getByFilter(Filter filter, Pageable pageable) {
+        return null;
     }
 
     /**

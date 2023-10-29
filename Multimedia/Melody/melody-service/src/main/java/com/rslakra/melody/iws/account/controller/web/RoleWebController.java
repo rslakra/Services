@@ -1,14 +1,14 @@
 package com.rslakra.melody.iws.account.controller.web;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.controller.web.WebController;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.controller.web.WebController;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.melody.iws.account.parser.RoleParser;
 import com.rslakra.melody.iws.account.persistence.entity.Role;
 import com.rslakra.melody.iws.account.service.RoleService;
@@ -30,8 +30,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * @author: Rohtash Lakra (rlakra)
@@ -39,7 +39,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/roles")
-public class RoleWebController extends AbstractWebController<Role> implements WebController<Role> {
+public class RoleWebController extends AbstractWebController<Role, Long> implements WebController<Role, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RoleWebController.class);
 
@@ -107,6 +107,16 @@ public class RoleWebController extends AbstractWebController<Role> implements We
     }
 
     /**
+     * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
+
+    /**
      * Create the new object or Updates the object with <code>id</code>.
      *
      * @param model
@@ -115,10 +125,10 @@ public class RoleWebController extends AbstractWebController<Role> implements We
      */
     @RequestMapping(path = {"/create", "/update/{id}"})
     @Override
-    public String editObject(Model model, @PathVariable(name = "id") Optional<Long> id) {
+    public String editObject(Model model, @PathVariable(name = "id") Long id) {
         Role role = null;
-        if (id.isPresent()) {
-            role = roleService.getById(id.get());
+        if (BeanUtils.isNotNull(id)) {
+            role = roleService.getById(id);
         } else {
             role = new Role();
         }
@@ -136,9 +146,9 @@ public class RoleWebController extends AbstractWebController<Role> implements We
      */
     @RequestMapping("/delete/{id}")
     @Override
-    public String delete(Model model, @PathVariable(name = "id") Optional<Long> id) {
-        validate(id);
-        roleService.delete(id.get());
+    public String delete(Model model, @PathVariable(name = "id") Long id) {
+//        validate(id);
+        roleService.delete(id);
         return "redirect:/roles/list";
     }
 

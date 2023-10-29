@@ -3,7 +3,7 @@
  */
 package com.rslakra.services.automobile.domain.entities;
 
-import com.rslakra.frameworks.spring.persistence.entity.NamedEntity;
+import com.devamatre.framework.spring.persistence.entity.NamedEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

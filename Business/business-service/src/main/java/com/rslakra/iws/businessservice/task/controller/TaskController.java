@@ -1,11 +1,12 @@
 package com.rslakra.iws.businessservice.task.controller;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.iws.businessservice.task.filter.TaskFilter;
 import com.rslakra.iws.businessservice.task.parser.TaskParser;
 import com.rslakra.iws.businessservice.task.persistence.entity.Task;
@@ -46,7 +47,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("${restPrefix}/tasks")
-public class TaskController extends AbstractRestController<Task> {
+public class TaskController extends AbstractRestController<Task, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskController.class);
 
@@ -79,7 +80,7 @@ public class TaskController extends AbstractRestController<Task> {
      */
     @GetMapping("/filter")
     @Override
-    public List<Task> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<Task> getByFilter(@RequestParam Map<String, Object> allParams) {
         LOGGER.debug("+getByFilter({})", allParams);
         List<Task> tasks = Collections.emptyList();
         TaskFilter taskFilter = new TaskFilter(allParams);
@@ -103,8 +104,27 @@ public class TaskController extends AbstractRestController<Task> {
      */
     @GetMapping("/pageable")
     @Override
-    public Page<Task> getByFilter(Map<String, String> allParams, Pageable pageable) {
+    public Page<Task> getByFilter(Map<String, Object> allParams, Pageable pageable) {
         return taskService.getByFilter(null, pageable);
+    }
+
+    /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<Task> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Task> getByFilter(Filter filter, Pageable pageable) {
+        return null;
     }
 
     /**

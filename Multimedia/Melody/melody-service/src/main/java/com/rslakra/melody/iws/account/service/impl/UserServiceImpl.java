@@ -1,15 +1,15 @@
 package com.rslakra.melody.iws.account.service.impl;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.core.enums.EntityStatus;
-import com.rslakra.frameworks.core.enums.RoleType;
-import com.rslakra.frameworks.spring.exception.DuplicateRecordException;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.persistence.Operation;
-import com.rslakra.frameworks.spring.service.AbstractServiceImpl;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.core.enums.EntityStatus;
+import com.devamatre.framework.core.enums.RoleType;
+import com.devamatre.framework.spring.exception.DuplicateRecordException;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.persistence.Operation;
+import com.devamatre.framework.spring.service.AbstractServiceImpl;
 import com.rslakra.melody.iws.account.persistence.entity.Role;
 import com.rslakra.melody.iws.account.persistence.entity.User;
 import com.rslakra.melody.iws.account.persistence.repository.RoleRepository;
@@ -34,7 +34,7 @@ import java.util.Set;
  * @created 10/9/21 5:50 PM
  */
 @Service
-public class UserServiceImpl extends AbstractServiceImpl<User> implements UserService {
+public class UserServiceImpl extends AbstractServiceImpl<User, Long> implements UserService {
 
     // LOGGER
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);

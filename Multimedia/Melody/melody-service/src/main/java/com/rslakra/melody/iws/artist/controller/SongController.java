@@ -1,7 +1,8 @@
 package com.rslakra.melody.iws.artist.controller;
 
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
 import com.rslakra.melody.iws.artist.filter.SongFilter;
 import com.rslakra.melody.iws.artist.persistence.entity.Song;
 import com.rslakra.melody.iws.artist.service.ArtistService;
@@ -37,7 +38,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("${restPrefix}/songs")
-public class SongController extends AbstractRestController<Song> {
+public class SongController extends AbstractRestController<Song, Long> {
 
     private final ArtistService artistService;
     private final SongService songService;
@@ -71,7 +72,7 @@ public class SongController extends AbstractRestController<Song> {
      */
     @GetMapping("/filter")
     @Override
-    public List<Song> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<Song> getByFilter(@RequestParam Map<String, Object> allParams) {
         List<Song> songs = Collections.emptyList();
         SongFilter songFilter = new SongFilter(allParams);
         if (songFilter.hasKeys(SongFilter.ID, SongFilter.ARTIST_ID, SongFilter.TITLE)) {
@@ -98,8 +99,27 @@ public class SongController extends AbstractRestController<Song> {
      */
     @GetMapping("/pageable")
     @Override
-    public Page<Song> getByFilter(Map<String, String> allParams, Pageable pageable) {
+    public Page<Song> getByFilter(Map<String, Object> allParams, Pageable pageable) {
         return songService.getByFilter(null, pageable);
+    }
+
+    /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<Song> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Song> getByFilter(Filter filter, Pageable pageable) {
+        return null;
     }
 
     /**

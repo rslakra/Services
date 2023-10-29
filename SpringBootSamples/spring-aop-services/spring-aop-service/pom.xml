@@ -27,8 +27,8 @@
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <code-styles.dir>https://raw.githubusercontent.com/rslakra/code-styles/master</code-styles.dir>
         <checkstyle.threshold>0</checkstyle.threshold>
-        <code-styles.dir>${project.basedir}/../../../codestyles</code-styles.dir>
         <swagger.skip>false</swagger.skip>
 
         <aspectj-plugin.version>1.14.0</aspectj-plugin.version>

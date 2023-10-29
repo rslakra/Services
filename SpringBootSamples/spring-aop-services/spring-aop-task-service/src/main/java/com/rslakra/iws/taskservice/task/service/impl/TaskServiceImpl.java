@@ -1,12 +1,12 @@
 package com.rslakra.iws.taskservice.task.service.impl;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.exception.DuplicateRecordException;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.persistence.Operation;
-import com.rslakra.frameworks.spring.service.AbstractServiceImpl;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.exception.DuplicateRecordException;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.persistence.Operation;
+import com.devamatre.framework.spring.service.AbstractServiceImpl;
 import com.rslakra.iws.taskservice.account.persistence.entity.User;
 import com.rslakra.iws.taskservice.account.persistence.repository.UserRepository;
 import com.rslakra.iws.taskservice.task.persistence.entity.Task;
@@ -27,7 +27,7 @@ import java.util.Optional;
  * @created 2/8/23 10:06 AM
  */
 @Service
-public class TaskServiceImpl extends AbstractServiceImpl<Task> implements TaskService {
+public class TaskServiceImpl extends AbstractServiceImpl<Task, Long> implements TaskService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskServiceImpl.class);
 

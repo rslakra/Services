@@ -1,9 +1,9 @@
 package com.rslakra.services.automobile.service.impl;
 
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.persistence.Operation;
-import com.rslakra.frameworks.spring.service.AbstractServiceImpl;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.persistence.Operation;
+import com.devamatre.framework.spring.service.AbstractServiceImpl;
 import com.rslakra.services.automobile.domain.entities.ServiceType;
 import com.rslakra.services.automobile.domain.repositories.ServiceTypeRepository;
 import com.rslakra.services.automobile.service.ServiceTypeService;
@@ -21,7 +21,7 @@ import java.util.List;
  * @created 4/21/23 12:20 PM
  */
 @Service
-public class ServiceTypeServiceImpl extends AbstractServiceImpl<ServiceType> implements ServiceTypeService {
+public class ServiceTypeServiceImpl extends AbstractServiceImpl<ServiceType, Long> implements ServiceTypeService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceTypeServiceImpl.class);
     private final ServiceTypeRepository serviceTypeRepository;

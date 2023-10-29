@@ -1,8 +1,8 @@
 package com.rslakra.iws.taskservice.account.persistence.entity;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.ToString;
-import com.rslakra.frameworks.core.enums.EntityStatus;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.ToString;
+import com.devamatre.framework.core.enums.EntityStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

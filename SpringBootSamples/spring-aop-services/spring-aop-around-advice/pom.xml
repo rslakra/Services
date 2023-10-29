@@ -35,7 +35,7 @@
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
 
         <!-- checkstyle -->
-        <code-styles.dir>${project.basedir}/../../../code-styles</code-styles.dir>
+        <code-styles.dir>https://raw.githubusercontent.com/rslakra/code-styles/master</code-styles.dir>
         <checkstyle.threshold>0</checkstyle.threshold>
 
         <!-- Logging -->

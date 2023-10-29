@@ -1,6 +1,6 @@
 package com.rslakra.swaggerservice.controller.rest;
 
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
 import com.rslakra.swaggerservice.persistence.entity.File;
 import com.rslakra.swaggerservice.persistence.repository.FileRepository;
 import org.springframework.beans.factory.annotation.Autowired;

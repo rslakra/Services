@@ -1,7 +1,7 @@
 package com.rslakra.services.automobile.domain.entities;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.persistence.entity.AbstractEntity;
 import com.rslakra.services.automobile.domain.entities.converter.LocalDateConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,7 +32,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "appointments")
-public class Appointment extends AbstractEntity {
+public class Appointment extends AbstractEntity<Long> {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

@@ -1,6 +1,6 @@
 package com.rslakra.shipwreck.filter;
 
-import com.rslakra.frameworks.spring.filter.AbstractFilterImpl;
+import com.devamatre.framework.spring.filter.AbstractFilterImpl;
 import com.rslakra.shipwreck.model.ShipWreck;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +27,7 @@ public final class ShipWreckFilter extends AbstractFilterImpl implements Specifi
      * @param allParams
      * @param criteria
      */
-    public ShipWreckFilter(Map<String, String> allParams, FilterCriteria criteria) {
+    public ShipWreckFilter(Map<String, Object> allParams, FilterCriteria criteria) {
         super(allParams);
         this.criteria = criteria;
     }
@@ -35,7 +35,7 @@ public final class ShipWreckFilter extends AbstractFilterImpl implements Specifi
     /**
      * @param allParams
      */
-    public ShipWreckFilter(Map<String, String> allParams) {
+    public ShipWreckFilter(Map<String, Object> allParams) {
         this(allParams, null);
     }
 

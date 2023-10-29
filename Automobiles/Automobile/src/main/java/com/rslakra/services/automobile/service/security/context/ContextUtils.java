@@ -1,6 +1,6 @@
 package com.rslakra.services.automobile.service.security.context;
 
-import com.rslakra.frameworks.core.BeanUtils;
+import com.devamatre.framework.core.BeanUtils;
 import com.rslakra.services.automobile.domain.entities.AutoUser;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

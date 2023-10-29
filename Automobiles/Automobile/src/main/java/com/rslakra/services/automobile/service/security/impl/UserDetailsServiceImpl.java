@@ -1,8 +1,8 @@
 package com.rslakra.services.automobile.service.security.impl;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.enums.RoleType;
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.enums.RoleType;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
 import com.rslakra.services.automobile.domain.entities.AutoUser;
 import com.rslakra.services.automobile.domain.repositories.UserRepository;
 import org.slf4j.Logger;

@@ -15,7 +15,7 @@
  */
 package com.rslakra.shipwreck.repository;
 
-import com.rslakra.frameworks.spring.persistence.repository.BaseRepository;
+import com.devamatre.framework.spring.persistence.repository.BaseRepository;
 import com.rslakra.shipwreck.model.ShipWreck;
 import org.springframework.stereotype.Repository;
 

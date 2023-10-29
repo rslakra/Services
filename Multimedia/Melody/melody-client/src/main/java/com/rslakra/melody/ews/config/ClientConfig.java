@@ -1,6 +1,6 @@
 package com.rslakra.melody.ews.config;
 
-import com.rslakra.frameworks.spring.client.ApiRestClient;
+import com.devamatre.framework.spring.client.ApiRestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

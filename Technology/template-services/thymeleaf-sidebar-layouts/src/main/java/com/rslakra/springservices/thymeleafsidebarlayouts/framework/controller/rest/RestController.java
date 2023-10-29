@@ -1,6 +1,6 @@
 package com.rslakra.springservices.thymeleafsidebarlayouts.framework.controller.rest;
 
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,14 +39,14 @@ public interface RestController<T> {
      * @param allParams
      * @return
      */
-    public List<T> getByFilter(Map<String, String> allParams);
+    public List<T> getByFilter(Map<String, Object> allParams);
 
     /**
      * Returns the <code>Page<T></code> list of objects filtered with <code>allParams</code>.
      *
      * @param allParams@return
      */
-    public Page<T> getByFilter(Map<String, String> allParams, Pageable pageable);
+    public Page<T> getByFilter(Map<String, Object> allParams, Pageable pageable);
 
     /**
      * Creates the <code>T</code> type object.

@@ -1,8 +1,9 @@
 package com.rslakra.services.automobile.controller.web;
 
-import com.rslakra.frameworks.core.enums.RoleType;
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.filter.Filter;
+import com.devamatre.framework.core.enums.RoleType;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
 import com.rslakra.services.automobile.domain.entities.Appointment;
 import com.rslakra.services.automobile.domain.entities.AuthUtils;
 import com.rslakra.services.automobile.service.AppointmentService;
@@ -21,13 +22,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 import javax.annotation.security.RolesAllowed;
 
 @Controller
 @RequestMapping("/appointments")
-public class AppointmentController extends AbstractWebController<Appointment> {
+public class AppointmentController extends AbstractWebController<Appointment, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppointmentController.class);
 
@@ -196,7 +197,7 @@ public class AppointmentController extends AbstractWebController<Appointment> {
      * @return
      */
     @Override
-    public String editObject(Model model, Optional<Long> idOptional) {
+    public String editObject(Model model, Long idOptional) {
         LOGGER.debug("editObject({}, {})", model, idOptional);
         return null;
     }
@@ -207,8 +208,26 @@ public class AppointmentController extends AbstractWebController<Appointment> {
      * @return
      */
     @Override
-    public String delete(Model model, Optional<Long> idOptional) {
+    public String delete(Model model, Long idOptional) {
         LOGGER.debug("delete({}, {})", model, idOptional);
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public Parser<Appointment> getParser() {
+        return null;
+    }
+
+    /**
+     * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
         return null;
     }
 }

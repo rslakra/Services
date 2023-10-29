@@ -1,6 +1,6 @@
 package com.rslakra.melody.iws.account.filter;
 
-import com.rslakra.frameworks.spring.filter.AbstractFilterImpl;
+import com.devamatre.framework.spring.filter.AbstractFilterImpl;
 
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public final class UserFilter extends AbstractFilterImpl {
     /**
      * @param allParams
      */
-    public UserFilter(final Map<String, String> allParams) {
+    public UserFilter(final Map<String, Object> allParams) {
         super(allParams);
     }
 }

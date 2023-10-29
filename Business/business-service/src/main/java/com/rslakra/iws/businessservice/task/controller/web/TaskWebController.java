@@ -1,9 +1,9 @@
 package com.rslakra.iws.businessservice.task.controller.web;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.parser.Parser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
 import com.rslakra.iws.businessservice.task.persistence.entity.Task;
 import com.rslakra.iws.businessservice.task.service.TaskService;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 /**
  * @author: Rohtash Lakra
@@ -25,7 +25,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/tasks")
-public class TaskWebController extends AbstractWebController<Task> {
+public class TaskWebController extends AbstractWebController<Task, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskWebController.class);
 
@@ -39,14 +39,6 @@ public class TaskWebController extends AbstractWebController<Task> {
     public TaskWebController(TaskService taskService) {
         LOGGER.debug("TaskWebController({})", taskService);
         this.taskService = taskService;
-    }
-
-    /**
-     * @param id
-     */
-    @Override
-    public void validate(Optional<Long> id) {
-        super.validate(id);
     }
 
     /**
@@ -101,14 +93,25 @@ public class TaskWebController extends AbstractWebController<Task> {
 
     /**
      * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
+
+    /**
+     * @param model
      * @param taskId
      * @return
      */
     @RequestMapping(path = {"/create", "/update/{taskId}"})
-    public String editObject(Model model, @PathVariable(name = "taskId") Optional<Long> taskId) {
+    @Override
+    public String editObject(Model model, @PathVariable(name = "taskId") Long taskId) {
         Task task = null;
-        if (taskId.isPresent()) {
-            task = taskService.getById(taskId.get());
+        if (BeanUtils.isNotNull(taskId)) {
+            task = taskService.getById(taskId);
         } else {
             task = new Task();
         }
@@ -126,9 +129,8 @@ public class TaskWebController extends AbstractWebController<Task> {
      */
     @RequestMapping("/delete/{taskId}")
     @Override
-    public String delete(Model model, @PathVariable(name = "taskId") Optional<Long> id) {
-        validate(id);
-        taskService.delete(id.get());
+    public String delete(Model model, @PathVariable(name = "taskId") Long id) {
+        taskService.delete(id);
         return "redirect:/tasks/list";
     }
 

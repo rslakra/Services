@@ -1,6 +1,6 @@
 package com.rslakra.melody.iws.artist.persistence.repository;
 
-import com.rslakra.frameworks.spring.persistence.repository.BaseRepository;
+import com.devamatre.framework.spring.persistence.repository.BaseRepository;
 import com.rslakra.melody.iws.artist.persistence.entity.Song;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,8 +1,8 @@
 package com.rslakra.services.automobile.domain.entities;
 
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.persistence.entity.AbstractEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +28,7 @@ import javax.persistence.Transient;
 @Setter
 @Entity
 @Table(name = "users")
-public class AutoUser extends AbstractEntity<AutoUser> implements UserDetails {
+public class AutoUser extends AbstractEntity<Long> implements UserDetails {
 
     @Column(name = "email")
     private String email;

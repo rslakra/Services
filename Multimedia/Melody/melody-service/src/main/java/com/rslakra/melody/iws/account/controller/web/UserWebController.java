@@ -1,14 +1,14 @@
 package com.rslakra.melody.iws.account.controller.web;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.controller.web.WebController;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.controller.web.WebController;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.melody.iws.account.parser.UserParser;
 import com.rslakra.melody.iws.account.persistence.entity.User;
 import com.rslakra.melody.iws.account.service.UserService;
@@ -30,8 +30,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * @author: Rohtash Lakra
@@ -39,7 +39,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/users")
-public class UserWebController extends AbstractWebController<User> implements WebController<User> {
+public class UserWebController extends AbstractWebController<User, Long> implements WebController<User, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserWebController.class);
 
@@ -55,13 +55,6 @@ public class UserWebController extends AbstractWebController<User> implements We
     public UserWebController(UserService userService) {
         this.userParser = new UserParser();
         this.userService = userService;
-    }
-
-    /**
-     * @param id
-     */
-    @Override
-    public void validate(Optional<Long> id) {
     }
 
     /**
@@ -118,14 +111,25 @@ public class UserWebController extends AbstractWebController<User> implements We
 
     /**
      * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
+
+    /**
+     * @param model
      * @param userId
      * @return
      */
     @RequestMapping(path = {"/create", "/update/{userId}"})
-    public String editObject(Model model, @PathVariable(name = "userId") Optional<Long> userId) {
+    @Override
+    public String editObject(Model model, @PathVariable(name = "userId") Long userId) {
         User user = null;
-        if (userId.isPresent()) {
-            user = userService.getById(userId.get());
+        if (BeanUtils.isNotNull(userId)) {
+            user = userService.getById(userId);
         } else {
             user = new User();
         }
@@ -143,9 +147,9 @@ public class UserWebController extends AbstractWebController<User> implements We
      */
     @RequestMapping("/delete/{userId}")
     @Override
-    public String delete(Model model, @PathVariable(name = "userId") Optional<Long> id) {
-        validate(id);
-        userService.delete(id.get());
+    public String delete(Model model, @PathVariable(name = "userId") Long id) {
+//        validate(id);
+        userService.delete(id);
         return "redirect:/users/list";
     }
 

@@ -1,14 +1,14 @@
 package com.rslakra.melody.iws.artist.controller.web;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.controller.web.WebController;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.controller.web.WebController;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.melody.iws.artist.parser.ArtistParser;
 import com.rslakra.melody.iws.artist.persistence.entity.Artist;
 import com.rslakra.melody.iws.artist.service.ArtistService;
@@ -30,8 +30,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * @author: Rohtash Lakra (rlakra)
@@ -39,7 +39,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/artists")
-public class ArtistWebController extends AbstractWebController<Artist> implements WebController<Artist> {
+public class ArtistWebController extends AbstractWebController<Artist, Long> implements WebController<Artist, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ArtistWebController.class);
 
@@ -54,13 +54,6 @@ public class ArtistWebController extends AbstractWebController<Artist> implement
     public ArtistWebController(ArtistService artistService) {
         this.artistParser = new ArtistParser();
         this.artistService = artistService;
-    }
-
-    /**
-     * @param id
-     */
-    @Override
-    public void validate(Optional<Long> id) {
     }
 
     /**
@@ -122,10 +115,10 @@ public class ArtistWebController extends AbstractWebController<Artist> implement
      */
     @RequestMapping(path = {"/create", "/update/{id}"})
     @Override
-    public String editObject(Model model, @PathVariable(name = "id") Optional<Long> id) {
+    public String editObject(Model model, @PathVariable(name = "id") Long id) {
         Artist artist = null;
-        if (id.isPresent()) {
-            artist = artistService.getById(id.get());
+        if (BeanUtils.isNotNull(id)) {
+            artist = artistService.getById(id);
         } else {
             artist = new Artist();
         }
@@ -134,6 +127,15 @@ public class ArtistWebController extends AbstractWebController<Artist> implement
         return "artist/editArtist";
     }
 
+    /**
+     * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
 
     /**
      * Deletes the object with <code>id</code>.
@@ -144,9 +146,8 @@ public class ArtistWebController extends AbstractWebController<Artist> implement
      */
     @RequestMapping("/delete/{id}")
     @Override
-    public String delete(Model model, @PathVariable(name = "id") Optional<Long> id) {
-        validate(id);
-        artistService.delete(id.get());
+    public String delete(Model model, @PathVariable(name = "id") Long id) {
+        artistService.delete(id);
         return "redirect:/artists/list";
     }
 

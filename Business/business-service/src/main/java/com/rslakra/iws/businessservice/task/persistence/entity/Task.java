@@ -1,6 +1,6 @@
 package com.rslakra.iws.businessservice.task.persistence.entity;
 
-import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
+import com.devamatre.framework.spring.persistence.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "tasks")
-public class Task extends AbstractEntity<Task> {
+public class Task extends AbstractEntity<Long> {
 
     @Column(name = "user_id")
     private Long userId;

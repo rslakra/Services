@@ -1,7 +1,7 @@
 package com.rslakra.services.automobile.service.security;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;

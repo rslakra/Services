@@ -1,7 +1,9 @@
 package com.rslakra.iws.taskservice.account.controller.web;
 
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.filter.Filter;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
 import com.rslakra.iws.taskservice.account.persistence.entity.Role;
 import com.rslakra.iws.taskservice.account.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 /**
  * @author: Rohtash Lakra (rlakra)
@@ -21,7 +23,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/roles")
-public class RoleWebController extends AbstractWebController<Role> {
+public class RoleWebController extends AbstractWebController<Role, Long> {
 
     // roleService
     private final RoleService roleService;
@@ -34,11 +36,10 @@ public class RoleWebController extends AbstractWebController<Role> {
         this.roleService = roleService;
     }
 
-
-    @Override
-    public void validate(Optional<Long> id) {
-        super.validate(id);
-    }
+//    @Override
+//    public void validate(Optional<Long> id) {
+//        super.validate(id);
+//    }
 
     /**
      * Saves the <code>t</code> object.
@@ -80,6 +81,24 @@ public class RoleWebController extends AbstractWebController<Role> {
     }
 
     /**
+     * @return
+     */
+    @Override
+    public Parser<Role> getParser() {
+        return null;
+    }
+
+    /**
+     * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
+
+    /**
      * Create the new object or Updates the object with <code>id</code>.
      *
      * @param model
@@ -88,10 +107,10 @@ public class RoleWebController extends AbstractWebController<Role> {
      */
     @RequestMapping(path = {"/create", "/update/{id}"})
     @Override
-    public String editObject(Model model, @PathVariable(name = "id") Optional<Long> id) {
+    public String editObject(Model model, @PathVariable(name = "id") Long id) {
         Role role = null;
-        if (id.isPresent()) {
-            role = roleService.getById(id.get());
+        if (BeanUtils.isNotNull(id)) {
+            role = roleService.getById(id);
         } else {
             role = new Role();
         }
@@ -110,9 +129,9 @@ public class RoleWebController extends AbstractWebController<Role> {
      */
     @RequestMapping("/delete/{id}")
     @Override
-    public String delete(Model model, @PathVariable(name = "id") Optional<Long> id) {
-        validate(id);
-        roleService.delete(id.get());
+    public String delete(Model model, @PathVariable(name = "id") Long id) {
+//        validate(id);
+        roleService.delete(id);
         return "redirect:/roles/list";
     }
 

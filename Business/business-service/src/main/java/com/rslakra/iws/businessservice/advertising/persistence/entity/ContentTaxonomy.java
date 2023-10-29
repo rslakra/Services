@@ -1,6 +1,6 @@
 package com.rslakra.iws.businessservice.advertising.persistence.entity;
 
-import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
+import com.devamatre.framework.spring.persistence.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "content_taxonomies")
-public class ContentTaxonomy extends AbstractEntity<ContentTaxonomy> {
+public class ContentTaxonomy extends AbstractEntity<Long> {
 
     @Column(name = "parent_id")
     private Long parentId;

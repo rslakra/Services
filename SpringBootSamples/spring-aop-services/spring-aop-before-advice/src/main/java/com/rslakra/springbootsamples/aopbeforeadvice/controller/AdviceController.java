@@ -43,10 +43,10 @@ public class AdviceController {
 
     @Loggable(localOnly = true)
     @GetMapping("/filter")
-    public List<Advice> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<Advice> getByFilter(@RequestParam Map<String, Object> allParams) {
         if (Objects.nonNull(allParams)) {
             if (allParams.containsKey("id")) {
-                Long id = Long.parseLong(allParams.get("id"));
+                Long id = Long.parseLong(allParams.get("id").toString());
                 return Arrays.asList(adviceService.getById(id));
             }
         }

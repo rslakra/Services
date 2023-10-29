@@ -1,6 +1,6 @@
 package com.rslakra.iws.businessservice.advertising.persistence.repository;
 
-import com.rslakra.frameworks.spring.persistence.repository.BaseRepository;
+import com.devamatre.framework.spring.persistence.repository.BaseRepository;
 import com.rslakra.iws.businessservice.advertising.persistence.entity.ContentTaxonomy;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

@@ -19,6 +19,8 @@
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <appsuite-core.version>0.0.23</appsuite-core.version>
+        <appsuite-spring.version>0.0.32</appsuite-spring.version>
         <swagger.version>2.1.10</swagger.version>
         <skipSwagger>false</skipSwagger>
     </properties>
@@ -26,15 +28,15 @@
     <dependencies>
         <!-- appsuite-framework-modules -->
         <dependency>
-            <groupId>com.rslakra.frameworks</groupId>
+            <groupId>com.devamatre.framework</groupId>
             <artifactId>appsuite-framework-core</artifactId>
-            <version>0.0.1</version>
+            <version>${appsuite-core.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.rslakra.frameworks</groupId>
+            <groupId>com.devamatre.framework</groupId>
             <artifactId>appsuite-framework-spring</artifactId>
-            <version>0.0.1</version>
+            <version>${appsuite-spring.version}</version>
         </dependency>
 
         <dependency>

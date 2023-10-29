@@ -1,6 +1,6 @@
 package com.rslakra.libraryclient.entity;
 
-import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
+import com.devamatre.framework.spring.persistence.entity.AbstractEntity;
 import com.rslakra.libraryclient.controller.EntityStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -35,12 +35,12 @@
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
 
         <!-- checkstyle -->
-        <code-styles.dir>${project.basedir}/../../../code-styles</code-styles.dir>
+        <code-styles.dir>https://raw.githubusercontent.com/rslakra/code-styles/master</code-styles.dir>
         <checkstyle.threshold>0</checkstyle.threshold>
 
-        <appsuite-framework-core.version>0.0.13</appsuite-framework-core.version>
-        <appsuite-framework-spring.version>0.0.14</appsuite-framework-spring.version>
-        <common-yatra-service.version>0.0.209</common-yatra-service.version>
+        <appsuite-framework-core.version>0.0.23</appsuite-framework-core.version>
+        <appsuite-framework-spring.version>0.0.32</appsuite-framework-spring.version>
+        <common-yatra-service.version>0.0.222</common-yatra-service.version>
 
         <!-- lombok -->
         <lombok.version>1.18.26</lombok.version>
@@ -74,13 +74,13 @@
 
         <!-- appsuite-framework-modules -->
         <dependency>
-            <groupId>com.rslakra.frameworks</groupId>
+            <groupId>com.devamatre.framework</groupId>
             <artifactId>appsuite-framework-core</artifactId>
             <version>${appsuite-framework-core.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.rslakra.frameworks</groupId>
+            <groupId>com.devamatre.framework</groupId>
             <artifactId>appsuite-framework-spring</artifactId>
             <version>${appsuite-framework-spring.version}</version>
         </dependency>

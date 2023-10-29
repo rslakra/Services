@@ -1,6 +1,6 @@
 package com.rslakra.springservices.thymeleaflayout.tutorial.service;
 
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
 import com.rslakra.springservices.thymeleaflayout.framework.service.AbstractService;
 import com.rslakra.springservices.thymeleaflayout.tutorial.persistence.entity.Tutorial;
 import com.rslakra.springservices.thymeleaflayout.tutorial.persistence.repository.TutorialRepository;

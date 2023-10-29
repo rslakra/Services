@@ -1,14 +1,14 @@
 package com.rslakra.melody.iws.artist.controller.web;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.controller.web.WebController;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.controller.web.WebController;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.melody.iws.artist.parser.SongParser;
 import com.rslakra.melody.iws.artist.persistence.entity.Song;
 import com.rslakra.melody.iws.artist.service.SongService;
@@ -30,8 +30,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * @author: Rohtash Lakra
@@ -39,7 +39,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/songs")
-public class SongWebController extends AbstractWebController<Song> implements WebController<Song> {
+public class SongWebController extends AbstractWebController<Song, Long> implements WebController<Song, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SongWebController.class);
 
@@ -54,13 +54,6 @@ public class SongWebController extends AbstractWebController<Song> implements We
     public SongWebController(SongService songService) {
         this.songParser = new SongParser();
         this.songService = songService;
-    }
-
-    /**
-     * @param id
-     */
-    @Override
-    public void validate(Optional<Long> id) {
     }
 
     /**
@@ -119,14 +112,24 @@ public class SongWebController extends AbstractWebController<Song> implements We
 
     /**
      * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
+
+    /**
+     * @param model
      * @param songId
      * @return
      */
     @RequestMapping(path = {"/create", "/update/{songId}"})
-    public String editObject(Model model, @PathVariable(name = "songId") Optional<Long> songId) {
+    public String editObject(Model model, @PathVariable(name = "songId") Long songId) {
         Song song = null;
-        if (songId.isPresent()) {
-            song = songService.getById(songId.get());
+        if (BeanUtils.isNotNull(songId)) {
+            song = songService.getById(songId);
         } else {
             song = new Song();
         }
@@ -143,11 +146,11 @@ public class SongWebController extends AbstractWebController<Song> implements We
      */
     @RequestMapping("/delete/{songId}")
     @Override
-    public String delete(Model model, @PathVariable(name = "songId") Optional<Long> id) {
-        validate(id);
-        songService.delete(id.get());
+    public String delete(Model model, @PathVariable(name = "songId") Long id) {
+        songService.delete(id);
         return "redirect:/songs/list";
     }
+
 
     /**
      * @return

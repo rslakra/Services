@@ -1,6 +1,6 @@
 package com.rslakra.libraryclient.api;
 
-import com.rslakra.frameworks.core.BeanUtils;
+import com.devamatre.framework.core.BeanUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 

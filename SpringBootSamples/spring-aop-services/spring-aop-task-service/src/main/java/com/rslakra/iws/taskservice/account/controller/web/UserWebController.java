@@ -1,7 +1,8 @@
 package com.rslakra.iws.taskservice.account.controller.web;
 
-import com.rslakra.frameworks.spring.controller.web.AbstractWebController;
-import com.rslakra.frameworks.spring.filter.Filter;
+import com.devamatre.framework.spring.controller.web.AbstractWebController;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
 import com.rslakra.iws.taskservice.account.persistence.entity.User;
 import com.rslakra.iws.taskservice.account.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -21,7 +23,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/users")
-public class UserWebController extends AbstractWebController<User> {
+public class UserWebController extends AbstractWebController<User, Long> {
 
     // userService
     private final UserService userService;
@@ -34,13 +36,13 @@ public class UserWebController extends AbstractWebController<User> {
         this.userService = userService;
     }
 
-    /**
-     * @param id
-     */
-    @Override
-    public void validate(Optional<Long> id) {
-        super.validate(id);
-    }
+//    /**
+//     * @param id
+//     */
+//    @Override
+//    public void validate(Optional<Long> id) {
+//        super.validate(id);
+//    }
 
     /**
      * Saves the <code>t</code> object.
@@ -85,6 +87,34 @@ public class UserWebController extends AbstractWebController<User> {
     }
 
     /**
+     * @return
+     */
+    @Override
+    public Parser<User> getParser() {
+        return null;
+    }
+
+    /**
+     * @param model
+     * @param allParams
+     * @return
+     */
+    @Override
+    public String filter(Model model, Map<String, Object> allParams) {
+        return null;
+    }
+
+    /**
+     * @param model
+     * @param aLong
+     * @return
+     */
+    @Override
+    public String editObject(Model model, Long aLong) {
+        return null;
+    }
+
+    /**
      * @param model
      * @param userId
      * @return
@@ -111,9 +141,9 @@ public class UserWebController extends AbstractWebController<User> {
      */
     @RequestMapping("/delete/{userId}")
     @Override
-    public String delete(Model model, @PathVariable(name = "userId") Optional<Long> id) {
-        validate(id);
-        userService.delete(id.get());
+    public String delete(Model model, @PathVariable(name = "userId") Long id) {
+//        validate(id);
+        userService.delete(id);
         return "redirect:/users/list";
     }
 

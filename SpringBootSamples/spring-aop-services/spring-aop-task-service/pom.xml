@@ -35,12 +35,16 @@
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
 
         <!-- checkstyle -->
-        <code-styles.dir>${project.basedir}/../../../code-styles</code-styles.dir>
+        <code-styles.dir>https://raw.githubusercontent.com/rslakra/code-styles/master</code-styles.dir>
         <checkstyle.threshold>0</checkstyle.threshold>
 
         <!-- logging -->
 <!--        <slf4j-api.version>2.0.6</slf4j-api.version>-->
 <!--        <slf4j-log4j12.version>2.0.6</slf4j-log4j12.version>-->
+
+        <!-- appsuite-framework -->
+        <appsuite-framework-core.version>0.0.23</appsuite-framework-core.version>
+        <appsuite-framework-spring.version>0.0.32</appsuite-framework-spring.version>
 
         <!-- lombok -->
         <lombok.version>1.18.26</lombok.version>
@@ -83,15 +87,15 @@
 
         <!-- appsuite-framework-modules -->
         <dependency>
-            <groupId>com.rslakra.frameworks</groupId>
+            <groupId>com.devamatre.framework</groupId>
             <artifactId>appsuite-framework-core</artifactId>
-            <version>0.0.1</version>
+            <version>${appsuite-framework-core.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.rslakra.frameworks</groupId>
+            <groupId>com.devamatre.framework</groupId>
             <artifactId>appsuite-framework-spring</artifactId>
-            <version>0.0.1</version>
+            <version>${appsuite-framework-spring.version}</version>
         </dependency>
 
         <dependency>

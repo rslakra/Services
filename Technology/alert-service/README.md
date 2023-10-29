@@ -26,3 +26,6 @@ These additional references should also help you:
 
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
+* [Notifications System Design: How We Integrated It into Our Infrastructure](https://blog.bitsrc.io/notifications-system-design-how-we-integrated-it-into-our-infrastructure-f93f279c18a0)
+
+* [How to Design a Messaging Service in Your 45-Minute System Design Interview](https://hackernoon.com/how-to-design-a-messaging-service-in-your-45-minute-system-design-interview)

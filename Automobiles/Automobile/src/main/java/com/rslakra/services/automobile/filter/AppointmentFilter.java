@@ -1,6 +1,6 @@
 package com.rslakra.services.automobile.filter;
 
-import com.rslakra.frameworks.spring.filter.AbstractFilterImpl;
+import com.devamatre.framework.spring.filter.AbstractFilterImpl;
 
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public final class AppointmentFilter extends AbstractFilterImpl {
     /**
      * @param allParams
      */
-    public AppointmentFilter(Map<String, String> allParams) {
+    public AppointmentFilter(Map<String, Object> allParams) {
         super(allParams);
     }
 }

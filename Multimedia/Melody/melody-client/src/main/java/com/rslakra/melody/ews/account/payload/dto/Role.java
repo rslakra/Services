@@ -1,9 +1,9 @@
 package com.rslakra.melody.ews.account.payload.dto;
 
-import com.rslakra.frameworks.core.ToString;
-import com.rslakra.frameworks.core.enums.EntityStatus;
-import com.rslakra.frameworks.core.enums.RoleType;
-import com.rslakra.frameworks.spring.payload.dto.NamedEntityDTO;
+import com.devamatre.framework.core.ToString;
+import com.devamatre.framework.core.enums.EntityStatus;
+import com.devamatre.framework.core.enums.RoleType;
+import com.devamatre.framework.spring.payload.dto.NamedEntityDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +23,7 @@ import javax.persistence.Enumerated;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Role extends NamedEntityDTO {
+public class Role extends NamedEntityDTO<Long> {
 
     @Enumerated(value = EnumType.STRING)
     private EntityStatus status = EntityStatus.INACTIVE;

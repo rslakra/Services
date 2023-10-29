@@ -1,12 +1,12 @@
 package com.rslakra.services.automobile.service.impl;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.enums.EntityStatus;
-import com.rslakra.frameworks.spring.exception.AuthenticationException;
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
-import com.rslakra.frameworks.spring.filter.Filter;
-import com.rslakra.frameworks.spring.persistence.Operation;
-import com.rslakra.frameworks.spring.service.AbstractServiceImpl;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.enums.EntityStatus;
+import com.devamatre.framework.spring.exception.AuthenticationException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.persistence.Operation;
+import com.devamatre.framework.spring.service.AbstractServiceImpl;
 import com.rslakra.services.automobile.domain.entities.Appointment;
 import com.rslakra.services.automobile.domain.entities.AutoUser;
 import com.rslakra.services.automobile.domain.repositories.AppointmentRepository;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * @created 4/20/23 5:59 PM
  */
 @Service
-public class AppointmentServiceImpl extends AbstractServiceImpl<Appointment> implements AppointmentService {
+public class AppointmentServiceImpl extends AbstractServiceImpl<Appointment, Long> implements AppointmentService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppointmentServiceImpl.class);
 

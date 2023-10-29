@@ -1,9 +1,9 @@
 package com.rslakra.libraryservice.service.impl;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.spring.exception.DuplicateRecordException;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.exception.NoRecordFoundException;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.spring.exception.DuplicateRecordException;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.exception.NoRecordFoundException;
 import com.rslakra.libraryservice.enums.EntityStatus;
 import com.rslakra.libraryservice.enums.RoleType;
 import com.rslakra.libraryservice.persistence.entity.Role;

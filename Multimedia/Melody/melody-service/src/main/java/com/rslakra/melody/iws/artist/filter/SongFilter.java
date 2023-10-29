@@ -1,6 +1,6 @@
 package com.rslakra.melody.iws.artist.filter;
 
-import com.rslakra.frameworks.spring.filter.AbstractFilterImpl;
+import com.devamatre.framework.spring.filter.AbstractFilterImpl;
 
 import java.util.Map;
 
@@ -17,7 +17,7 @@ public final class SongFilter extends AbstractFilterImpl {
     /**
      * @param allParams
      */
-    public SongFilter(Map<String, String> allParams) {
+    public SongFilter(Map<String, Object> allParams) {
         super(allParams);
     }
 }

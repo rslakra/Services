@@ -1,6 +1,6 @@
 package com.rslakra.iws.businessservice.project.persistence.entity;
 
-import com.rslakra.frameworks.spring.persistence.entity.NamedEntity;
+import com.devamatre.framework.spring.persistence.entity.NamedEntity;
 import lombok.Getter;
 import lombok.Setter;
 

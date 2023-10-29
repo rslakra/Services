@@ -1,10 +1,10 @@
 package com.rslakra.melody.ews.account.service.impl;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.client.ApiRestClient;
-import com.rslakra.frameworks.spring.exception.InvalidRequestException;
-import com.rslakra.frameworks.spring.persistence.Operation;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.client.ApiRestClient;
+import com.devamatre.framework.spring.exception.InvalidRequestException;
+import com.devamatre.framework.spring.persistence.Operation;
 import com.rslakra.melody.ews.account.payload.dto.User;
 import com.rslakra.melody.ews.account.service.UserService;
 import com.rslakra.melody.ews.framework.client.impl.AbstractClientServiceImpl;
@@ -125,7 +125,7 @@ public class UserServiceImpl extends AbstractClientServiceImpl<User> implements 
             users = Arrays.asList(apiRestClient.doGet(USERS, User[].class));
         } catch (Exception ex) {
             LOGGER.error(ex.getLocalizedMessage(), ex);
-        // helps to display empty ui page.
+            // helps to display empty ui page.
             users = new ArrayList<>();
         }
 

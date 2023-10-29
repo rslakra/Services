@@ -15,8 +15,8 @@
  */
 package com.rslakra.shipwreck.model;
 
-import com.rslakra.frameworks.core.ToString;
-import com.rslakra.frameworks.spring.persistence.entity.AbstractEntity;
+import com.devamatre.framework.core.ToString;
+import com.devamatre.framework.spring.persistence.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

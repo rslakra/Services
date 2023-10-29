@@ -1,6 +1,6 @@
 package com.rslakra.iws.businessservice.account.service;
 
-import com.rslakra.frameworks.spring.service.AbstractService;
+import com.devamatre.framework.spring.service.AbstractService;
 import com.rslakra.iws.businessservice.account.persistence.entity.Role;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * @author Rohtash Lakra
  * @created 8/20/21 8:11 PM
  */
-public interface RoleService extends AbstractService<Role> {
+public interface RoleService extends AbstractService<Role, Long> {
 
     /**
      * Returns the role by name.

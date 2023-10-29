@@ -1,6 +1,6 @@
 package com.rslakra.iws.taskservice.task.filter;
 
-import com.rslakra.frameworks.spring.filter.AbstractFilterImpl;
+import com.devamatre.framework.spring.filter.AbstractFilterImpl;
 
 import java.util.Map;
 
@@ -17,7 +17,7 @@ public final class TodoFilter extends AbstractFilterImpl {
     /**
      * @param allParams
      */
-    public TodoFilter(Map<String, String> allParams) {
+    public TodoFilter(Map<String, Object> allParams) {
         super(allParams);
     }
 

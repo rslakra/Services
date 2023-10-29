@@ -1,11 +1,12 @@
 package com.rslakra.iws.businessservice.account.controller;
 
-import com.rslakra.frameworks.core.BeanUtils;
-import com.rslakra.frameworks.core.Payload;
-import com.rslakra.frameworks.spring.controller.rest.AbstractRestController;
-import com.rslakra.frameworks.spring.parser.Parser;
-import com.rslakra.frameworks.spring.parser.csv.CsvParser;
-import com.rslakra.frameworks.spring.parser.excel.ExcelParser;
+import com.devamatre.framework.core.BeanUtils;
+import com.devamatre.framework.core.Payload;
+import com.devamatre.framework.spring.controller.rest.AbstractRestController;
+import com.devamatre.framework.spring.filter.Filter;
+import com.devamatre.framework.spring.parser.Parser;
+import com.devamatre.framework.spring.parser.csv.CsvParser;
+import com.devamatre.framework.spring.parser.excel.ExcelParser;
 import com.rslakra.iws.businessservice.account.filter.RoleFilter;
 import com.rslakra.iws.businessservice.account.parser.RoleParser;
 import com.rslakra.iws.businessservice.account.persistence.entity.Role;
@@ -46,7 +47,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("${restPrefix}/roles")
-public class RoleController extends AbstractRestController<Role> {
+public class RoleController extends AbstractRestController<Role, Long> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RoleController.class);
     private final RoleService roleService;
@@ -78,7 +79,7 @@ public class RoleController extends AbstractRestController<Role> {
      */
     @GetMapping("/filter")
     @Override
-    public List<Role> getByFilter(@RequestParam Map<String, String> allParams) {
+    public List<Role> getByFilter(@RequestParam Map<String, Object> allParams) {
         LOGGER.debug("+getByFilter({})", allParams);
         List<Role> roles = Collections.emptyList();
         RoleFilter roleFilter = new RoleFilter(allParams);
@@ -86,7 +87,7 @@ public class RoleController extends AbstractRestController<Role> {
         } else if (roleFilter.hasKey(RoleFilter.ID)) {
             roles = Arrays.asList(roleService.getById(roleFilter.getLong(RoleFilter.ID)));
         } else if (roleFilter.hasKey(RoleFilter.NAME)) {
-            roles = Arrays.asList(roleService.getByName(roleFilter.getValue(RoleFilter.NAME)));
+            roles = Arrays.asList(roleService.getByName(roleFilter.getValue(RoleFilter.NAME, String.class)));
         } else {
             roles = roleService.getAll();
         }
@@ -103,8 +104,27 @@ public class RoleController extends AbstractRestController<Role> {
      */
     @GetMapping("/pageable")
     @Override
-    public Page<Role> getByFilter(Map<String, String> allParams, Pageable pageable) {
+    public Page<Role> getByFilter(Map<String, Object> allParams, Pageable pageable) {
         return roleService.getByFilter(null, pageable);
+    }
+
+    /**
+     * @param filter
+     * @return
+     */
+    @Override
+    public List<Role> getByFilter(Filter filter) {
+        return null;
+    }
+
+    /**
+     * @param filter
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Role> getByFilter(Filter filter, Pageable pageable) {
+        return null;
     }
 
     /**
