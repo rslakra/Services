@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+    <script type="module" src="js/userActions.js"></script>
+    <script type="module" src="js/util.js"></script>
+</head>
+<body>
+<meta id="user_id" th:attr="_user_id = ${user.getId()}">
+<meta id="user_login" th:attr="_user_login = ${user.getLogin()}">
+<meta id="_csrf_token" th:attr="val = ${csrf_token.getToken()}">
+<meta id="_csrf_header" th:attr="val = ${csrf_token.getHeaderName()}">
+
+<label for="first_name_inp">Enter user first name</label>
+<input id="first_name_inp" type="text" th:value="${user.getFirstName()}"/>
+<br>
+
+<label for="last_name_inp">Enter user last name</label>
+<input id="last_name_inp" type="text" th:value="${user.getLastName()}"/><br>
+
+<input id="upd_user" type="button" value="Send!"/><br>
+<input id="upd_user_cancel" type="button" value="Back"/><br>
+</body>
+</html>

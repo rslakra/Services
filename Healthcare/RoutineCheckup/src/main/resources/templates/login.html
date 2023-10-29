@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<div>
+    <div th:if="${loginMessage} != null">
+        <h3>[[${loginMessage}]]</h3>
+    </div>
+
+    <form th:action="@{/login}" th:object="${loginDto}" method="POST">
+        <label for="login">Enter your login</label>
+        <input type="text" th:field="*{username}" id="login"
+               placeholder="login" required
+        >
+        <br>
+
+        <label for="pas">Enter your password</label>
+        <input type="password" th:field="*{password}" id="pas"
+               placeholder="password" required
+        >
+        <br>
+
+        <button id="send" type="submit">Log in</button>
+    </form>
+    <a th:href="@{/registration}">Register a new account</a>
+</div>
+</body>
+</html>

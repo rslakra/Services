@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--    <div th:insert="fragments/header :: header">Header</div>-->
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
+
+    <!-- Title -->
+    <title>The Library Service</title>
+</head>
+
+<!--<header class="header">-->
+<!--    <div th:insert="~{fragments/header::header}"></div>-->
+<!--</header>-->
+
+<body>
+
+<div class="container" th:fragment="content">
+    <!-- Logo and Header -->
+    <div class="center">
+        <img src="../static/images/home.png" alt="Library Service Logo" title="Library Service Logo"
+             th:src="@{/images/home.png}"/>
+        <h1>The Library Service welcomes you.</h1>
+    </div>
+
+    <div class="padding-default">
+        <p>Please select an option</p>
+        <div>
+            <a class="button" href="users/listUsers.html" th:href="@{/users/list}">List Users</a>
+            <a class="button" href="roles/listRoles.html" th:href="@{/roles/list}">List Roles</a>
+            <a class="button" href="files/listFiles.html" th:href="@{/files/list}">List Files</a>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+
+</html>
+

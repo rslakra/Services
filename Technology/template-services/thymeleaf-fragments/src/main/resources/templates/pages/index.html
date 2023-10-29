@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:with="http://www.thymeleaf.org/extras/with"
+      layout:decorate="~{layout}"
+      with:title="'Hello, Thymeleaf'">
+<th:block layout:fragment="content">
+    <p>
+        Thymeleaf is a modern server-side Java template engine for both web and standalone environments.
+    </p>
+
+    <p>
+        Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be
+        correctly displayed in browsers and also work as static prototypes, allowing for stronger collaboration in
+        development teams.
+    </p>
+
+    <p>
+        With modules for Spring Framework, a host of integrations with your favourite tools, and the ability to plug in
+        your own functionality, Thymeleaf is ideal for modern-day HTML5 JVM web development — although there is much
+        more it can do.
+    </p>
+
+    <p><a th:href="@{/cities}" href="cities.html">Show Cities</a></p>
+</th:block>
+</html>

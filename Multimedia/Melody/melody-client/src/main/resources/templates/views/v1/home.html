@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/layout-v1 :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-header},
+                                                ~{:: #home-nav},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-footer}
+                                               )}">
+
+<head>
+    <title>Title of Home Page</title>
+    <!-- static-resources -->
+    <th:block id="home-static-resources">
+        <!-- Other static resource files -->
+    </th:block>
+</head>
+<body>
+<div id="home-header">
+    Header of Home Page
+</div>
+<div id="home-nav" th:replace="~{/fragments/v1/fragments-v1 :: nav-default}">
+    Home Nav
+</div>
+<div id="home-main-content">
+    <h2>Home content</h2>
+    <div>Content of Home Page</div>
+</div>
+<div id="home-footer" th:replace="~{/fragments/v1/fragments-v1 :: copyright}">
+    Footer
+</div>
+</body>
+</html>

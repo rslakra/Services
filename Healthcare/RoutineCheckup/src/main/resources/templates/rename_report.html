@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rename report</title>
+</head>
+<body>
+<form th:action="@{/rename_report}" th:object="${rename_report_dto}"
+      method="POST">
+    <input type="hidden" th:field="*{oldName}">
+
+    <label for="new_name_inp">Enter new name</label>
+    <input type="text"
+           th:field="*{newName}"
+           id="new_name_inp"
+           th:value="${rename_report_dto.getOldName()}"
+           required>
+    <br>
+
+    <button id="send" type="submit">Rename</button>
+</form>
+</body>
+</html>

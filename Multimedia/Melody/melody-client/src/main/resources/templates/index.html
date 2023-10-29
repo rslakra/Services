@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+
+<head> <!-- start:head -->
+    <title>Welcome to Melody Client</title>
+</head> <!-- end:head -->
+
+<!-- body -->
+<body> <!-- start:body -->
+
+<!-- contents -->
+<section layout:fragment="contents"> <!-- start:section:contents -->
+    <header class="box-block">  <!-- start:header -->
+        <!-- start:contents -->
+        <h1>Welcome to the Melody Client Application!</h1>
+        <p class="item">
+            A melody (from Greek μελῳδία, melōidía, "singing, chanting"),[1] also tune, voice or line, is a linear
+            succession of musical tones that the listener perceives as a single entity. In its most literal sense, a
+            melody is a combination of pitch and rhythm, while more figuratively, the term can include other musical
+            elements such as tonal color. It is the foreground to the background accompaniment. A line or part need
+            not be a foreground melody.
+        </p>
+
+        <div class="action">
+            <a href="https://www.rslakra.com/"
+               title="Back to download and tutorial page" class="btn back">Back to Learning</a>
+            <a href="https://github.com/rslakra" title="View on GitHub"
+               class="btn github">View on GitHub</a>
+        </div>
+
+        <!-- start:contents -->
+    </header>  <!-- end:header -->
+
+    <div class="item">
+        ग्राहक बहुत महत्वपूर्ण है, ग्राहक का ग्राहक द्वारा अनुसरण किया जाएगा।
+        यह न तो शीर्षक है और न ही तत्व, बल्कि कभी-कभी एक संपत्ति है।
+        नाव और रियल एस्टेट डेवलपर।
+    </div>
+    <div class="item">
+        कंपनी अपने आप में एक बहुत ही सफल कंपनी है।
+        उन्हें स्वीकार नहीं किया जाना चाहिए; क्योंकि विपत्ति के समय वह पीछे हट जाते है; और एक से वे दर्द नहीं
+        जानते। स्तुतियों के गुण चुनने की पीड़ा अचंभित करती है! मन के काम से क्या दर्द होता है मैं कम समझाऊंगा क्योंकि
+        विपत्ति इस मामले में कुछ भी नहीं है?
+    </div>
+
+    <div>
+        <li><a th:href="@{/home}" title="Melody"><img class="img-circle" src="images/melody.jpeg"></a></li>
+    </div>
+
+</section> <!-- end:section:contents -->
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+
+<!-- body -->
+<body> <!-- start:body -->
+
+<!-- contents -->
+<section layout:fragment="contents"> <!-- start:section:contents -->
+
+    <!-- start:contents -->
+    <header class="box-block"> <!-- start:header -->
+        <!-- start:contents -->
+        <h1 class="text-center">Tasks</h1>
+
+        <div th:if="${message != null}"
+             class="alert alert-success alert-dismissible fade show text-center message"
+             role="alert">
+            [[${message}]]
+            <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="form-container"> <!-- start:form-container -->
+            <form class="form-contents" th:action="@{/tasks}">
+                <div class="row">
+                    <!-- left-column -->
+                    <div class="column">
+                        <div class="flex-container">
+                            <input type="text" id="keyword" name="keyword" th:value="${keyword}"
+                                   required placeholder="Search ...">
+<!--                            <button class="form-button" type="submit"><i class="search-icon fa fa-search"></i></button>-->
+                            <button class="form-button" type="submit"><i class="fa fa-search"></i></button>
+<!--                            <button type="submit"><i class="fa fa-search"></i></button>-->
+                        </div>
+                    </div>
+
+                    <!-- right-column -->
+                    <div class="column">
+                        <button class="form-button" id="btnClearTask">Clear</button>
+                        <button class="form-button" id="btnAddTask">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div> <!-- end:form-container -->
+
+    </header>
+
+    <div class="box-block"> <!-- start:box-block -->
+        <div th:if="${tasks.size() > 0}">
+            <table class="table-style">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Completed</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="task : ${tasks}">
+                    <th scope="row">[[${task.id}]]</th>
+                    <td>[[${task.name}]]</td>
+                    <td>[[${task.description}]]</td>
+                    <td>[[${task.priority}]]</td>
+                    <td>
+                        <a th:if="${task.completed == true}"
+                           th:href="@{'/tasks/' + ${task.id} + '/completed/false'}"
+                           title="Disable Task"></a>
+                        <a th:if="${task.completed == false}"
+                           th:href="@{'/tasks/' + ${task.id} + '/completed/true'}" title="Enable Task"></a>
+                    </td>
+                    <td>
+                        <i class="fa fa-pencil"></i>
+                        <a th:href="@{'/tasks/' + ${task.id}}" title="Edit Task"></a>
+                        &nbsp;
+                        <i class="fa fa-delete"></i>
+                        <a th:href="@{'/tasks/delete/' + ${task.id}}" th:taskTitle="${task.name}"
+                           id="btnDelete" title="Delete Task"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:unless="${tasks.size() > 0}">
+            <span>No tasks found!</span>
+        </div>
+
+
+        <div class="modal fade text-center" id="confirmModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Confirmation</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <span id="confirmText"></span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a type="button" id="yesBtn" class="btn btn-danger">Yes</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end:contents -->
+    </div>  <!-- end:box-block -->
+
+    <!-- javascript -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btn-delete").on("click", function (e) {
+                e.preventDefault();
+                link = $(this);
+
+                taskTitle = link.attr("taskTitle");
+                $("#yesBtn").attr("href", link.attr("href"));
+                $("#confirmText").html("Do you want to delete the task \<strong\>" + taskTitle + "\<\/strong\>?");
+                $("#confirmModal").modal();
+            });
+
+            $("#btnClearTask").on("click", function (e) {
+                e.preventDefault();
+                $("#keyword").text("");
+                window.location = "[[@{/tasks}]]";
+            });
+
+            $("#btnAddTask").on("click", function (e) {
+                e.preventDefault();
+                window.location = "[[@{/tasks/add}]]";
+            });
+        });
+    </script>
+
+</section> <!-- end:section:contents -->
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../../../static/css/styles.css" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../../static/css/form-styles.css"
+          th:href="@{/css/form-styles.css}"/>
+
+    <!-- Title -->
+    <title>Add/Update Marketing</title>
+</head>
+<body>
+<!-- Body Container -->
+<div class="body-container">
+    <!-- Form -->
+    <div class="form-style">
+        <h2 class="center">
+            <!-- if marketing.getId() is null -->
+            <span th:text="${marketing.id == null} ? 'Create ' : 'Update '"/> Marketing
+        </h2>
+        <form action="#" th:action="@{/marketing/save}" th:object="${marketing}" method="post">
+            <div class="section"><span>*</span>Marketing Details</div>
+            <input type="hidden" name="id" th:field="*{id}">
+            <div class="inner-wrap">
+                <label>User ID
+                    <input type="text" th:field="*{userId}" name="userId" placeholder="User ID"/>
+                </label>
+                <label>Name
+                    <input type="text" th:field="*{name}" name="name" placeholder="Name"/>
+                </label>
+            </div>
+
+            <div class="button-section">
+                <input type="submit" name="Submit"/>
+            </div>
+        </form>
+
+    </div>
+
+    <!--Back Button -->
+    <div>
+        <a class="button" href="listMarketings.html" th:href="@{/marketing/list}">Back</a>
+    </div>
+
+</div>
+
+</body>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="js/app.js"></script>
+    <meta charset="UTF-8">
+    <title>Doctors and patients</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="POST">
+    <button id="send" type="submit">Log out</button>
+</form>
+<h1>Hello, [[${doc_and_pat.getUser().getLastName()}]]!</h1>
+<img th:if="${doc_and_pat.userPicUrl} != null"
+     th:attr="src=${doc_and_pat.userPicUrl}" style="max-width: 400px; max-height: 800px">
+<form th:action="@{/user_pic}" method="POST" th:object="${change_pic_dto}">
+    <label for="pic_url">Enter picture url</label>
+    <input id="pic_url" type="url" th:field="*{url}">
+    <button type="submit">Change picture url</button>
+</form>
+<input type="button" onclick="updUser()" value="update User"><br>
+
+<a th:href="@{/monthly_report}">Report management</a>
+
+<h3>Search doctors</h3>
+<form th:action="@{/doctors}" method="GET">
+    <label for="doc_search">Enter search string</label>
+    <input id="doc_search" type="text" name="searchStr">
+    <button type="submit">Search</button>
+</form>
+
+<h3>Use the services of a doctor:</h3>
+<form th:action="@{/services}" method="get">
+    <label for="on_house_r">Call a doctor at home</label>
+    <input type="radio" name="act_type" value="on_house" id="on_house_r">
+    <br>
+
+    <label for="online_r">Online consultation</label>
+    <input type="radio" name="act_type" value="online" id="online_r">
+    <br>
+
+    <button type="submit">Go to Services</button>
+</form>
+
+<h2>Manage your profiles:</h2>
+<h3>Patients:</h3>
+<table border="1" id="patient_table">
+    <tr>
+        <th>Disease</th>
+        <th>Doctor name</th>
+        <th>Date of onset of the disease</th>
+        <th>Date of recovery</th>
+    </tr>
+    <tr th:each="pat : ${doc_and_pat.getPatients()}">
+        <td
+                th:text="${pat.getDisease()}"
+                th:attr="id='pat_dis' + ${pat.getId()}">
+        </td>
+        <td
+                th:text="${pat.getDoctor().getLastName()}"
+                th:attr="id='pat_doc' + ${pat.getId()},
+                    doc_id=${pat.getDoctor().getId()}">
+        </td>
+        <td
+                th:text="${pat.getDiseaseOnsetTime()}"
+                th:attr="id='pat_ons' + ${pat.getId()}">
+        </td>
+        <td
+                th:text="${pat.getEndTimeOfIllness() ?: 'Not cured yet'}"
+                th:attr="id='pat_end' + ${pat.getId()}">
+        </td>
+        <th><input
+                th:attr="id='pat' + ${pat.getId()}"
+                type="button"
+                onclick="updPatient(this.getAttribute('id'))"
+                value="update"
+        /></th>
+    </tr>
+</table>
+
+<h3>Doctors:</h3>
+<table border="1">
+    <tr>
+        <th>Speciality</th>
+    </tr>
+    <tr th:each="doc : ${doc_and_pat.getDoctors()}">
+        <td th:text="${doc.getSpeciality()}"></td>
+        <th><input
+                th:attr="id='doc' + ${doc.getId()}"
+                type="button"
+                onclick="updDoctor(this.getAttribute('id'))"
+                value="update"
+        /></th>
+    </tr>
+</table>
+</body>
+</html>

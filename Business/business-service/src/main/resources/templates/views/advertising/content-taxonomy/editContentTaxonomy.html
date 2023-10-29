@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../static/css/styles.css"
+          th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../static/css/form-styles.css"
+          th:href="@{/css/form-styles.css}"/>
+
+    <!-- Title -->
+    <title>Add/Update Content-Taxonomy</title>
+</head>
+<body>
+<!-- Body Container -->
+<div class="body-container">
+
+    <!-- Form -->
+    <div class="form-style">
+        <h2 class="center">
+            <!-- if contentTaxonomy.getId() is null -->
+            <span th:text="${contentTaxonomy.id == null} ? 'Create ' : 'Update '"/> Content-Taxonomy
+        </h2>
+        <form action="#" th:action="@{/content-taxonomy/save}" th:object="${contentTaxonomy}" method="post">
+            <div class="section"><span>*</span>User Details</div>
+            <input type="hidden" name="id" th:field="*{id}">
+            <div class="inner-wrap">
+                <label>Parent ID
+                    <input type="number" th:field="*{parentId}"
+                           name="parentId" placeholder="Parent ID"/>
+                </label>
+                <label>Name
+                    <input type="text" th:field="*{name}"
+                           name="name" placeholder="Name"/>
+                </label>
+                <label>Tier 1
+                    <input type="text" th:field="*{tier1}"
+                           name="tier1" placeholder="Tier 1"/>
+                </label>
+                <label>Tier 2
+                    <input type="text" th:field="*{tier2}"
+                           name="tier2" placeholder="Tier 2"/>
+                </label>
+                <label>Tier 3
+                    <input type="text" th:field="*{tier3}"
+                           name="tier3" placeholder="Tier 3"/>
+                </label>
+                <label>Tier 4
+                    <input type="text" th:field="*{tier4}"
+                           name="tier4" placeholder="Tier 4"/>
+                </label>
+                <label>Extension
+                    <input type="text" th:field="*{extension}"
+                           name="extension" placeholder="Extension"/>
+                </label>
+                <label>Extension
+                    <input type="number" th:field="*{score}"
+                           name="score" placeholder="Score"/>
+                </label>
+                <label>Confident
+                    <input type="checkbox" th:field="*{confident}"
+                           name="confident" placeholder="Confident"/>
+                </label>
+            </div>
+
+            <div class="button-section">
+                <input type="submit" name="Submit"/>
+            </div>
+        </form>
+
+    </div>
+
+    <!--Back Button -->
+    <div>
+        <a class="button" href="listContentTaxonomies.html" th:href="@{/content-taxonomy/list}">Back</a>
+    </div>
+
+</div>
+
+</body>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+</html>

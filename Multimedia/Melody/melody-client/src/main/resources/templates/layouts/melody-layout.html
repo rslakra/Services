@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:fragment="main-fragment (title, otherStaticResources, header, nav, mainContent, footer)">
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title th:replace="${title}">Melody Layout</title>
+
+    <!-- static-resources -->
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/core-styles.css"
+          th:href="@{/css/core-styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/table-styles.css"
+          th:href="@{/css/table-styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/form-styles.css"
+          th:href="@{/css/form-styles.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/melody-styles.css}"
+          href="../../static/css/melody-styles.css"/>
+
+    <!--    &lt;!&ndash; external css &ndash;&gt;-->
+    <!--    <link rel="stylesheet"-->
+    <!--          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css">-->
+
+    <!-- Other javascript, css source files -->
+    <th:block th:replace="${otherStaticResources} ?: ~{}"></th:block>
+</head>
+<body>
+
+<!-- header -->
+<header th:insert="${header} ?: ~{}">
+    <h2>Page 1</h2>
+</header>
+
+<!-- nav-bar -->
+<section>
+    <!-- nav-bar - left side -->
+    <nav th:insert="${nav} ?: ~{}">
+        <ul>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+        </ul>
+    </nav>
+
+    <!-- main-contents - right side -->
+    <article th:insert="${mainContent} ?: ~{}">
+        <h1>Page 1</h1>
+        <p>Main content of Page 1</p>
+    </article>
+
+</section>
+
+<!--footer -->
+<footer th:insert="${footer} ?: ~{}">
+    <p>Footer</p>
+</footer>
+</body>
+</html>

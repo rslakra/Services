@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/setting-styles.css}"/>
+</head>
+<!-- body -->
+<body> <!-- start:body -->
+
+<!-- contents -->
+<section layout:fragment="contents"> <!-- start:section:contents -->
+    <!-- container -->
+    <div class="box-block"> <!-- start:container -->
+        <h1 class="mb-5">Settings</h1>
+        <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+            <!-- Tabs -->
+            <div class="nav-account-settings border-right">
+                <div class="p-4">
+                    <div class="img-circle text-center mb-3">
+                        <img src="images/rslakra.jpg" alt="Image" class="shadow">
+                    </div>
+                    <h4 class="text-center">Rohtash Lakra</h4>
+                </div>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                     aria-orientation="vertical">
+                    <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab"
+                       aria-controls="account" aria-selected="true">
+                        <i class="fa fa-home text-center mr-1"></i>
+                        Account
+                    </a>
+                    <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab"
+                       aria-controls="password" aria-selected="false">
+                        <i class="fa fa-key text-center mr-1"></i>
+                        Password
+                    </a>
+                    <a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab"
+                       aria-controls="security" aria-selected="false">
+                        <i class="fa fa-user text-center mr-1"></i>
+                        Security
+                    </a>
+                    <a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab"
+                       aria-controls="application" aria-selected="false">
+                        <i class="fa fa-tv text-center mr-1"></i>
+                        Application
+                    </a>
+                    <a class="nav-link" id="notification-tab" data-toggle="pill" href="#notification" role="tab"
+                       aria-controls="notification" aria-selected="false">
+                        <i class="fa fa-bell text-center mr-1"></i>
+                        Notification
+                    </a>
+                </div>
+            </div>
+
+            <!-- Account Settings -->
+            <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="account" role="tabpanel"
+                     aria-labelledby="account-tab">
+                    <h3 class="mb-4">Account Settings</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" value="Rohtash">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" value="Lakra">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" value="rslakra@gmail.com">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Phone number</label>
+                                <input type="text" class="form-control" value="+1 (201) 000-0001">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" class="form-control" value="Lakra Inc.">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Designation</label>
+                                <input type="text" class="form-control" value="Team Builder">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea class="form-control"
+                                          rows="4">कंप्यूटर (अंग्रेजी: Computer) (अन्य हिन्दी नाम - अभिकलित्र, संगणक, अभिकलक, परिकलक) वस्तुतः एक अभिकलक यंत्र (programmable machine) है जो दिये गये गणितीय तथा तार्किक संक्रियाओं को क्रम से स्वचालित रूप से करने में सक्षम है। इसे अंक गणितीय, तार्किक क्रियाओं व अन्य विभिन्न प्रकार की गणनाओं को सटीकता से पूर्ण करने के लिए योजनाबद्ध तरीके से निर्देशित किया जा सकता है।</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Password Settings -->
+                <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                    <h3 class="mb-4">Password Settings</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Old password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>New password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Confirm new password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Security Settings -->
+                <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                    <h3 class="mb-4">Security Settings</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Login</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Two-factor Auth</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="recovery">
+                                    <label class="form-check-label" for="recovery">
+                                        Recovery
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Application Settings -->
+                <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
+                    <h3 class="mb-4">Application Settings</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="appCheck">
+                                    <label class="form-check-label" for="appCheck">
+                                        App check
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           id="defaultTimezone">
+                                    <label class="form-check-label" for="defaultTimezone">
+                                        Default Timezone
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           id="defaultLanguage">
+                                    <label class="form-check-label" for="defaultLanguage">
+                                        Default Language
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+                    <h3 class="mb-4">Notification Settings</h3>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="allowEmails">
+                            <label class="form-check-label" for="allowEmails">Send Email</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="allowTexts">
+                            <label class="form-check-label" for="allowTexts">Receive Text Messages</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="allowNewsletter">
+                            <label class="form-check-label" for="allowNewsletter">Receive Weekly
+                                Newsletter</label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</section> <!-- end:section:contents -->
+
+</body>
+</html>

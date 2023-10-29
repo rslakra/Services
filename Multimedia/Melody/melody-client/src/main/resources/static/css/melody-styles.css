@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* screen distribution */
+    /* left-side-menu */
+    --left-side-menu-width: 20%;
+
+    /* right-side-menu */
+    --right-side-menu-width: 80%;
+
+    /* float-direction */
+    --float-direction: left;
+
+}
+
+header {
+    background-color: var(--secondary-color);
+    padding: 16px;
+    text-align: center;
+    font-size: 32px;
+    color: white;
+}
+
+nav {
+    float: var(--float-direction);
+    width: var(--left-side-menu-width);
+    /*height: 300px;*/
+    /*background: #ccc;*/
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+article {
+    background-color: var(--primary-background-color);
+    width: var(--right-side-menu-width);
+    float: var(--float-direction);
+    padding: 20px;
+    /*height: 300px;*/
+}
+
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    padding: 16px;
+    text-align: center;
+    color: white;
+}
+
+.buttons-bar {
+    padding: 16px 0px 16px 0px;
+}
+
+/* table-styles */
+table {
+    border: 1px solid var(--secondary-table-color);
+}
+
+table > tbody > tr > td, table > thead > tr > th {
+    border-left: 1px dotted var(--secondary-table-color);
+}
+
+table > tbody > tr, table > thead > tr {
+    border-bottom: 1px solid var(--secondary-table-color);
+}
+
+table th {
+    background-color: var(--secondary-table-color);
+}
+
+
+/*The Unordered List HTML element can be manipulated by using CSS to create clickable buttons.*/
+
+.buttons li a {
+    /*Now we style the link. We remove the line that appears under the link.*/
+    text-decoration: none;
+    display: block;
+    color: #000000;
+    /*border: 2px solid #666;*/
+    padding: 16px;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.buttons li a:hover {
+    /*Now we style the link. We remove the line that appears under the link.*/
+    color: #000000;
+    background-color: #69E;
+}
+
+
+@media ( max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}

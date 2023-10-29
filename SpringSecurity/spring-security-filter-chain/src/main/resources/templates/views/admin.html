@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+<div layout:fragment="dContents">
+    <div class="container">
+        <div class="row">
+            <a class="btn text-right" th:href="@{/index}">Home</a>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    Welcome <span sec:authentication="principal.username">User</span>
+                </p>
+                <div sec:authorize="isRememberMe()">
+                    The user: <span sec:authentication="name"></span> is logged in by "Remember Me Cookies".
+                </div>
+
+                <div sec:authorize="isFullyAuthenticated()">
+                    The user: <span sec:authentication="name"></span> is logged in by "Username/Password".
+                </div>
+                <p>
+                    <a th:href="@{/logout}">Logout</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>
+            &copy; Arcturus
+            <span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                | Logged user: <span sec:authentication="name"></span>
+                | Roles: <span sec:authentication="principal.authorities"></span>
+                | <a th:href="@{/logout}">Sign Out</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Monthly report</title>
+    <script type="module" src="js/util.js"></script>
+    <script type="module" src="js/report_actions.js"></script>
+</head>
+<body>
+<meta id="_csrf_token" th:attr="val = ${csrf_token.getToken()}">
+<meta id="_csrf_header" th:attr="val = ${csrf_token.getHeaderName()}">
+
+<form th:action="@{/monthly_report}" method="POST"
+      enctype="multipart/form-data"
+>
+    <label for="file_inp">Upload new report</label>
+    <input id="file_inp" type="file" name="file">
+    <input type="submit" value="send!">
+</form>
+
+<table border="1" id="reports_table">
+    <tr>
+        <th>Report name</th>
+    </tr>
+    <tr th:each="report_name : ${reports_names}">
+        <td th:text="${report_name}"></td>
+        <td><a th:href="@{/rename_report/{nm}(nm = ${report_name})}">
+            Change report name
+        </a></td>
+        <td><input
+                th:attr="rep_name=${report_name}"
+                type="button"
+                onclick="deleteReport(this.getAttribute('rep_name'))"
+                value="delete"
+        /></td>
+    </tr>
+</table>
+</body>
+</html>

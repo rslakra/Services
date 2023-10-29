@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--    <div th:insert="fragments/header :: header">Header</div>-->
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/core-styles.css"
+          th:href="@{/css/core-styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/form-styles.css"
+          th:href="@{/css/form-styles.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/sidebar-styles.css"
+          th:href="@{/css/sidebar-styles.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css">
+
+    <!-- Title -->
+    <title>The Melody Service</title>
+</head>
+
+<body>
+
+<!-- nav:sidebar-start -->
+<nav class="sidebar close">
+    <header>
+        <div class="image-text">
+            <span class="image">
+                <a href="home.html" th:href="@{/home}">
+                    <img src="images/logo.png" alt="Melody">
+                </a>
+                <!-- <img src="images/logo.png" alt="Logo" /> -->
+            </span>
+
+            <div class="text logo-text">
+                <span class="name">Lakra Inc</span>
+                <span class="profession">Architect</span>
+            </div>
+        </div>
+
+        <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+        <div class="menu">
+
+            <li class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="text" placeholder="Search...">
+            </li>
+
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="index.html" th:href="@{/}">
+                        <i class='bx bx-arch icon'></i>
+                        <span class="text nav-text">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="home.html" th:href="@{/home}">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- roles -->
+                <li class="nav-link">
+                    <a href="account/role/listRoles.html" th:href="@{/roles/list}">
+                        <i class='bx bx-aperture icon'></i>
+                        <span class="text nav-text">Roles</span>
+                    </a>
+                </li>
+
+                <!-- users -->
+                <li class="nav-link">
+                    <a href="account/user/listUsers.html" th:href="@{/users/list}">
+                        <i class='bx bx-user-circle icon'></i>
+                        <span class="text nav-text">Users</span>
+                    </a>
+                </li>
+
+                <!-- artists -->
+                <li class="nav-link">
+                    <a href="artist/listArtists.html" th:href="@{/artists/list}">
+                        <i class='bx bx-user-voice icon'></i>
+                        <span class="text nav-text">Artists</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="song/listSongs.html" th:href="@{/songs/list}">
+                        <i class='bx bx-music icon'></i>
+                        <span class="text nav-text">Songs</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bar-chart-alt-2 icon'></i>
+                        <span class="text nav-text">Revenue</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bell icon'></i>
+                        <span class="text nav-text">Notifications</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-pie-chart-alt icon'></i>
+                        <span class="text nav-text">Analytics</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-like icon'></i>
+                        <span class="text nav-text">Likes</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-wallet icon'></i>
+                        <span class="text nav-text">Wallets</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="bottom-content">
+            <li class="">
+                <a href="#">
+                    <i class='bx bx-log-out icon'></i>
+                    <span class="text nav-text">Logout</span>
+                </a>
+            </li>
+
+            <li class="mode">
+                <div class="sun-moon">
+                    <i class='bx bx-moon icon moon'></i>
+                    <i class='bx bx-sun icon sun'></i>
+                </div>
+                <span class="mode-text text">Dark mode</span>
+
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li>
+        </div>
+
+    </div>
+
+</nav> <!-- nav:sidebar-end -->
+
+<!-- section:home-start -->
+<section class="home">
+    <div class="text">Dashboard</div>
+
+    <!-- Body Container -->
+    <div class="text body-container">
+        <p>
+            An acronym is a word or name formed from the initial components of a longer name or phrase. Acronyms are
+            usually formed from the initial letters of words, as in NATO (North Atlantic Treaty Organization), but
+            sometimes use syllables, as in Benelux (short for Belgium, the Netherlands, and Luxembourg). They can also
+            be a mixture, as in radar (Radio Detection And Ranging).
+        </p>
+        <p>
+            Acronyms can be pronounced as words, like NASA and UNESCO; as individual letters, like FBI, TNT, and ATM; or
+            as both letters and words, like JPEG (pronounced JAY-peg) and IUPAC. Some are not universally pronounced one
+            way or the other and it depends on the speaker's preference or the context in which it is being used, such
+            as SQL (either "sequel" or "ess-cue-el").
+        </p>
+        <p>
+            The broader sense of acronym—the meaning of which includes terms pronounced as letters—is sometimes
+            criticized, but it is the term's original meaning[1] and is in common use.[2] Dictionary and style-guide
+            editors are not in universal agreement on the naming for such abbreviations, and it is a matter of some
+            dispute whether the term acronym can be legitimately applied to abbreviations which are not pronounced "as
+            words", nor do these language authorities agree on the correct use of spacing, casing, and punctuation.
+        </p>
+        <p>
+            Abbreviations formed from a string of initials and usually pronounced as individual letters are sometimes
+            more specifically called initialisms[3] or alphabetisms; examples are FBI from Federal Bureau of
+            Investigation, and e.g. from Latin exempli gratia.
+        </p>
+
+        <a href="https://en.wikipedia.org/wiki/Acronym">Reference</a>
+    </div>
+
+</section> <!-- section:home-end -->
+
+</body>
+
+<!-- javascript -->
+<script type="text/javascript" href="../static/js/actions.js" th:src="@{/js/actions.js}"></script>
+
+<!-- Footer -->
+<!--<div th:replace="~{fragments/footer::footer}">Footer</div>-->
+
+<footer class="footer">
+    <div th:insert="~{fragments/footer::footer}"></div>
+</footer>
+
+</html>
+

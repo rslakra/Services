@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Melody Client</title>
+</head>
+<body>
+
+<!-- Default Navigator -->
+<ul class="buttons" th:fragment="nav-default">
+    <li><a th:href="@{/home}">Home</a></li>
+    <li><a th:href="@{/roles/list}">Roles</a></li>
+    <li><a th:href="@{/users/list}">Users</a></li>
+    <li><a th:href="@{/artists/list}">Artists</a></li>
+    <li><a th:href="@{/songs/list}">Songs</a></li>
+    <li><a th:href="@{/about-us}">About Us</a></li>
+    <li><a th:href="@{/contact-us}">Contact Us</a></li>
+</ul>
+
+<!-- Admin Navigator -->
+<ul th:fragment="nav-admin">
+    <li><a th:href="@{/v1/admin/products}">Product Management</a></li>
+    <li><a th:href="@{/v1/admin/orders}">Order Management</a></li>
+</ul>
+
+</body>
+</html>

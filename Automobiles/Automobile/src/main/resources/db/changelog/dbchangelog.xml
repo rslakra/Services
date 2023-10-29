@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- create sequences -->
+    <changeSet author="rslakra" id="create_sequences">
+        <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1"/>
+    </changeSet>
+
+    <!-- users -->
+    <changeSet author="rslakra" id="create_users_table">
+        <createTable tableName="users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_user_id"
+                             unique="true" uniqueConstraintName="uk_user_id"
+                             nullable="false"/>
+            </column>
+            <column name="email" type="varchar(64)">
+                <constraints unique="true" uniqueConstraintName="uk_user_email"
+                             nullable="false"/>
+            </column>
+            <column name="password" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="middle_name" type="varchar(64)"/>
+            <column name="last_name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <!--        <sql dbms="h2, oracle, mysql" endDelimiter=";"-->
+        <!--             splitStatements="true" stripComments="true">-->
+        <!--            <comment>Insert Users</comment>-->
+        <!--            INSERT INTO users (email, password, first_name, last_name, status, role, created_on, created_at, created_by,-->
+        <!--                               updated_on, updated_at, updated_by)-->
+        <!--            VALUES ('rslakra@gmail.com', '$2a$10$ewE/Ij6hx6igF5lpa88ONe63sKGvQ58BAAvY4FevbilW/FOnLI8m2',-->
+        <!--                    'Rothash Singh', 'Lakra', 'INACTIVE', 'ROLE_ADMIN', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'rslakra',-->
+        <!--                    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'rslakra'),-->
+        <!--                   ('rsingh@gmail.com', '$2a$10$ewE/Ij6hx6igF5lpa88ONe63sKGvQ58BAAvY4FevbilW/FOnLI8m2', 'Rohtash',-->
+        <!--                    'Singh', 'INACTIVE', 'ROLE_USER', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'rslakra',-->
+        <!--                    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'rslakra'),-->
+        <!--                   ('rlakra@gmail.com', '$2a$10$ewE/Ij6hx6igF5lpa88ONe63sKGvQ58BAAvY4FevbilW/FOnLI8m2', 'R Singh',-->
+        <!--                    'Lakra', 'INACTIVE', 'ROLE_USER', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'rslakra',-->
+        <!--                    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'rslakra');-->
+        <!--        </sql>-->
+    </changeSet>
+
+    <!-- service_types -->
+    <changeSet author="rslakra" id="create_service_types_table">
+        <createTable tableName="service_types">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_service_type_id"
+                             unique="true" uniqueConstraintName="uk_service_type_id"
+                             nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- appointments -->
+    <changeSet author="rslakra" id="create_appointments_table">
+        <createTable tableName="appointments">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_appointment_id"
+                             unique="true" uniqueConstraintName="uk_appointment_id"
+                             nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints foreignKeyName="fk_user_appointments"
+                             referencedTableName="users" referencedColumnNames="id"
+                             validateForeignKey="true" nullable="false"/>
+            </column>
+            <column name="make" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="model" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="appointment_on" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(64)"/>
+            <column name="created_on" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- services -->
+    <changeSet author="rslakra" id="create_services_table">
+        <createTable tableName="services">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_service_id"
+                             unique="true" uniqueConstraintName="uk_service_id"
+                             nullable="false"/>
+            </column>
+            <column name="appointment_id" type="BIGINT">
+                <constraints foreignKeyName="fk_appointment_services"
+                             referencedTableName="appointments" referencedColumnNames="id"
+                             validateForeignKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints unique="true" uniqueConstraintName="uk_service_name" nullable="false"/>
+            </column>
+            <column name="created_on" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
