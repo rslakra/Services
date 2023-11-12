@@ -1,0 +1,124 @@
+#----------------< Logger Configuration >----------------
+#logging:
+#  level:
+#    org.springframework.web: INFO
+#    org.hibernate.SQL: INFO
+#    org.hibernate.type.descriptor.sql.BasicBinder: INFO
+
+#----------------< API Configuration >----------------
+apiPrefix: /api/v1
+restPrefix: /rest
+
+#----------------< UserService Configuration >----------------
+# Server Settings
+# <code>http://localhost:8080</code>
+# <code>http://localhost:8080/index.html</code>
+#
+server:
+  port: 8080
+  #  servlet:
+  #    context-path: /shipwreck
+  error:
+    #    include-binding-errors: always
+    #    include-stacktrace: never
+    include-message: always
+
+management:
+  server:
+    port: 9080
+    address: 127.0.0.1
+
+#----------------< Spring Configuration >----------------
+spring:
+
+  # Launch Application
+  # http://localhost:8080
+  # http://localhost:8080/index.html
+
+  #----------------< Data Source Configuration >----------------
+  datasource:
+    #----------------< Data Source Pooling Configuration >----------------
+#    tomcat:
+#      max-active: 10
+#      max-idle: 2
+#      max-wait: 10000
+#      min-evictable-idle-time-millis: 1000
+#      min-idle: 2
+#      time-between-eviction-runs-millis: 1
+
+    #----------------< H2 Database Configuration >----------------
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/Downloads/H2DB/ShipWreck;AUTO_SERVER=TRUE;
+    username: sa
+    password:
+
+    #----------------< Hikari Settings >----------------
+    hikari:
+      allow-pool-suspension: false
+      maximum-pool-size: 2
+
+  #----------------< Flyway Settings >----------------
+  flyway:
+    baseline-on-migrate: true
+#    url: jdbc:h2:file:~/Downloads/H2DB/ShipWreck;AUTO_SERVER=TRUE;
+#    user: sa
+#    password: a
+#    driver-class-name: org.h2.Driver
+
+  #----------------< Liquibase Settings >----------------
+#  liquibase:
+    #  spring.liquibase.change-log = classpath:db/changelog/dbchangelog.xml
+#    change-log: classpath:db/changelog/dbchangelog.xml
+  #    enabled: false
+  #    drop-first: true
+
+  #----------------< JPA Settings >----------------
+  jpa:
+    # Therefore, database queries may be performed during view rendering.
+    # Explicitly configure spring.jpa.open-in-view to disable this warning
+    # spring.jpa.open-in-view is enabled by default.
+    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    #    defer-datasource-initialization: true
+    show-sql: true
+
+    hibernate:
+      ddl-auto: none
+    #      ddl-auto: create-drop
+
+  #----------------< H2 Console Settings >----------------
+  # <code>http://localhost:8080/h2</code>
+  #
+  h2:
+    console:
+      # Enabling H2 Console
+      enabled: true
+      # Custom H2 Console URL
+      path: /h2
+      settings.trace: false
+    #      settings.web-allow-others: false
+
+
+    #The bean 'jpaAuditingHandler', defined in null, could not be registered.
+    # A bean with that name has already been defined in null and overriding is disabled.
+  #  main:
+  #    allow-bean-definition-overriding: true
+
+  #----------------< SQL Settings >----------------
+  #  sql:
+  #    init:
+  #      data-locations: /db/schema.sql
+
+  #----------------< Spring Chain Strategy Settings >----------------
+  # Spring Chain Strategy Settings
+  #
+  # To use cache busting, the following configuration will configure a cache busting solution for all static
+  # resources, effectively adding a content hash in URLs,
+  # such as <link href="/css/spring-2a2d595e6ed9a0b24f027f2b63b134d6.css"/>:
+  web:
+    resources:
+      chain:
+        strategy:
+          content:
+            enabled: true
+            paths: /**

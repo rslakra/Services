@@ -1,0 +1,7 @@
+#----------------< UserService Configuration >----------------
+# Server Settings
+# <code>http://localhost:8080</code>
+# <code>http://localhost:8080/index.html</code>
+#
+server:
+  port: 80

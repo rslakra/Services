@@ -1,0 +1,19 @@
+#----------------< UserService Configuration >----------------
+# Server Settings
+server:
+  port: 8116
+
+#----------------< Spring Configuration >----------------
+spring:
+
+  # Launch Application
+  # http://localhost:8080
+  # http://localhost:8080/index.html
+
+  #----------------< Data Source Configuration >----------------
+  datasource:
+    #----------------< H2 Database Configuration >----------------
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/Downloads/H2DB/ShipWreckTest;AUTO_SERVER=TRUE;
+    username: sa
+    password:
