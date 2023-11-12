@@ -33,6 +33,9 @@ dist/
 .gradle/
 gradle/
 
+# Avoid ignore Gradle wrappper properties
+!gradle-wrapper.properties
+
 ### STS ###
 .apt_generated
 .classpath
