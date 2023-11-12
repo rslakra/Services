@@ -4,6 +4,9 @@
 [submodule "Business"]
 	path = Business
 	url = git@github.com:rslakra/Business.git
+[submodule "Commerce"]
+	path = Commerce
+	url = git@github.com:rslakra/Commerce.git
 [submodule "Commodity"]
 	path = Commodity
 	url = git@github.com:rslakra/Commodity.git
@@ -13,9 +16,6 @@
 [submodule "Healthcare"]
 	path = Healthcare
 	url = git@github.com:rslakra/Healthcare.git
-[submodule "Manufacturing"]
-	path = Manufacturing
-	url = git@github.com:rslakra/Manufacturing.git
 [submodule "Manufacturing"]
 	path = Manufacturing
 	url = git@github.com:rslakra/Manufacturing.git
