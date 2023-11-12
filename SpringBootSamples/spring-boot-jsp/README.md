@@ -1,5 +1,0 @@
-# SpringBootJSP
-
-# Authors
-
-- Rohtash Lakra

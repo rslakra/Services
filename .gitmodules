@@ -1,0 +1,37 @@
+[submodule "Automobiles"]
+	path = Automobiles
+	url = git@github.com:rslakra/Automobiles.git
+[submodule "Business"]
+	path = Business
+	url = git@github.com:rslakra/Business.git
+[submodule "Education"]
+	path = Education
+	url = git@github.com:rslakra/Education.git
+[submodule "Healthcare"]
+	path = Healthcare
+	url = git@github.com:rslakra/Healthcare.git
+[submodule "Manufacturing"]
+	path = Manufacturing
+	url = git@github.com:rslakra/Manufacturing.git
+[submodule "Manufacturing"]
+	path = Manufacturing
+	url = git@github.com:rslakra/Manufacturing.git
+[submodule "Monitoring"]
+	path = Monitoring
+	url = git@github.com:rslakra/Monitoring.git
+[submodule "Multimedia"]
+	path = Multimedia
+	url = git@github.com:rslakra/Multimedia.git
+[submodule "Samples"]
+	path = Samples
+	url = git@github.com:rslakra/Samples.git
+[submodule "SpringSecurity"]
+	path = SpringSecurity
+	url = git@github.com:rslakra/SpringSecurity.git
+[submodule "Technology"]
+	path = Technology
+	url = git@github.com:rslakra/Technology.git
+[submodule "Transportation"]
+	path = Transportation
+	url = git@github.com:rslakra/Transportation.git
+
