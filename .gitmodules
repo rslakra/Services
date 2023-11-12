@@ -4,6 +4,9 @@
 [submodule "Business"]
 	path = Business
 	url = git@github.com:rslakra/Business.git
+[submodule "Commodity"]
+	path = Commodity
+	url = git@github.com:rslakra/Commodity.git
 [submodule "Education"]
 	path = Education
 	url = git@github.com:rslakra/Education.git
