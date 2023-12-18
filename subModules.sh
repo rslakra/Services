@@ -16,7 +16,7 @@ echo
 for dir in $(pwd)/*/;
 do
   dirName=$(basename "${dir}");
-  echo "Syncing [[${dirName}] ..."
+  echo "Syncing [${dirName}] ..."
   cd ${dirName}
   git checkout master
   cd ..
