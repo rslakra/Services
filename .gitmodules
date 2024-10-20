@@ -1,6 +1,6 @@
-[submodule "Automobiles"]
-	path = Automobiles
-	url = git@github.com:rslakra/Automobiles.git
+[submodule "Automotive"]
+	path = Automotive
+	url = git@github.com:rslakra/Automotive.git 
 [submodule "Business"]
 	path = Business
 	url = git@github.com:rslakra/Business.git
