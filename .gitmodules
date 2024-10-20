@@ -19,9 +19,12 @@
 [submodule "Logistics"]
 	path = Logistics
 	url = git@github.com:rslakra/Logistics.git
-[submodule "Manufacturing"]
-	path = Manufacturing
-	url = git@github.com:rslakra/Manufacturing.git
+[submodule "Logistics/YatraSuite"]
+	path = Logistics/YatraSuite
+	url = git@github.com:rslakra/YatraSuite.git
+[submodule "Production"]
+	path = Production
+	url = git@github.com:rslakra/Production.git
 [submodule "Monitoring"]
 	path = Monitoring
 	url = git@github.com:rslakra/Monitoring.git
