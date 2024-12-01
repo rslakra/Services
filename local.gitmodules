@@ -1,0 +1,3 @@
+[submodule "Technology/Posts"]
+	path = Technology/Posts
+	url = git@github.com:rlakra-tinker/Posts.git
