@@ -5,7 +5,10 @@
 The ```Services``` project contains various services.
 
 
-## Project Structure
+## Folder Structure/Conventions
+
+---
+
 ```
     /
     ├── <module>                # The module service
@@ -23,6 +26,12 @@ The ```Services``` project contains various services.
     ├── Samples                 # The Samples services
     ├── Security                # The Security services
     ├── Technology              # The Technology services
+    |    ├── modules                # The modules
+    |    ├── <service>              # The Service
+    |    |    ├── <service>-iws     # The <service>-iws Service
+    |    |    ├── webapp            # The WebApp for Service
+    |    |    └── README.md
+    |    └── README.md
     ├── README.md               # Instructions and helpful links
     ├── robots.txt              # tells which URLs the search engine crawlers can access on your site
     └── <module>                # The module service
@@ -70,6 +79,41 @@ The ```Services``` project contains various services.
 ```shell
 ```
 
+
+
+### Java Conventions
+
+#### Package Name Conventions
+
+Java package naming conventions are important for organizing code and avoiding naming conflicts. 
+Here's a breakdown of the key rules:
+
+- Lowercase:
+
+    All package names should be in lowercase letters to avoid conflicts with class or interface names.
+
+
+- Reverse Domain Name:
+
+  Use your reversed internet domain name as the prefix for your package names.
+  For example, if your domain is ```example.com```, your package names would start with ```com.example```.
+
+
+- Meaningful Names:
+
+    Use meaningful names that describe the purpose of the package and its contents.
+
+
+- Subpackages:
+
+    Organize code further using subpackages separated by dots (.). For instance, com.example.utilities or com.example.myapp.models.
+
+
+- Avoid Underscores:
+
+    Avoid using underscores (_) in package names.
+
+
 # Reference
 
 - [Python Readme](Python.md)
@@ -86,6 +130,8 @@ The ```Services``` project contains various services.
 ```text
 MAJOR.MINOR.PATCH.BUILD
 ```
+
+### Benefits
 
 - Organization:
 
