@@ -114,24 +114,7 @@ Here's a breakdown of the key rules:
     Avoid using underscores (_) in package names.
 
 
-# Reference
-
-- [Python Readme](Python.md)
-
-
-## Contribution Guidelines
-
-* Writing tests
-* Code review
-* Other Guidelines
-
-## Version
-
-```text
-MAJOR.MINOR.PATCH.BUILD
-```
-
-### Benefits
+#### Benefits of Packages
 
 - Organization:
 
@@ -184,11 +167,40 @@ One generic endpoint:
 
 
 
+# Docker Version
+```shell
+docker --version
+```
+
+# AWS Version
+```shell
+aws --version
+```
+
+
+
 # Reference
 
 ---
 
+- [Automotive](./Automotive/README.md)
+- [Business](./Business/README.md)
+- [Commerce](./Commerce/README.md)
+- [Commodity](./Commodity/README.md)
+- [Education](./Education/README.md)
+- [Healthcare](./Healthcare/README.md)
+- [Infrastructure](./Infrastructure/README.md)
+- [Docker](./Infrastructure/Docker/README.md)
+- [Apache HTTP Server](./Infrastructure/Docker/Apache%20HTTP%20Server/README.md)
+- [Jenkins](./Infrastructure/Docker/Jenkins/README.md)
+- [Logistics](./Logistics/README.md)
+- [Monitoring](./Monitoring/README.md)
+- [Multimedia](./Multimedia/README.md)
+- [Samples](./Samples/README.md)
+- [Technology](./Technology/README.md)
 - [The Java™ Tutorials - Naming a Package](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html)
+- [Python](Python.md)
+- [Web Links](./WebLinks.md)
 
 
 
@@ -197,3 +209,29 @@ One generic endpoint:
 ---
 
 - Rohtash Lakra
+
+
+
+# Build Version Structure
+```json
+{
+    "MAJOR": "MAJOR",
+    "MINOR": "MINOR",
+    "PATCH": "PATCH",
+    "PRE-RELEASE": "PRE-RELEASE",
+    "BUILD": "BUILD"
+}
+```
+OR
+
+```text
+MAJOR.MINOR.PATCH.PRE-RELEASE.BUILD
+```
+
+
+
+# Contribution Guidelines
+
+* Writing tests
+* Code review
+* Other Guidelines
