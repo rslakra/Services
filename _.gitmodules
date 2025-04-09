@@ -1,0 +1,57 @@
+[submodule "Automotive"]
+	path = Automotive
+	url = https://github.com/rslakra/Automotive.git
+[submodule "Business"]
+	path = Business
+	url = https://github.com/rslakra/Business.git
+[submodule "Business/retail-suite"]
+	path = Business/retail-suite
+	url = https://github.com/rslakra/retail-suite.git
+[submodule "Commerce"]
+	path = Commerce
+	url = https://github.com/rslakra/Commerce.git
+[submodule "Commodity"]
+	path = Commodity
+	url = https://github.com/rslakra/Commodity.git
+[submodule "Education"]
+	path = Education
+	url = https://github.com/rslakra/Education.git
+[submodule "Healthcare"]
+	path = Healthcare
+	url = https://github.com/rslakra/Healthc
+[submodule "Infrastructure"]
+	path = Infrastructure
+	url = git@github.com:rslakra/Infrastructure.git
+[submodule "Logistics"]
+	path = Logistics
+	url = https://github.com/rslakra/Logistics.git
+[submodule "Logistics/YatraSuite"]
+	path = Logistics/YatraSuite
+	url = https://github.com/rslakra/YatraSuite.git
+[submodule "Production"]
+	path = Production
+	url = https://github.com/rslakra/Production.git
+[submodule "Monitoring"]
+	path = Monitoring
+	url = https://github.com/rslakra/Monitoring.git
+[submodule "Multimedia"]
+	path = Multimedia
+	url = https://github.com/rslakra/Multimedia.git
+[submodule "Samples"]
+	path = Samples
+	url = https://github.com/rslakra/Samples.git
+[submodule "SpringSecurity"]
+	path = SpringSecurity
+	url = https://github.com/rslakra/SpringSecurity.git
+[submodule "Technology"]
+	path = Technology
+	url = https://github.com/rslakra/Technology.git
+[submodule "Technology/Posts"]
+	path = Technology/Posts
+	url = https://github.com/rlakra/Posts.git
+[submodule "Technology/WebCrawler"]
+	path = Technology/WebCrawler
+	url = https://github.com/rlakra/WebCrawler.git
+[submodule "cheat-sheets"]
+    path = cheat-sheets
+    url = https://github.com/rslakra/cheat-sheets.git
