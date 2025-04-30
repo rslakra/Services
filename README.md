@@ -183,6 +183,7 @@ aws --version
 
 ---
 
+- [MVN Repository](https://mvnrepository.com)
 - [Automotive](./Automotive/README.md)
 - [Business](./Business/README.md)
 - [Commerce](./Commerce/README.md)
