@@ -5,6 +5,15 @@
 The ```Services``` project contains various services.
 
 
+## Build Status
+
+
+| Build | Tests | GitHub Pages                                                                                                                                                                                                 |
+|:------|:------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|       |       | [![Deploy Static Contents to Pages](https://github.com/rslakra/Services/actions/workflows/maven-publish-pages.yml/badge.svg)](https://github.com/rslakra/Services/actions/workflows/maven-publish-pages.yml) |
+
+
+
 ## Folder Structure/Conventions
 
 ---
