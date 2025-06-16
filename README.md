@@ -187,6 +187,13 @@ aws --version
 ```
 
 
+# Remove All Comments after a commit
+- Get a commit you want to move to i.e. ```aea90b5```
+```shell
+git reset --hard aea90b5
+git push -f
+```
+
 
 # Reference
 
