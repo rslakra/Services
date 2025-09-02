@@ -19,31 +19,34 @@ The ```Services``` project contains various services.
 ---
 
 ```
-    /
-    ├── <module>                # The module service
-    ├── Automotive              # The Automotive services
-    ├── Business                # The Business services
-    ├── cheat-sheets            # The cheat-sheets project
-    ├── Commerce                # The Commerce services
-    ├── Commodity               # The Commodity services
-    ├── Education               # The Education services
-    ├── Healthcare              # The Healthcare services
-    ├── Logistics               # The Logistics services
-    ├── Monitoring              # The Monitoring services
-    ├── Multimedia              # The Multimedia services
-    ├── Production              # The Production services
-    ├── Samples                 # The Samples services
-    ├── Security                # The Security services
-    ├── Technology              # The Technology services
-    |    ├── modules                # The modules
-    |    ├── <service>              # The Service
-    |    |    ├── <service>-iws     # The <service>-iws Service
-    |    |    ├── webapp            # The WebApp for Service
-    |    |    └── README.md
-    |    └── README.md
-    ├── README.md               # Instructions and helpful links
-    ├── robots.txt              # tells which URLs the search engine crawlers can access on your site
-    └── <module>                # The module service
+/
+├── <module>                    # The module service
+├── Automotive                  # The Automotive services
+├── Business                    # The Business services
+├── cheat-sheets                # The cheat-sheets project
+├── Commerce                    # The Commerce services
+├── Commodity                   # The Commodity services
+├── Education                   # The Education services
+├── Healthcare                  # The Healthcare services
+├── Logistics                   # The Logistics services
+├── Monitoring                  # The Monitoring services
+├── Multimedia                  # The Multimedia services
+├── Production                  # The Production services
+├── Samples                     # The Samples services
+├── Security                    # The Security services
+├── Technology                  # The Technology services
+│    ├── modules                # The modules
+│    ├── <service>              # The Service
+│    │    ├── <service>-iws     # The <service>-iws Service
+│    │    ├── webapp            # The WebApp for Service
+│    │    ├── README.md
+│    │    └── /
+│    ├── README.md
+│    └── /
+├── README.md                   # Instructions and helpful links
+├── robots.txt                  # tells which URLs the search engine crawlers can access on your site
+├── <module>                    # The module service
+└── /
 ```
 
 ## Project Setup
