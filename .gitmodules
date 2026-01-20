@@ -37,6 +37,9 @@
 [submodule "Samples"]
 	path = Samples
 	url = git@github.com:rslakra/Samples.git
+[submodule "Sports"]
+        path = Sports
+        url = git@github.com:rslakra/Sports.git
 [submodule "SpringSecurity"]
 	path = SpringSecurity
 	url = git@github.com:rslakra/SpringSecurity.git
