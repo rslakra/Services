@@ -49,6 +49,24 @@ The ```Services``` project contains various services.
 └── /
 ```
 
+
+# Build Version Structure
+```json
+{
+    "MAJOR": "MAJOR",
+    "MINOR": "MINOR",
+    "PATCH": "PATCH",
+    "PRE-RELEASE": "PRE-RELEASE",
+    "BUILD": "BUILD"
+}
+```
+OR
+
+```text
+MAJOR.MINOR.PATCH.PRE-RELEASE.BUILD
+```
+
+
 ## Project Setup
 
 * Configuration
@@ -223,31 +241,22 @@ git push -f
 - [Web Links](./WebLinks.md)
 
 
+## External Reference
+
+- [online-store](https://erd.dbdesigner.net/designer/schema/169624-online-store)
+- [Schema](https://app.dbdesigner.net/designer/schema/55051)
+- [Vehicle](https://schema.org/Vehicle)
+
+- [jpa-one-to-one](https://www.baeldung.com/jpa-one-to-one)
+- [hypersistence](https://github.com/vladmihalcea/hypersistence-utils/blob/master/)
+- [hypersistence-utils-hibernate](hypersistence-utils-hibernate-62/src/main/java/io/hypersistence/utils/hibernate/util/ReflectionUtils.java)
+
 
 # Author
 
 ---
 
 - Rohtash Lakra
-
-
-
-# Build Version Structure
-```json
-{
-    "MAJOR": "MAJOR",
-    "MINOR": "MINOR",
-    "PATCH": "PATCH",
-    "PRE-RELEASE": "PRE-RELEASE",
-    "BUILD": "BUILD"
-}
-```
-OR
-
-```text
-MAJOR.MINOR.PATCH.PRE-RELEASE.BUILD
-```
-
 
 
 # Contribution Guidelines
