@@ -1,0 +1,38 @@
+name: Samples Authentication - JWT Authentication CI
+
+on:
+  push:
+    paths:
+      - "Samples/Python/Authentication/jwt-authentication/**"
+      - ".github/workflows/samples-jwt-authentication-ci.yml"
+  pull_request:
+    paths:
+      - "Samples/Python/Authentication/jwt-authentication/**"
+      - ".github/workflows/samples-jwt-authentication-ci.yml"
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: Samples/Python/Authentication/jwt-authentication
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: Samples/Python/Authentication/jwt-authentication/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p "test_*.py" -t . -v

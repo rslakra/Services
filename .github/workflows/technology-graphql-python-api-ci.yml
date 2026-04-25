@@ -1,0 +1,45 @@
+name: Technology - GraphQL Python API CI
+
+on:
+  push:
+    paths:
+      - "Technology/graphql-python-api/**"
+      - ".github/workflows/technology-graphql-python-api-ci.yml"
+  pull_request:
+    paths:
+      - "Technology/graphql-python-api/**"
+      - ".github/workflows/technology-graphql-python-api-ci.yml"
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: Technology/graphql-python-api
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: Technology/graphql-python-api/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: |
+          python -m unittest \
+            tests.test_webapp \
+            tests.test_iws \
+            tests.framework.test_enums \
+            tests.framework.test_http \
+            tests.framework.test_utils \
+            -v
