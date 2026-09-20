@@ -28,9 +28,6 @@
 [submodule "Production"]
 	path = Production
 	url = git@rslakra.github.com:rslakra/Production.git
-[submodule "Monitoring"]
-	path = Monitoring
-	url = git@rslakra.github.com:rslakra/Monitoring.git
 [submodule "Multimedia"]
 	path = Multimedia
 	url = git@rslakra.github.com:rslakra/Multimedia.git
@@ -43,6 +40,9 @@
 [submodule "Technology"]
 	path = Technology
 	url = git@rslakra.github.com:rslakra/Technology.git
+[submodule "Telemetry"]
+	path = Telemetry
+	url = git@rslakra.github.com:rslakra/Telemetry.git
 [submodule "cheat-sheets"]
         path = cheat-sheets
         url = git@rslakra.github.com:rslakra/cheat-sheets.git
