@@ -1,0 +1,244 @@
+# These are some examples of commonly ignored file patterns.
+# You should customize this list as applicable to your project.
+# Learn more about .gitignore:
+#     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+#
+
+### Celery ###
+celerybeat-schedule
+celerybeat.pid
+
+### Cython Debug Symbols ###
+cython_debug/
+
+### Distribution & Packaging ###
+#   PyInstaller writes *.manifest / *.spec from a template before building the exe.
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+.eggs/
+.installed.cfg
+.Python
+MANIFEST
+[Bb]in/
+[Bb]uild/
+[Oo]ut/
+develop-eggs/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+share/python-wheels/
+var/
+wheels/
+
+### Django ###
+db.sqlite3
+db.sqlite3-journal
+local_settings.py
+
+### Environments ###
+*.bak/
+*.env/
+.env
+.venv
+ENV/
+env.*/
+env/
+venv.*/
+venv/
+
+### Flask ###
+.webassets-cache
+instance/
+
+### Gradle ###
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+# Avoid ignoring Gradle wrapper properties
+!gradle-wrapper.properties
+
+### Helm ###
+.helm/
+charts/*.tgz
+
+### JetBrains IDE & Editors ###
+#   JetBrains (IntelliJ IDEA, PyCharm) keep a separate template at
+#   https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#   which can be added to the global gitignore or merged into this file.
+*.iml
+*.ipr
+*.iws
+*.swo
+*.swp
+*~
+.idea/
+.vscode/
+
+### Installer Logs ###
+pip-delete-this-directory.txt
+pip-log.txt
+
+### IPython ###
+ipython_config.py
+profile_default/
+
+### Java & JVM ###
+*.app
+*.class
+*.dmg
+*.exe
+*.jar
+*.war
+
+### Jupyter Notebook ###
+.ipynb_checkpoints
+
+### Large Files ###
+*.avi
+*.flv
+*.mov
+*.mp4
+*.tiff
+*.wmv
+
+### Local Database Files ###
+/**/*.db
+
+### Logs ###
+*.log
+
+### Maven ###
+.mvn/
+[Tt]arget/
+
+### NetBeans ###
+/.nb-gradle/
+/nbbuild/
+/nbdist/
+/nbproject/private/
+
+### Node Artifacts ###
+[Dd]ist/
+node_modules/
+
+### OS Generated Files ###
+.DS_Store
+[Tt]humbs.db
+
+### pdm ###
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#pdm.lock
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+.pdm-build/
+.pdm-python
+.pdm.toml
+
+### PEP 582 ###
+#   Used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+### pipenv ###
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+### Poetry ###
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
+
+### PyBuilder ###
+.pybuilder/
+
+### pyenv ###
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+### Python Bytecode & C Extensions ###
+*$py.class
+*.py[cod]
+*.so
+__pycache__/
+
+### Rope Project Settings ###
+.ropeproject
+
+### SageMath Parsed Files ###
+*.sage.py
+
+### Scrapy ###
+.scrapy
+
+### Secrets ###
+*.key
+*.pem
+*.secret
+secrets/
+
+### Sphinx & MkDocs Documentation ###
+/site
+docs/_build/
+
+### Spyder Project Settings ###
+.spyderproject
+.spyproject
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### Temporary Files ###
+*.tmp
+temp/
+tmp/
+
+### Terraform ###
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+
+### Translations ###
+*.mo
+*.pot
+
+### Type Checkers & Linters ###
+.dmypy.json
+.mypy_cache/
+.pyre/
+.pytype/
+dmypy.json
+
+### Unit Tests & Coverage Reports ###
+*.cover
+*.py,cover
+.cache
+.coverage
+.coverage.*
+.hypothesis/
+.nox/
+.pytest_cache/
+.tox/
+TEST*.xml
+cover/
+coverage.xml
+htmlcov/
+nosetests.xml

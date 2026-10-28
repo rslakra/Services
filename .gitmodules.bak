@@ -10,6 +10,9 @@
 [submodule "Commodity"]
 	path = Commodity
 	url = git@rslakra.github.com:rslakra/Commodity.git
+[submodule "Database"]
+	path = Database
+	url = git@rslakra.github.com:rslakra/Database.git		
 [submodule "Education"]
 	path = Education
 	url = git@rslakra.github.com:rslakra/Education.git
@@ -25,12 +28,12 @@
 [submodule "Logistics/YatraSuite"]
 	path = Logistics/YatraSuite
 	url = git@rslakra.github.com:rslakra/YatraSuite.git
-[submodule "Production"]
-	path = Production
-	url = git@rslakra.github.com:rslakra/Production.git
 [submodule "Multimedia"]
 	path = Multimedia
 	url = git@rslakra.github.com:rslakra/Multimedia.git
+[submodule "Production"]
+	path = Production
+	url = git@rslakra.github.com:rslakra/Production.git
 [submodule "Samples"]
 	path = Samples
 	url = git@rslakra.github.com:rslakra/Samples.git
