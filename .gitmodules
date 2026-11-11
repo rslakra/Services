@@ -1,55 +1,24 @@
-[submodule "Automotive"]
-	path = Automotive
-	url = git@github.com:rslakra/Automotive.git 
-[submodule "Business"]
-	path = Business
-	url = git@github.com:rslakra/Business.git
-[submodule "Commerce"]
-	path = Commerce
-	url = git@github.com:rslakra/Commerce.git
-[submodule "Commodity"]
-	path = Commodity
-	url = git@github.com:rslakra/Commodity.git
-[submodule "Database"]
-	path = Database
-	url = git@github.com:rslakra/Database.git	
+[submodule "cheat-sheets"]
+        path = cheat-sheets
+        url = git@github.com:rslakra/cheat-sheets.git
 [submodule "Education"]
 	path = Education
 	url = git@github.com:rslakra/Education.git
+[submodule "Enterprise"]
+	path = Enterprise
+	url = git@github.com:rslakra/Enterprise.git
 [submodule "Healthcare"]
 	path = Healthcare
 	url = git@github.com:rslakra/Healthcare.git
 [submodule "Infrastructure"]
 	path = Infrastructure
 	url = git@github.com:rslakra/Infrastructure.git
-[submodule "Logistics"]
-	path = Logistics
-	url = git@github.com:rslakra/Logistics.git
-[submodule "Logistics/YatraSuite"]
-	path = Logistics/YatraSuite
-	url = git@github.com:rslakra/YatraSuite.git
 [submodule "Multimedia"]
 	path = Multimedia
 	url = git@github.com:rslakra/Multimedia.git
-[submodule "Production"]
-	path = Production
-	url = git@github.com:rslakra/Production.git
 [submodule "Samples"]
 	path = Samples
 	url = git@github.com:rslakra/Samples.git
-[submodule "Sports"]
-        path = Sports
-        url = git@github.com:rslakra/Sports.git
-[submodule "SpringSecurity"]
-	path = SpringSecurity
-	url = git@github.com:rslakra/SpringSecurity.git
 [submodule "Technology"]
 	path = Technology
 	url = git@github.com:rslakra/Technology.git
-[submodule "Telemetry"]
-	path = Telemetry
-	url = git@github.com:rslakra/Telemetry.git	
-[submodule "cheat-sheets"]
-        path = cheat-sheets
-        url = git@github.com:rslakra/cheat-sheets.git
-
