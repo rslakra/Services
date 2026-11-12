@@ -1,3 +1,6 @@
+[submodule "Boilerplate"]
+	path = Boilerplate
+	url = git@github.com:rslakra/Boilerplate.git
 [submodule "cheat-sheets"]
 	path = cheat-sheets
 	url = git@github.com:rslakra/cheat-sheets.git
