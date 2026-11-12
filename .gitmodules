@@ -1,6 +1,6 @@
 [submodule "cheat-sheets"]
-        path = cheat-sheets
-        url = git@github.com:rslakra/cheat-sheets.git
+	path = cheat-sheets
+	url = git@github.com:rslakra/cheat-sheets.git
 [submodule "Education"]
 	path = Education
 	url = git@github.com:rslakra/Education.git
