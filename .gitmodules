@@ -1,3 +1,6 @@
+[submodule "AiSuite"]
+	path = AiSuite
+	url = git@github.com:rslakra/AiSuite.git
 [submodule "Boilerplate"]
 	path = Boilerplate
 	url = git@github.com:rslakra/Boilerplate.git
