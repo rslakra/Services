@@ -251,6 +251,9 @@ git push -f
 - [hypersistence](https://github.com/vladmihalcea/hypersistence-utils/blob/master/)
 - [hypersistence-utils-hibernate](hypersistence-utils-hibernate-62/src/main/java/io/hypersistence/utils/hibernate/util/ReflectionUtils.java)
 
+- [The Twelve-Factor App](https://12factor.net/)
+- [The Twelve-Factor App - GitHub](https://github.com/heroku/12factor)
+
 
 # Author
 
