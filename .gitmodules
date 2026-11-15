@@ -28,6 +28,9 @@
 [submodule "Technology"]
 	path = Technology
 	url = git@github.com:rslakra/Technology.git
+[submodule "WebApps"]
+	path = WebApps
+	url = git@github.com:rslakra/WebApps.git
 [submodule "ZeroCloud"]
 	path = ZeroCloud
 	url = git@github.com:rslakra/ZeroCloud.git
