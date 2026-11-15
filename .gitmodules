@@ -22,6 +22,9 @@
 [submodule "Infrastructure"]
 	path = Infrastructure
 	url = git@github.com:rslakra/Infrastructure.git
+[submodule "Microservice"]
+	path = Microservice
+	url = git@github.com:rslakra/Microservice.git
 [submodule "Multimedia"]
 	path = Multimedia
 	url = git@github.com:rslakra/Multimedia.git
